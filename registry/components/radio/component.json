@@ -1,0 +1,16 @@
+{
+  "name": "radio",
+  "type": "component",
+  "description": "Native radio input styled to the theme.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "radio.blade.php", "source": "files/radio.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--primary", "--ring", "--background"],
+    "notes": "Use a shared `name` for a radio group."
+  }
+}

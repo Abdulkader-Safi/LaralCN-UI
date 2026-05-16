@@ -1,0 +1,18 @@
+{
+  "name": "accordion",
+  "type": "component",
+  "description": "Collapsible disclosure list (single or multiple open).",
+  "category": "Navigation",
+  "dependencies": {
+    "components": [],
+    "js": ["alpinejs", "@alpinejs/collapse"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "accordion.blade.php", "source": "files/accordion.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--border", "--muted-foreground", "--ring", "--radius"],
+    "notes": "Requires Alpine.js with the @alpinejs/collapse plugin (x-collapse). Pass `:items` as ['key' => 'Label']; provide each body via a named slot `item_<key>`. Set `multiple` to allow several open."
+  }
+}

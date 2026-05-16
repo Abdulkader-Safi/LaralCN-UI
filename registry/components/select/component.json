@@ -1,0 +1,16 @@
+{
+  "name": "select",
+  "type": "component",
+  "description": "Native select styled to the theme.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "select.blade.php", "source": "files/select.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--input", "--background", "--ring", "--radius"],
+    "notes": "Place <option> elements in the slot."
+  }
+}

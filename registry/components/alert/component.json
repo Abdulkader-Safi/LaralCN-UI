@@ -1,0 +1,23 @@
+{
+  "name": "alert",
+  "type": "component",
+  "description": "Callout for short, important messages.",
+  "category": "Feedback",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "alert.blade.php", "source": "files/alert.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--border",
+      "--background",
+      "--foreground",
+      "--destructive",
+      "--muted-foreground",
+      "--radius"
+    ],
+    "notes": "Variants: default, destructive. Optional `icon` and `title`."
+  }
+}

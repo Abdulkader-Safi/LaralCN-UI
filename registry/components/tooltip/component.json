@@ -1,0 +1,18 @@
+{
+  "name": "tooltip",
+  "type": "component",
+  "description": "Hover/focus tooltip with side positioning.",
+  "category": "Overlays",
+  "dependencies": {
+    "components": [],
+    "js": ["alpinejs"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "tooltip.blade.php", "source": "files/tooltip.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--primary", "--primary-foreground", "--radius"],
+    "notes": "Requires Alpine.js. Wrap the trigger in the slot; pass `text` and optional `side` (top|bottom|left|right)."
+  }
+}

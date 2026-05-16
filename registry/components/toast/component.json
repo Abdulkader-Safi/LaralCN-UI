@@ -1,0 +1,22 @@
+{
+  "name": "toast",
+  "type": "component",
+  "description": "Toast region; dispatch a `toast` window event to show one.",
+  "category": "Feedback",
+  "dependencies": {
+    "components": [],
+    "js": ["alpinejs"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "toast.blade.php", "source": "files/toast.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted-foreground",
+      "--radius"
+    ],
+    "notes": "Requires Alpine.js. Place once near </body>. Trigger with: window.dispatchEvent(new CustomEvent('toast', { detail: { title, description, duration } })). position: bottom-right|bottom-left|top-right|top-left."
+  }
+}

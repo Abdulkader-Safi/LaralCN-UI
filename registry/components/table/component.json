@@ -1,0 +1,16 @@
+{
+  "name": "table",
+  "type": "component",
+  "description": "Responsive data table wrapper.",
+  "category": "Data Display",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "table.blade.php", "source": "files/table.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--muted", "--muted-foreground", "--border"],
+    "notes": "Wrap standard thead/tbody/tr/th/td; styling via Tailwind utility selectors in your markup."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "card",
+  "type": "component",
+  "description": "Container with header, content, and footer slots.",
+  "category": "Layout",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "card.blade.php", "source": "files/card.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--card",
+      "--card-foreground",
+      "--border",
+      "--muted-foreground",
+      "--radius"
+    ],
+    "notes": "Slots: header, footer; or props title/description."
+  }
+}

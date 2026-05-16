@@ -1,0 +1,21 @@
+{
+  "name": "dropdown-menu",
+  "type": "component",
+  "description": "Click-triggered menu with outside-click and Esc to close.",
+  "category": "Overlays",
+  "dependencies": {
+    "components": [],
+    "js": ["alpinejs"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "dropdown-menu.blade.php",
+      "source": "files/dropdown-menu.blade.php"
+    }
+  ],
+  "tailwind": {
+    "cssVars": ["--popover", "--popover-foreground", "--border", "--radius"],
+    "notes": "Requires Alpine.js. `trigger` slot opens it; put menu items (role=menuitem) in the default slot. align: start|center|end."
+  }
+}

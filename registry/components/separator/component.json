@@ -1,0 +1,18 @@
+{
+  "name": "separator",
+  "type": "component",
+  "description": "Visual or semantic divider.",
+  "category": "Layout",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "separator.blade.php", "source": "files/separator.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--border"],
+    "notes": "orientation: horizontal (default) or vertical."
+  }
+}

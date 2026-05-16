@@ -1,0 +1,16 @@
+{
+  "name": "label",
+  "type": "component",
+  "description": "Accessible form label.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "label.blade.php", "source": "files/label.blade.php" }],
+  "tailwind": {
+    "cssVars": [],
+    "notes": "Pair with `for` to associate with an input."
+  }
+}

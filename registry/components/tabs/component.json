@@ -1,0 +1,22 @@
+{
+  "name": "tabs",
+  "type": "component",
+  "description": "Tabbed interface; panels supplied via named slots.",
+  "category": "Navigation",
+  "dependencies": {
+    "components": [],
+    "js": ["alpinejs"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "tabs.blade.php", "source": "files/tabs.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--muted",
+      "--muted-foreground",
+      "--background",
+      "--foreground",
+      "--ring"
+    ],
+    "notes": "Requires Alpine.js. Pass `:tabs` as ['key' => 'Label']; provide each panel via a named slot `tab_<key>`."
+  }
+}

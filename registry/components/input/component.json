@@ -1,0 +1,22 @@
+{
+  "name": "input",
+  "type": "component",
+  "description": "Form text input.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "input.blade.php", "source": "files/input.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--input",
+      "--background",
+      "--ring",
+      "--muted-foreground",
+      "--radius"
+    ],
+    "notes": "Consumes theme tokens injected by `php artisan ui:init`."
+  }
+}

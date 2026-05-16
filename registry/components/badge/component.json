@@ -1,0 +1,22 @@
+{
+  "name": "badge",
+  "type": "component",
+  "description": "Small status / label pill with variants.",
+  "category": "Data Display",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "badge.blade.php", "source": "files/badge.blade.php" }],
+  "tailwind": {
+    "cssVars": [
+      "--primary",
+      "--secondary",
+      "--destructive",
+      "--foreground",
+      "--ring"
+    ],
+    "notes": "Variants: default, secondary, destructive, outline."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "avatar",
+  "type": "component",
+  "description": "User image with text fallback.",
+  "category": "Data Display",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "avatar.blade.php", "source": "files/avatar.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--muted", "--muted-foreground"],
+    "notes": "Provide `src` + `alt`, or a `fallback` (initials)."
+  }
+}
