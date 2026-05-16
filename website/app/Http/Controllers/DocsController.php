@@ -14,24 +14,26 @@ final class DocsController extends Controller
 
     public function home(): View
     {
-        $showcase = ['button', 'card', 'badge'];
+        $showcase = ["button", "card", "badge"];
 
-        return view('landing', [
-            'categories' => $this->registry->byCategory(),
-            'total' => $this->registry->all()->count(),
-            'showcase' => $this->registry
+        return view("landing", [
+            "categories" => $this->registry->byCategory(),
+            "total" => $this->registry->all()->count(),
+            "showcase" => $this->registry
                 ->all()
-                ->whereIn('name', $showcase)
-                ->sortBy(fn (array $c) => array_search($c['name'], $showcase, true))
+                ->whereIn("name", $showcase)
+                ->sortBy(
+                    fn(array $c) => array_search($c["name"], $showcase, true),
+                )
                 ->values(),
         ]);
     }
 
     public function index(): View
     {
-        return view('docs.index', [
-            'categories' => $this->registry->byCategory(),
-            'total' => $this->registry->all()->count(),
+        return view("docs.index", [
+            "categories" => $this->registry->byCategory(),
+            "total" => $this->registry->all()->count(),
         ]);
     }
 
@@ -43,45 +45,65 @@ final class DocsController extends Controller
             throw new NotFoundHttpException("Unknown component [{$name}].");
         }
 
-        $source = $this->registry->source($name, $entry['files'][0]['source']);
-        $hasPreview = view()->exists("previews.{$name}");
-
-        return view('docs.show', [
-            'entry' => $entry,
-            'source' => $source,
-            'command' => $this->registry->command($name),
-            'hasPreview' => $hasPreview,
-            'all' => $this->registry->byCategory(),
+        return view("docs.show", [
+            "entry" => $entry,
+            "source" => $this->registry->source(
+                $name,
+                $entry["files"][0]["source"],
+            ),
+            "command" => $this->registry->command($name),
+            "demoView" => "examples.{$name}",
+            "hasDemo" => view()->exists("examples.{$name}"),
+            "demoSource" => $this->exampleSource("{$name}.blade.php"),
+            "usageSource" => $this->exampleSource("{$name}.usage.blade.php"),
+            "all" => $this->registry->byCategory(),
         ]);
     }
 
     public function gettingStarted(): View
     {
-        $entry = $this->registry->find('button');
+        $entry = $this->registry->find("button");
 
-        return view('docs.getting-started', [
-            'all' => $this->registry->byCategory(),
-            'entry' => $entry,
-            'source' => $entry === null
-                ? ''
-                : $this->registry->source('button', $entry['files'][0]['source']),
-            'command' => $this->registry->command('button'),
-            'hasPreview' => view()->exists('previews.button'),
+        return view("docs.getting-started", [
+            "all" => $this->registry->byCategory(),
+            "entry" => $entry,
+            "source" =>
+                $entry === null
+                    ? ""
+                    : $this->registry->source(
+                        "button",
+                        $entry["files"][0]["source"],
+                    ),
+            "command" => $this->registry->command("button"),
+            "demoView" => "examples.button",
+            "hasDemo" => view()->exists("examples.button"),
         ]);
     }
 
     public function theming(): View
     {
-        return view('docs.theming', [
-            'theme' => $this->registry->themeCss(),
-            'all' => $this->registry->byCategory(),
+        return view("docs.theming", [
+            "theme" => $this->registry->themeCss(),
+            "all" => $this->registry->byCategory(),
         ]);
     }
 
     public function plainBlade(): View
     {
-        return view('docs.plain-blade', [
-            'all' => $this->registry->byCategory(),
+        return view("docs.plain-blade", [
+            "all" => $this->registry->byCategory(),
         ]);
+    }
+
+    /**
+     * Raw contents of a website example asset (the rendered demo or the
+     * usage boilerplate). These live in the app's view tree, not the
+     * registry, so they are read directly. Returns null when absent.
+     */
+    private function exampleSource(string $relative): ?string
+    {
+        $path = resource_path("views/examples/" . $relative);
+
+        return is_file($path) ? (string) file_get_contents($path) : null;
     }
 }

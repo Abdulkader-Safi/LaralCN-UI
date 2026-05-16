@@ -44,8 +44,7 @@
     <section class="mb-10">
         <h2 class="text-lg font-semibold tracking-tight">
             <span class="text-muted-foreground">3.</span> Add your first
-            component: <code
-                class="rounded bg-muted px-1 py-0.5">button</code>
+            component: <code class="rounded bg-muted px-1 py-0.5">button</code>
         </h2>
         <p class="mt-1 text-sm text-muted-foreground">
             This copies the Blade file into your app and resolves any
@@ -56,14 +55,14 @@
             {{ $command }}
         </div>
 
-        @if ($hasPreview)
+        @if ($hasDemo)
             <p
                 class="mt-6 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 What you get
             </p>
             <div
                 class="mt-2 flex min-h-[140px] items-center justify-center rounded-lg border border-border bg-card p-10">
-                @include('previews.button')
+                @include($demoView)
             </div>
         @endif
     </section>
@@ -82,8 +81,7 @@
         </div>
 
         @if ($source !== '')
-            <div class="mt-6"
-                x-data="{ copied: false, source: @js($source) }">
+            <div class="mt-6" x-data="{ copied: false, source: @js($source) }">
                 <div class="mb-3 flex items-center justify-between">
                     <h3
                         class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">

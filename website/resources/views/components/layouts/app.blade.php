@@ -8,6 +8,8 @@
     <meta name="description"
         content="A shadcn-style copy-and-own Blade component system for Laravel.">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://u.abdulkadersafi.com/script.js"
+        data-website-id="759e2030-fd85-4a3c-91c7-59f411fa5698"></script>
     <style>
         [x-cloak] {
             display: none !important
@@ -87,6 +89,18 @@
             {{ $slot }}
         </main>
     </div>
+
+    <footer class="border-t border-border">
+        <div
+            class="mx-auto max-w-7xl px-6 py-8 text-center text-sm text-muted-foreground">
+            Created with love and coffee by
+            <a href="https://abdulkadersafi.com" target="_blank"
+                rel="noopener noreferrer"
+                class="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80">
+                Abdulkader Safi
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>

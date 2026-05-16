@@ -101,7 +101,7 @@
                             {{ $item['description'] }}
                         </span>
                     </div>
-                    @include('previews.' . $item['name'])
+                    @include('examples.' . $item['name'])
                 </a>
             @endforeach
         </div>
