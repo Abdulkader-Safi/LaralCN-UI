@@ -10,7 +10,7 @@
         "gehrisandro/tailwind-merge-laravel": "^1.4",
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
-        "safi/laralcn-ui": "@dev"
+        "safi/laralcn-ui": "^0.1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -84,11 +84,5 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": {
-        "laralcn": {
-            "type": "path",
-            "url": "../packages/blade-ui"
-        }
-    }
+    "prefer-stable": true
 }

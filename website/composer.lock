@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11c6d04e2050a393448054f9fed3e23c",
+    "content-hash": "486923187c4f2e9d591561e14cc6eb22",
     "packages": [
         {
             "name": "brick/math",
@@ -3443,17 +3443,28 @@
         },
         {
             "name": "safi/laralcn-ui",
-            "version": "dev-main",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Abdulkader-Safi/LaralCN-UI.git",
+                "reference": "465e90f473fe7502e619b396e8c81a4796126bfa"
+            },
             "dist": {
-                "type": "path",
-                "url": "../packages/blade-ui",
-                "reference": "c424c6bd6e076fe530d7bd38656d59f24718659f"
+                "type": "zip",
+                "url": "https://api.github.com/repos/Abdulkader-Safi/LaralCN-UI/zipball/465e90f473fe7502e619b396e8c81a4796126bfa",
+                "reference": "465e90f473fe7502e619b396e8c81a4796126bfa",
+                "shasum": ""
             },
             "require": {
                 "illuminate/console": "^11.0 || ^12.0 || ^13.0",
                 "illuminate/filesystem": "^11.0 || ^12.0 || ^13.0",
                 "illuminate/support": "^11.0 || ^12.0 || ^13.0",
                 "php": "^8.2"
+            },
+            "require-dev": {
+                "gehrisandro/tailwind-merge-laravel": "^1.2",
+                "orchestra/testbench": "^9.0 || ^10.0",
+                "pestphp/pest": "^3.0"
             },
             "type": "library",
             "extra": {
@@ -3465,16 +3476,34 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Safi\\LaralcnUi\\": "src/"
+                    "Safi\\LaralcnUi\\": "packages/blade-ui/src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "LaralCN-UI installer (local path-repo manifest).",
-            "transport-options": {
-                "relative": true
-            }
+            "authors": [
+                {
+                    "name": "Abdul Kader Safi",
+                    "email": "safi.abdulkader@gmail.com"
+                }
+            ],
+            "description": "LaralCN-UI: a shadcn-style copy-and-own Blade component installer for Laravel.",
+            "homepage": "https://github.com/Abdulkader-Safi/LaralCN-UI",
+            "keywords": [
+                "blade",
+                "components",
+                "laravel",
+                "shadcn",
+                "tailwind",
+                "ui"
+            ],
+            "support": {
+                "issues": "https://github.com/Abdulkader-Safi/LaralCN-UI/issues",
+                "source": "https://github.com/Abdulkader-Safi/LaralCN-UI"
+            },
+            "time": "2026-05-16T08:58:49+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8426,9 +8455,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "safi/laralcn-ui": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
