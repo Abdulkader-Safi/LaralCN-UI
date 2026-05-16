@@ -1,0 +1,34 @@
+{
+  "name": "button",
+  "type": "component",
+  "description": "Clickable button with variant and size options.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "button.blade.php",
+      "source": "files/button.blade.php"
+    }
+  ],
+  "tailwind": {
+    "cssVars": [
+      "--primary",
+      "--primary-foreground",
+      "--secondary",
+      "--secondary-foreground",
+      "--destructive",
+      "--destructive-foreground",
+      "--accent",
+      "--accent-foreground",
+      "--input",
+      "--ring",
+      "--background",
+      "--radius"
+    ],
+    "notes": "Consumes theme tokens injected by `php artisan ui:init`."
+  }
+}
