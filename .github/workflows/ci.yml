@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  package-tests:
+    name: Package tests (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.2", "8.3", "8.4"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install dependencies
+        working-directory: packages/blade-ui
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run Pest
+        working-directory: packages/blade-ui
+        run: ./vendor/bin/pest --no-coverage
+
+  registry:
+    name: Registry integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+
+      - name: Rebuild index.json
+        run: php registry/build.php
+
+      - name: Fail if index.json is out of date
+        run: |
+          if ! git diff --exit-code -- registry/index.json; then
+            echo "::error::registry/index.json is stale. Run 'php registry/build.php' and commit."
+            exit 1
+          fi
