@@ -14,12 +14,12 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
-        new Filesystem()->deleteDirectory($this->sandboxPath());
+        (new Filesystem())->deleteDirectory($this->sandboxPath());
     }
 
     protected function tearDown(): void
     {
-        new Filesystem()->deleteDirectory($this->sandboxPath());
+        (new Filesystem())->deleteDirectory($this->sandboxPath());
 
         parent::tearDown();
     }
