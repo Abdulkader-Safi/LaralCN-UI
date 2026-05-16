@@ -5,22 +5,37 @@ declare(strict_types=1);
 namespace App\Support;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use RuntimeException;
 
 /**
- * Reads the LaralCN-UI registry directly off disk (monorepo). This is the
- * exact same source the CLI installs from, so the website's previews and
- * copyable source are guaranteed in parity with `php artisan ui:add`.
+ * Reads the LaralCN-UI registry — the exact same source the CLI installs
+ * from, so the website's previews and copyable source stay in parity with
+ * `php artisan ui:add`.
+ *
+ * `registry_url` may be either an absolute filesystem path (monorepo dev,
+ * where /registry sits next to the app) or an http(s) base such as the
+ * published raw GitHub registry (standalone production deploys, where only
+ * the website is shipped). Remote reads are cached briefly to avoid hitting
+ * GitHub on every request.
  */
 final class Registry
 {
     private string $base;
 
+    private bool $remote;
+
+    /** @var array<string, mixed>|null */
+    private ?array $index = null;
+
     public function __construct()
     {
         $this->base = rtrim((string) config('laralcn-ui.registry_url'), '/');
+        $this->remote = str_starts_with($this->base, 'http://')
+            || str_starts_with($this->base, 'https://');
 
-        if (! is_dir($this->base)) {
+        if (! $this->remote && ! is_dir($this->base)) {
             throw new RuntimeException("Registry not found at {$this->base}");
         }
     }
@@ -28,9 +43,12 @@ final class Registry
     /** @return Collection<int, array<string, mixed>> */
     public function all(): Collection
     {
-        $index = json_decode((string) file_get_contents($this->base.'/index.json'), true);
+        $this->index ??= json_decode(
+            (string) $this->get('index.json'),
+            true,
+        ) ?: [];
 
-        return collect($index['components'] ?? [])
+        return collect($this->index['components'] ?? [])
             ->sortBy('name')
             ->values();
     }
@@ -44,20 +62,20 @@ final class Registry
     /** @return array<string, mixed>|null */
     public function find(string $name): ?array
     {
-        $path = $this->base."/components/{$name}/component.json";
+        $contents = $this->get("components/{$name}/component.json");
 
-        if (! is_file($path)) {
+        if ($contents === null) {
             return null;
         }
 
-        return json_decode((string) file_get_contents($path), true);
+        $decoded = json_decode($contents, true);
+
+        return is_array($decoded) ? $decoded : null;
     }
 
     public function source(string $name, string $sourcePath): string
     {
-        $path = $this->base."/components/{$name}/{$sourcePath}";
-
-        return is_file($path) ? (string) file_get_contents($path) : '';
+        return (string) $this->get("components/{$name}/{$sourcePath}");
     }
 
     public function command(string $name): string
@@ -67,8 +85,41 @@ final class Registry
 
     public function themeCss(): string
     {
-        $stub = dirname($this->base).'/packages/blade-ui/resources/stubs/theme.css';
+        // The theme stub lives next to /registry, not inside it.
+        $root = $this->remote
+            ? preg_replace('#/registry$#', '', $this->base)
+            : dirname($this->base);
 
-        return is_file($stub) ? (string) file_get_contents($stub) : '';
+        return (string) $this->fetch(
+            $root.'/packages/blade-ui/resources/stubs/theme.css',
+        );
+    }
+
+    /**
+     * Read one registry file (relative to the registry base), or null if it
+     * does not exist.
+     */
+    private function get(string $relative): ?string
+    {
+        return $this->fetch($this->base.'/'.ltrim($relative, '/'));
+    }
+
+    private function fetch(string $location): ?string
+    {
+        if (! $this->remote) {
+            return is_file($location)
+                ? (string) file_get_contents($location)
+                : null;
+        }
+
+        return Cache::remember(
+            'laralcn-registry:'.sha1($location),
+            now()->addMinutes(10),
+            static function () use ($location): ?string {
+                $response = Http::timeout(10)->get($location);
+
+                return $response->successful() ? $response->body() : null;
+            },
+        );
     }
 }

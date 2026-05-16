@@ -53,7 +53,7 @@ return [
 
     "registry_url" => env(
         "LARALCN_UI_REGISTRY_URL",
-        "https://raw.githubusercontent.com/AbdulkaderSafi/LaralCN-UI/main/registry",
+        "https://raw.githubusercontent.com/Abdulkader-Safi/LaralCN-UI/main/registry",
     ),
 
     /*
