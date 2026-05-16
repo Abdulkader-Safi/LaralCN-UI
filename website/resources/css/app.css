@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,15 +6,17 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
-/* laralcn-ui:start — managed block, edit theme tokens here, do not remove the markers */
+/* laralcn-ui:start, managed block, edit theme tokens here, do not remove the markers */
 /*
  * LaralCN-UI theme tokens. Tailwind v4, CSS-first.
  * These variables are consumed by components (bg-primary, text-muted-foreground,
- * rounded-md, ...). Edit the values to theme your project — do NOT edit component
+ * rounded-md, ...). Edit the values to theme your project, do NOT edit component
  * files. Channel B users: copy this whole block into your app stylesheet once.
  */
 

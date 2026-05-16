@@ -5,7 +5,7 @@
         <p class="mt-2 max-w-2xl text-muted-foreground">
             The <code>ui:*</code> Artisan commands need a Laravel app. If you
             are on plain Blade, Statamic, or an older project, use Channel B —
-            this website — instead. It is a fully supported, first-class path.
+            this website, instead. It is a fully supported, first-class path.
         </p>
     </div>
 

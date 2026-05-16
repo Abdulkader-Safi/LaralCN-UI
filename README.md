@@ -9,7 +9,7 @@ LaralCN-UI is **not** a component library. You do not depend on a runtime packag
 - **Yours to edit.** Components live in your source tree. No version coupling.
 - **MIT licensed.**
 
-## Channel A — CLI
+## Channel A: CLI
 
 ```bash
 composer require --dev safi/laralcn-ui   # once
@@ -23,7 +23,7 @@ php artisan ui:add button                # per component
 
 Commands: `ui:init`, `ui:add`, `ui:list`, `ui:diff`. The CLI is Laravel-only.
 
-## Channel B — copy from the website
+## Channel B: copy from the website
 
 Every component has a docs page with a live preview and one-click copyable source. Copy the file into `resources/views/components/ui/`, copy the theme variables once, done. No CLI, no Composer. This is the supported path for plain-Blade and Statamic projects.
 

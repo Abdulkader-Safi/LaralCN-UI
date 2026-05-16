@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Assembles registry/index.json from every registry/components/<name>/component.json.
  * Run: php registry/build.php
  *
- * index.json is generated — never hand-edit it (DECISIONS D5).
+ * index.json is generated, never hand-edit it (DECISIONS D5).
  */
 
 $root = __DIR__;

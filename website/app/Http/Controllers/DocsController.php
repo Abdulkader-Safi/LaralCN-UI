@@ -12,6 +12,21 @@ final class DocsController extends Controller
 {
     public function __construct(private readonly Registry $registry) {}
 
+    public function home(): View
+    {
+        $showcase = ['button', 'card', 'badge'];
+
+        return view('landing', [
+            'categories' => $this->registry->byCategory(),
+            'total' => $this->registry->all()->count(),
+            'showcase' => $this->registry
+                ->all()
+                ->whereIn('name', $showcase)
+                ->sortBy(fn (array $c) => array_search($c['name'], $showcase, true))
+                ->values(),
+        ]);
+    }
+
     public function index(): View
     {
         return view('docs.index', [
@@ -37,6 +52,21 @@ final class DocsController extends Controller
             'command' => $this->registry->command($name),
             'hasPreview' => $hasPreview,
             'all' => $this->registry->byCategory(),
+        ]);
+    }
+
+    public function gettingStarted(): View
+    {
+        $entry = $this->registry->find('button');
+
+        return view('docs.getting-started', [
+            'all' => $this->registry->byCategory(),
+            'entry' => $entry,
+            'source' => $entry === null
+                ? ''
+                : $this->registry->source('button', $entry['files'][0]['source']),
+            'command' => $this->registry->command('button'),
+            'hasPreview' => view()->exists('previews.button'),
         ]);
     }
 

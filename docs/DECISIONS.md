@@ -1,10 +1,10 @@
-# LaralCN-UI — Locked Decisions
+# LaralCN-UI: Locked Decisions
 
 These are the hard calls the PRD (§7, §11) requires settling before any component ships. They are **locked**. Changing one means changing every component, so they do not change without a deliberate, project-wide migration.
 
 ## D1. Distribution model
 
-Copy-and-own. Components are plain `.blade.php` files written into the consumer's own source tree. There is **no runtime component package**. The `safi/laralcn-ui` Composer package (public project name: **LaralCN-UI**, PHP namespace `Safi\LaralcnUi`) contains only CLI/installer logic and config — never components.
+Copy-and-own. Components are plain `.blade.php` files written into the consumer's own source tree. There is **no runtime component package**. The `safi/laralcn-ui` Composer package (public project name: **LaralCN-UI**, PHP namespace `Safi\LaralcnUi`) contains only CLI/installer logic and config, never components.
 
 ## D2. Class-conflict resolution (PRD §7.1)
 
@@ -49,11 +49,11 @@ The fixed structure (see `AUTHORING.md` for the full rule) is:
 </button>
 ```
 
-`default` is always the fallback arm of every `match`. Variant prop names are `variant` and `size` across all components — never `type`, `intent`, `color`.
+`default` is always the fallback arm of every `match`. Variant prop names are `variant` and `size` across all components, never `type`, `intent`, `color`.
 
 ## D4. Tailwind target
 
-**Tailwind CSS v4 only** — exactly what `laravel new` ships today: CSS-first (`@import "tailwindcss";` + `@theme`), the `@tailwindcss/vite` plugin, and **no `tailwind.config.js`**. Components use v4 utility names. `ui:init` injects theme tokens as CSS variables into the app's main CSS file, not a JS config.
+**Tailwind CSS v4 only**, exactly what `laravel new` ships today: CSS-first (`@import "tailwindcss";` + `@theme`), the `@tailwindcss/vite` plugin, and **no `tailwind.config.js`**. Components use v4 utility names. `ui:init` injects theme tokens as CSS variables into the app's main CSS file, not a JS config.
 
 We do not support Tailwind v3. Plain-Blade/Statamic users on older setups are served by Channel B (manual copy) with documented theme variables.
 

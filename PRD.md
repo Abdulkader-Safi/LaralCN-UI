@@ -1,4 +1,4 @@
-# PRD — Blade UI: A shadcn-style component system for Laravel & Blade
+# PRD, Blade UI: A shadcn-style component system for Laravel & Blade
 
 **Status:** Draft v1
 **Owner:** Abdul Kader Safi
@@ -12,8 +12,8 @@ Blade UI is an open-source, copy-and-own component system for Laravel and plain 
 
 The model is directly inspired by shadcn/ui, adapted to the Blade and Tailwind ecosystem. Two distribution channels are supported:
 
-- **Channel A — CLI install.** A one-time dev dependency provides an Artisan command that fetches a named component from a remote registry and writes it into the project's components directory.
-- **Channel B — Copy from website.** Every component has a documentation page showing a live preview and its full source, which can be copied directly with no tooling.
+- **Channel A: CLI install.** A one-time dev dependency provides an Artisan command that fetches a named component from a remote registry and writes it into the project's components directory.
+- **Channel B: Copy from website.** Every component has a documentation page showing a live preview and its full source, which can be copied directly with no tooling.
 
 Components are pure Blade and Tailwind CSS. When interactivity is required, Alpine.js is used. There is no dependency on a base UI primitive library (no Base UI, no Radix equivalent). Every component is self-contained, readable, and editable.
 
@@ -26,7 +26,7 @@ The Laravel ecosystem lacks an equivalent to shadcn/ui. Existing options fall in
 1. **Full component packages** (installed via Composer) where the component markup lives inside the vendor directory. Developers cannot easily edit these without overriding or forking, and upgrades can silently change behavior.
 2. **Loose code snippets** scattered across blog posts and gists, with no consistency, no theming system, and no install path.
 
-Developers who want shadcn's model — beautifully designed components that they copy into their own codebase and own outright — have nothing comparable in Blade. Blade UI fills that gap.
+Developers who want shadcn's model, beautifully designed components that they copy into their own codebase and own outright, have nothing comparable in Blade. Blade UI fills that gap.
 
 ### Why "copy and own" matters
 
@@ -85,7 +85,7 @@ The correct and supported design for Channel A is a **two-step model**:
    ```
    Each command fetches the named component from the remote registry and writes the `.blade.php` file (plus any companion files) into the project's configured components directory.
 
-This delivers the exact experience intended — per-component installs into an editable directory — using a mechanism that actually works. The `composer require` happens once; everything after is per-component.
+This delivers the exact experience intended, per-component installs into an editable directory, using a mechanism that actually works. The `composer require` happens once; everything after is per-component.
 
 ---
 
@@ -109,38 +109,38 @@ A machine-readable catalogue of every component, hosted as static JSON.
 
 Each registry entry describes:
 
-- `name` — unique identifier, e.g. `button`.
-- `type` — `component`, `block`, or `theme`.
-- `description` — short summary.
-- `dependencies.components` — other Blade UI components this one requires (e.g. `dialog` requires `button`).
-- `dependencies.js` — npm packages required, if any (e.g. `alpinejs`).
-- `dependencies.composer` — Composer packages required, if any (expected to be rare or none).
-- `files` — array of files to install, each with a target path and either inline content or a fetch URL.
-- `tailwind` — any Tailwind theme tokens or CSS variables the component expects.
-- `category` — for grouping on the website (Forms, Overlays, Navigation, Feedback, etc.).
+- `name`: unique identifier, e.g. `button`.
+- `type`: `component`, `block`, or `theme`.
+- `description`: short summary.
+- `dependencies.components`: other Blade UI components this one requires (e.g. `dialog` requires `button`).
+- `dependencies.js`: npm packages required, if any (e.g. `alpinejs`).
+- `dependencies.composer`: Composer packages required, if any (expected to be rare or none).
+- `files`: array of files to install, each with a target path and either inline content or a fetch URL.
+- `tailwind`: any Tailwind theme tokens or CSS variables the component expects.
+- `category`: for grouping on the website (Forms, Overlays, Navigation, Feedback, etc.).
 
 The registry is the single source of truth shared by the CLI and the website. The website renders from it; the CLI installs from it.
 
 **Hosting for v1:** static JSON files in the project's GitHub repository, served via raw file URLs or GitHub Pages. No API server. An API can be introduced later if private registries or analytics are needed.
 
-### 6.2 Channel A — the CLI
+### 6.2 Channel A: the CLI
 
 Delivered as the `safi/blade-ui` dev package. Commands:
 
-- **`ui:init`** — one-time project setup. Verifies Tailwind is present, publishes the config file, creates the components directory if missing, and injects the base CSS variables (theme tokens) into the project's stylesheet. Prompts before overwriting anything.
-- **`ui:add <component> [<component>...]`** — resolves the component from the registry, resolves its full dependency tree (components and JS deps), fetches all files, and writes them into the configured directory. Handles existing files by prompting: overwrite, skip, or show diff. Reports any npm packages the user still needs to install.
-- **`ui:list`** — lists all available components with descriptions, grouped by category.
-- **`ui:diff [<component>]`** — shows the difference between the user's local copy and the current registry version. Important because users own and edit the files; this lets them see upstream changes without blind overwrites.
+- **`ui:init`**: one-time project setup. Verifies Tailwind is present, publishes the config file, creates the components directory if missing, and injects the base CSS variables (theme tokens) into the project's stylesheet. Prompts before overwriting anything.
+- **`ui:add <component> [<component>...]`**: resolves the component from the registry, resolves its full dependency tree (components and JS deps), fetches all files, and writes them into the configured directory. Handles existing files by prompting: overwrite, skip, or show diff. Reports any npm packages the user still needs to install.
+- **`ui:list`**: lists all available components with descriptions, grouped by category.
+- **`ui:diff [<component>]`**: shows the difference between the user's local copy and the current registry version. Important because users own and edit the files; this lets them see upstream changes without blind overwrites.
 
 **Config file** (`config/blade-ui.php`, publishable):
 
-- `components_path` — target directory, default `resources/views/components/ui`.
-- `namespace` / `prefix` — component tag prefix, default `ui` (so components render as `<x-ui.button>`).
-- `theme` — `css-variables` or `utility-classes`.
-- `registry_url` — base URL of the registry, overridable for forks and private registries.
-- `js` — `alpine` or `none`, declaring the interactivity strategy.
+- `components_path`: target directory, default `resources/views/components/ui`.
+- `namespace` / `prefix`: component tag prefix, default `ui` (so components render as `<x-ui.button>`).
+- `theme`: `css-variables` or `utility-classes`.
+- `registry_url`: base URL of the registry, overridable for forks and private registries.
+- `js`: `alpine` or `none`, declaring the interactivity strategy.
 
-### 6.3 Channel B — the website
+### 6.3 Channel B: the website
 
 A documentation site that is also a working showcase. For every component it provides:
 
@@ -177,7 +177,7 @@ These are known hard problems and must be solved deliberately.
 
 ### 7.1 Class merging and Tailwind conflict resolution
 
-shadcn relies on `tailwind-merge` so that a user passing `class="px-8"` correctly overrides a component's built-in `px-4`. Blade's `$attributes->class()` only concatenates classes — it does not resolve Tailwind conflicts, so both `px-4` and `px-8` end up in the markup and the result depends on CSS source order.
+shadcn relies on `tailwind-merge` so that a user passing `class="px-8"` correctly overrides a component's built-in `px-4`. Blade's `$attributes->class()` only concatenates classes, it does not resolve Tailwind conflicts, so both `px-4` and `px-8` end up in the markup and the result depends on CSS source order.
 
 **Decision required:** either ship/recommend a small PHP Tailwind-merge equivalent, or clearly document the limitation and the recommended override pattern. This must be settled before the first component ships, because it shapes how every component handles its `class` attribute.
 
@@ -201,7 +201,7 @@ The CLI assumes a Laravel app for `php artisan`. Plain-Blade and Statamic users 
 
 ## 8. User flows
 
-### Flow A — CLI install
+### Flow A: CLI install
 
 1. Developer runs `composer require --dev safi/blade-ui` once.
 2. Runs `php artisan ui:init`; Tailwind is verified, config and theme variables are set up.
@@ -210,7 +210,7 @@ The CLI assumes a Laravel app for `php artisan`. Plain-Blade and Statamic users 
 5. Edits the file freely; it is their code now.
 6. Later runs `ui:add dialog`; the CLI also installs `button` (already present, so skipped or diffed) and reports that Alpine.js is needed.
 
-### Flow B — copy from website
+### Flow B: copy from website
 
 1. Developer visits the Blade UI website.
 2. Browses to the Button component page, sees the live preview.
@@ -232,27 +232,27 @@ The CLI assumes a Laravel app for `php artisan`. Plain-Blade and Statamic users 
 
 ## 10. Release plan
 
-### Phase 0 — Foundations
+### Phase 0: Foundations
 
 Decide and document the hard calls before writing components: the variant pattern, the class-merge approach, the registry JSON schema, the config file shape, and the component authoring standard.
 
-### Phase 1 — One component, end to end
+### Phase 1: One component, end to end
 
 Build the registry format and the `ui:add` command against exactly one component (Button). Prove the full loop: `composer require` → `ui:init` → `ui:add button` → file written → renders correctly. Do not build many components against an unproven CLI.
 
-### Phase 2 — Dependency resolution
+### Phase 2: Dependency resolution
 
 Add `dialog` to force handling of component dependencies (needs Button) and JS dependencies (needs Alpine). Harden the resolver. Add `ui:list`.
 
-### Phase 3 — Component breadth
+### Phase 3: Component breadth
 
 Build out the v1 component set against the now-proven system. Add `ui:diff`.
 
-### Phase 4 — Website
+### Phase 4: Website
 
 Build the documentation and showcase site as a Laravel + Blade app consuming Blade UI itself. Ship Channel B fully: live previews, copyable source, theming guide.
 
-### Phase 5 — Public launch
+### Phase 5: Public launch
 
 Open source the repository under MIT, publish the installer package, publish the website, document the contribution flow for community components.
 
@@ -261,7 +261,7 @@ Open source the repository under MIT, publish the installer package, publish the
 ## 11. Open questions
 
 - Tailwind-merge for PHP: ship one, recommend an existing one, or document the limitation?
-- Registry hosting: raw GitHub files for v1 is the plan — confirm before Phase 1.
+- Registry hosting: raw GitHub files for v1 is the plan, confirm before Phase 1.
 - Should `ui:init` support a non-Laravel mode, or is Channel B the only supported path for plain Blade and Statamic?
 - Alpine.js: bundled guidance in `ui:init`, or left entirely to the user?
 - Component versioning: is `ui:diff` against latest sufficient for v1, or is per-component version pinning needed sooner?

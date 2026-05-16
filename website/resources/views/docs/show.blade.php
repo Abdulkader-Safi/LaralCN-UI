@@ -23,7 +23,7 @@
                 @include('previews.' . $entry['name'])
             @else
                 <span class="text-sm text-muted-foreground">
-                    No interactive preview — see source below.
+                    No interactive preview, see source below.
                 </span>
             @endif
         </div>
@@ -83,7 +83,8 @@
                 </span>
             </button>
         </div>
-        <pre class="overflow-x-auto rounded-lg border border-border text-xs leading-relaxed"><code class="language-xml rounded-lg">{{ $source }}</code></pre>
+        <pre
+            class="overflow-x-auto rounded-lg border border-border text-xs leading-relaxed"><code class="language-xml rounded-lg">{{ $source }}</code></pre>
         @if (!empty($entry['tailwind']['notes']))
             <p class="mt-3 text-sm text-muted-foreground">
                 {{ $entry['tailwind']['notes'] }}

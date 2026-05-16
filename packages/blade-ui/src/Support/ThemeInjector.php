@@ -13,7 +13,7 @@ use Illuminate\Filesystem\Filesystem;
  */
 final class ThemeInjector
 {
-    public const START = "/* laralcn-ui:start — managed block, edit theme tokens here, do not remove the markers */";
+    public const START = "/* laralcn-ui:start, managed block, edit theme tokens here, do not remove the markers */";
 
     public const END = "/* laralcn-ui:end */";
 

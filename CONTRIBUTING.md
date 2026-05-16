@@ -1,6 +1,6 @@
 # Contributing to LaralCN-UI
 
-Thanks for helping build LaralCN-UI. Read this and `docs/DECISIONS.md` before opening a PR — the architectural calls there are locked and not up for debate inside a feature PR.
+Thanks for helping build LaralCN-UI. Read this and `docs/DECISIONS.md` before opening a PR, the architectural calls there are locked and not up for debate inside a feature PR.
 
 ## Repository layout
 
@@ -14,8 +14,8 @@ Thanks for helping build LaralCN-UI. Read this and `docs/DECISIONS.md` before op
 ## Adding a component
 
 1. Create `registry/components/<name>/`:
-   - `component.json` — must validate against `registry/schema.json`.
-   - `files/<name>.blade.php` — authored per **`docs/AUTHORING.md`** (no exceptions: inline `match()` variants, classes through `TailwindMerge::merge`, theme tokens only, accessible, self-contained).
+   - `component.json`: must validate against `registry/schema.json`.
+   - `files/<name>.blade.php`: authored per **`docs/AUTHORING.md`** (no exceptions: inline `match()` variants, classes through `TailwindMerge::merge`, theme tokens only, accessible, self-contained).
 2. Regenerate the catalogue: `php registry/build.php` (never hand-edit `registry/index.json`).
 3. Add a live preview at `website/resources/views/previews/<name>.blade.php`.
 4. Run the package test suite (below). Add tests if your component introduces new dependency-resolution or CLI behavior.
@@ -46,7 +46,7 @@ npm run build && php artisan serve
 
 - PHP: `declare(strict_types=1)`, typed signatures.
 - Components: every box on the `docs/AUTHORING.md` checklist must be ticked.
-- Keep components self-contained — the only external symbol allowed is `\TailwindMerge\Laravel\Facades\TailwindMerge`.
+- Keep components self-contained, the only external symbol allowed is `\TailwindMerge\Laravel\Facades\TailwindMerge`.
 
 ## License
 

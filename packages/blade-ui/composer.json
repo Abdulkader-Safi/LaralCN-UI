@@ -1,24 +1,24 @@
 {
-    "_comment": "LOCAL DEV ONLY. The published package is the repository ROOT composer.json (submitted to Packagist as safi/laralcn-ui). This nested manifest exists solely so the in-repo website/ can consume the package via a Composer path repository — Composer cannot install a path package into a directory nested inside that package's own source. Keep `require` in sync with the root composer.json.",
-    "name": "safi/laralcn-ui",
-    "description": "LaralCN-UI installer (local path-repo manifest).",
-    "license": "MIT",
-    "require": {
-        "php": "^8.2",
-        "illuminate/console": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/filesystem": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/support": "^11.0 || ^12.0 || ^13.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Safi\\LaralcnUi\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Safi\\LaralcnUi\\LaralcnUiServiceProvider"
-            ]
-        }
+  "_comment": "LOCAL DEV ONLY. The published package is the repository ROOT composer.json (submitted to Packagist as safi/laralcn-ui). This nested manifest exists solely so the in-repo website/ can consume the package via a Composer path repository, Composer cannot install a path package into a directory nested inside that package's own source. Keep `require` in sync with the root composer.json.",
+  "name": "safi/laralcn-ui",
+  "description": "LaralCN-UI installer (local path-repo manifest).",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "illuminate/console": "^11.0 || ^12.0 || ^13.0",
+    "illuminate/filesystem": "^11.0 || ^12.0 || ^13.0",
+    "illuminate/support": "^11.0 || ^12.0 || ^13.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Safi\\LaralcnUi\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Safi\\LaralcnUi\\LaralcnUiServiceProvider"
+      ]
+    }
+  }
 }

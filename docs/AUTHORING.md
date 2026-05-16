@@ -10,11 +10,11 @@ A component is judged against this file in review. If it breaks a MUST, it does 
 - **MUST** declare every input via `@props([...])` with explicit defaults.
 - **MUST** be fully self-contained. The only external symbol a component may reference is `\TailwindMerge\Laravel\Facades\TailwindMerge`. No project helper, no shared trait, no base component. (A copied-from-website file must work with nothing but Tailwind v4 + `gehrisandro/tailwind-merge-laravel` installed.)
 
-## 2. Variants (locked convention — see DECISIONS D3)
+## 2. Variants (locked convention, see DECISIONS D3)
 
 - Variant prop is always named `variant`. Size prop is always named `size`. Never `type`, `intent`, `color`, `kind`.
 - Variant resolution is an inline `@php` block using `match()`. No `cva`, no helper, no config lookup.
-- Every `match()` **MUST** have a `default` arm — it is the fallback, and it is the value of the `default` prop default.
+- Every `match()` **MUST** have a `default` arm, it is the fallback, and it is the value of the `default` prop default.
 - Required structure:
 
 ```blade
@@ -54,7 +54,7 @@ A component is judged against this file in review. If it breaks a MUST, it does 
 </button>
 ```
 
-## 3. Class merging (locked — see DECISIONS D2)
+## 3. Class merging (locked, see DECISIONS D2)
 
 - The component's own classes, the variant/size strings, and the consumer's `class` attribute **MUST** all pass through `TailwindMerge::merge(...)` in that order (consumer `class` last so it wins).
 - Render attributes with `{{ $attributes->except('class')->merge(['class' => $classes]) }}` so the merged result is not re-concatenated with the raw `class`.
@@ -68,7 +68,7 @@ A component is judged against this file in review. If it breaks a MUST, it does 
 
 - Correct semantic element (`<button>`, `<label>`, `<table>`, `<dialog>`-pattern, etc.). No `<div>` where a real element exists.
 - Interactive components: full keyboard support (Tab, Enter/Space, Esc where it applies, arrow keys for menus/tabs).
-- Overlays (dialog, dropdown, tooltip): manage focus — trap focus while open, restore focus to the trigger on close, `Esc` closes, `aria-*` wired (`role`, `aria-modal`, `aria-expanded`, `aria-controls`, `aria-labelledby`).
+- Overlays (dialog, dropdown, tooltip): manage focus, trap focus while open, restore focus to the trigger on close, `Esc` closes, `aria-*` wired (`role`, `aria-modal`, `aria-expanded`, `aria-controls`, `aria-labelledby`).
 - Form controls: associate labels, expose `aria-invalid`/`aria-describedby` where relevant, never remove focus outlines without an equivalent.
 
 ## 6. Interactivity

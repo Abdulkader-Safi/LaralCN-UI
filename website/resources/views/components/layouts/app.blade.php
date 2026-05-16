@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'LaralCN-UI' }} — LaralCN-UI</title>
+    <title>{{ $title ?? 'LaralCN-UI' }}, LaralCN-UI</title>
     <meta name="description"
         content="A shadcn-style copy-and-own Blade component system for Laravel.">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,14 +19,17 @@
     <header
         class="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
         <div class="mx-auto flex h-14 max-w-7xl items-center gap-4 px-6">
-            <a href="{{ route('docs.index') }}"
-                class="font-bold tracking-tight">
+            <a href="{{ route('home') }}" class="font-bold tracking-tight">
                 LaralCN-UI
             </a>
             <span class="text-xs text-muted-foreground">
                 copy-and-own Blade components
             </span>
             <nav class="ml-auto flex items-center gap-4 text-sm">
+                <a href="{{ route('docs.index') }}"
+                    class="text-muted-foreground hover:text-foreground">
+                    Components
+                </a>
                 <a href="{{ route('docs.theming') }}"
                     class="text-muted-foreground hover:text-foreground">
                     Theming
@@ -55,6 +58,12 @@
     <div class="mx-auto flex max-w-7xl gap-10 px-6 py-10">
         <aside class="hidden w-56 shrink-0 lg:block">
             <nav class="sticky top-20 space-y-6 text-sm">
+                <div>
+                    <a href="{{ route('docs.getting-started') }}"
+                        class="block rounded px-2 py-1 font-semibold hover:bg-accent hover:text-accent-foreground {{ request()->routeIs('docs.getting-started') ? 'bg-accent text-accent-foreground' : 'text-foreground' }}">
+                        Getting Started
+                    </a>
+                </div>
                 @foreach ($all ?? collect() as $category => $items)
                     <div>
                         <p class="mb-2 font-semibold text-foreground">

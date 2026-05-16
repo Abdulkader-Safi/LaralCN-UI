@@ -9,7 +9,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Directory (relative to the app's base path) where `ui:add` writes
-    | component files. This is your code once written — edit freely.
+    | component files. This is your code once written, edit freely.
     |
     */
 
