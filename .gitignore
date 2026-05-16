@@ -3,7 +3,8 @@
 /packages/*/vendor/
 /website/vendor/
 /website/node_modules/
-/website/public/build/
+# website/public/build is committed: the production VPS Node is too old to
+# run Vite, so compiled assets ship with the repo (rebuild + commit on change).
 /website/.env
 laralcn-sandbox/
 .phpunit.cache/

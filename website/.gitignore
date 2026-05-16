@@ -14,7 +14,8 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+# public/build is committed: the production VPS has Node too old to run Vite,
+# so compiled assets ship with the repo. Rebuild + commit on asset changes.
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
