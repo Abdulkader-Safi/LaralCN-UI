@@ -1,0 +1,27 @@
+{
+  "name": "dialog",
+  "type": "component",
+  "description": "Modal dialog with focus trap, backdrop, and Esc-to-close.",
+  "category": "Overlays",
+  "dependencies": {
+    "components": ["button"],
+    "js": ["alpinejs", "@alpinejs/focus"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "dialog.blade.php",
+      "source": "files/dialog.blade.php"
+    }
+  ],
+  "tailwind": {
+    "cssVars": [
+      "--background",
+      "--border",
+      "--muted-foreground",
+      "--ring",
+      "--radius"
+    ],
+    "notes": "Requires Alpine.js with the @alpinejs/focus plugin (x-trap) for the focus trap. The `trigger` slot opens the dialog; an optional `footer` slot renders action buttons."
+  }
+}
