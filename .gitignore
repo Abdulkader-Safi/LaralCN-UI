@@ -1,0 +1,10 @@
+/vendor/
+/composer.lock
+/packages/*/vendor/
+/website/vendor/
+/website/node_modules/
+/website/public/build/
+/website/.env
+laralcn-sandbox/
+.phpunit.cache/
+.DS_Store

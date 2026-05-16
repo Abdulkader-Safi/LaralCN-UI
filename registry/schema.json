@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://laralcn-ui/registry/schema.json",
+  "title": "LaralCN-UI registry entry",
+  "description": "Schema for a single component.json registry entry. Every registry/components/<name>/component.json MUST validate against this.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "type", "description", "category", "files"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique component identifier, kebab-case. Matches the directory name and the installed file base name.",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["component", "block", "theme"],
+      "description": "component = single UI primitive; block = composed multi-file pattern; theme = token set only."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "category": {
+      "type": "string",
+      "description": "Website grouping.",
+      "enum": [
+        "Forms",
+        "Overlays",
+        "Navigation",
+        "Feedback",
+        "Layout",
+        "Data Display"
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Dependency closure. Omitted arrays are treated as empty.",
+      "properties": {
+        "components": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "uniqueItems": true,
+          "description": "Other LaralCN-UI components this one requires (resolved recursively by ui:add)."
+        },
+        "js": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true,
+          "description": "npm packages the consumer must install (e.g. alpinejs). Reported, never auto-installed."
+        },
+        "composer": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true,
+          "description": "Composer packages the consumer must install. Effectively always includes gehrisandro/tailwind-merge-laravel."
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Files written into the consumer's components_path.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "source"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Target path relative to the configured components_path, e.g. button.blade.php."
+          },
+          "source": {
+            "type": "string",
+            "description": "Path of the source file within this component's registry directory, e.g. files/button.blade.php."
+          }
+        }
+      }
+    },
+    "tailwind": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Theme tokens / CSS variables the component expects to exist (provided by ui:init or the theming page).",
+      "properties": {
+        "cssVars": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true,
+          "description": "CSS custom properties referenced, e.g. --primary, --radius."
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
