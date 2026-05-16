@@ -23,11 +23,9 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        working-directory: packages/blade-ui
         run: composer install --no-interaction --prefer-dist
 
       - name: Run Pest
-        working-directory: packages/blade-ui
         run: ./vendor/bin/pest --no-coverage
 
   registry:
