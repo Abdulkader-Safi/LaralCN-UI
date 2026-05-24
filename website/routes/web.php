@@ -14,6 +14,7 @@ Route::get("/theming", [DocsController::class, "theming"])->name(
 Route::get("/plain-blade", [DocsController::class, "plainBlade"])->name(
     "docs.plain-blade",
 );
+Route::get("/blocks", [DocsController::class, "blocks"])->name("blocks.index");
 Route::view("/blocks/sidebar-08", "blocks.sidebar-08")->name(
     "blocks.sidebar-08",
 );

@@ -32,6 +32,10 @@
                     class="text-muted-foreground hover:text-foreground">
                     Components
                 </a>
+                <a href="{{ route('blocks.index') }}"
+                    class="text-muted-foreground hover:text-foreground">
+                    Blocks
+                </a>
                 <a href="{{ route('docs.theming') }}"
                     class="text-muted-foreground hover:text-foreground">
                     Theming

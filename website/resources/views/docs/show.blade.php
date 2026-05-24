@@ -110,14 +110,21 @@
                 @endif
             </div>
 
-            <div>
-                <p class="mb-2 text-sm font-medium">
+            <div class="space-y-6">
+                <p class="text-sm font-medium">
                     <span class="text-muted-foreground">2.</span>
-                    Copy the source into
-                    <code
-                        class="text-foreground">resources/views/components/ui/{{ $entry['name'] }}.blade.php</code>
+                    Copy {{ count($files) > 1 ? 'each file' : 'the source' }} into
+                    <code class="text-foreground">resources/views/components/ui/</code>
                 </p>
-                <x-code-block :code="$source" />
+                @foreach ($files as $file)
+                    <div>
+                        <p class="mb-2 text-xs text-muted-foreground">
+                            <code
+                                class="text-foreground">resources/views/components/ui/{{ $file['path'] }}</code>
+                        </p>
+                        <x-code-block :code="$file['code']" />
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

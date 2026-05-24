@@ -45,18 +45,60 @@ final class DocsController extends Controller
             throw new NotFoundHttpException("Unknown component [{$name}].");
         }
 
+        $files = array_map(
+            fn(array $file) => [
+                "path" => $file["path"],
+                "code" => $this->registry->source($name, $file["source"]),
+            ],
+            $entry["files"],
+        );
+
         return view("docs.show", [
             "entry" => $entry,
-            "source" => $this->registry->source(
-                $name,
-                $entry["files"][0]["source"],
-            ),
+            "source" => $files[0]["code"] ?? "",
+            "files" => $files,
             "command" => $this->registry->command($name),
             "demoView" => "examples.{$name}",
             "hasDemo" => view()->exists("examples.{$name}"),
             "demoSource" => $this->exampleSource("{$name}.blade.php"),
             "usageSource" => $this->exampleSource("{$name}.usage.blade.php"),
             "all" => $this->registry->byCategory(),
+        ]);
+    }
+
+    /**
+     * Blocks gallery. Blocks are multi-component compositions rendered as
+     * standalone pages; until the installable `blocks/` registry type lands,
+     * each is described here with the components it is composed of and the
+     * `ui:add` command that pulls those in.
+     */
+    public function blocks(): View
+    {
+        $blocks = [
+            [
+                "name" => "sidebar-08",
+                "title" => "Sidebar 08",
+                "category" => "Application Shell",
+                "description" =>
+                    "A collapsible sidebar with icon mode, mobile off-canvas, a workspace switcher, collapsible nav groups, and a nav-user footer. Ctrl/Cmd-B toggles it.",
+                "route" => route("blocks.sidebar-08"),
+                "components" => [
+                    "sidebar",
+                    "breadcrumb",
+                    "collapsible",
+                    "dropdown-menu",
+                    "avatar",
+                    "separator",
+                    "button",
+                    "skeleton",
+                ],
+                "source" => $this->blockSource("sidebar-08"),
+            ],
+        ];
+
+        return view("docs.blocks", [
+            "all" => $this->registry->byCategory(),
+            "blocks" => $blocks,
         ]);
     }
 
@@ -105,5 +147,15 @@ final class DocsController extends Controller
         $path = resource_path("views/examples/" . $relative);
 
         return is_file($path) ? (string) file_get_contents($path) : null;
+    }
+
+    /**
+     * Raw markup of a block's standalone demo view (resources/views/blocks).
+     */
+    private function blockSource(string $name): string
+    {
+        $path = resource_path("views/blocks/{$name}.blade.php");
+
+        return is_file($path) ? (string) file_get_contents($path) : "";
     }
 }
