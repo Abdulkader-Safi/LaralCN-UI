@@ -4,10 +4,22 @@
 ])
 
 @php
+    $isIcon = $collapsible === 'icon';
     $offscreen = $side === 'right' ? 'translate-x-full' : '-translate-x-full';
-    $widthExpr =
+
+    // Layout gap the sidebar reserves: full → icon width → 0 (offcanvas).
+    $gapWidth =
         "state === 'expanded' ? 'var(--sidebar-width)' : " .
-        ($collapsible === 'icon' ? "'var(--sidebar-width-icon)'" : "'0px'");
+        ($isIcon ? "'var(--sidebar-width-icon)'" : "'0px'");
+
+    // The fixed panel: icon mode shrinks its width; offcanvas keeps full width
+    // and slides off-screen (so icon-mode tooltips are never clipped).
+    $panelWidth = $isIcon
+        ? "state === 'expanded' ? 'var(--sidebar-width)' : 'var(--sidebar-width-icon)'"
+        : "'var(--sidebar-width)'";
+    $panelSlide = $isIcon
+        ? "''"
+        : "state === 'collapsed' ? '{$offscreen}' : ''";
 @endphp
 
 {{-- Desktop sidebar --}}
@@ -17,10 +29,11 @@
     data-side="{{ $side }}" data-variant="sidebar">
     {{-- gap handler --}}
     <div class="relative bg-transparent transition-[width] duration-200 ease-linear"
-        x-bind:style="`width: ${ {{ $widthExpr }} }`"></div>
+        x-bind:style="`width: ${ {{ $gapWidth }} }`"></div>
     {{-- fixed panel --}}
-    <div class="fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width] duration-200 ease-linear md:flex {{ $side === 'right' ? 'right-0' : 'left-0' }}"
-        x-bind:style="`width: ${ {{ $widthExpr }} }`">
+    <div class="fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width,transform] duration-200 ease-linear md:flex {{ $side === 'right' ? 'right-0' : 'left-0' }}"
+        x-bind:style="`width: ${ {{ $panelWidth }} }`"
+        x-bind:class="{{ $panelSlide }}">
         <div data-sidebar="sidebar"
             class="flex h-full w-full flex-col bg-sidebar {{ $side === 'right' ? 'border-l' : 'border-r' }} border-sidebar-border">
             {{ $slot }}
