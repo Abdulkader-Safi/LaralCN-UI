@@ -32,27 +32,18 @@
     $tag = $href ? 'a' : 'button';
 @endphp
 
+{{-- The button and tooltip stay SIBLINGS (no wrapper) so menu-badge/menu-action
+     keep their `peer/menu-button` relationship. The tooltip is pure CSS: shown
+     only when the sidebar is collapsed to icons and the button is hovered. --}}
+<{{ $tag }} data-sidebar="menu-button" data-size="{{ $size }}"
+    data-active="{{ $isActive ? 'true' : 'false' }}"
+    @if ($href) href="{{ $href }}" @else type="button" @endif
+    {{ $attributes->except('class')->merge(['class' => $classes]) }}>
+    {{ $slot }}
+</{{ $tag }}>
 @if ($tooltip)
-    <div class="relative" x-data="{ hovered: false }"
-        @mouseenter="hovered = true" @mouseleave="hovered = false">
-        <{{ $tag }} data-sidebar="menu-button" data-size="{{ $size }}"
-            data-active="{{ $isActive ? 'true' : 'false' }}"
-            @if ($href) href="{{ $href }}" @else type="button" @endif
-            {{ $attributes->except('class')->merge(['class' => $classes]) }}>
-            {{ $slot }}
-        </{{ $tag }}>
-        <span role="tooltip" x-cloak
-            x-show="hovered && state === 'collapsed' && !isMobile"
-            x-transition
-            class="absolute left-full top-1/2 z-50 ml-2 w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground">
-            {{ $tooltip }}
-        </span>
-    </div>
-@else
-    <{{ $tag }} data-sidebar="menu-button" data-size="{{ $size }}"
-        data-active="{{ $isActive ? 'true' : 'false' }}"
-        @if ($href) href="{{ $href }}" @else type="button" @endif
-        {{ $attributes->except('class')->merge(['class' => $classes]) }}>
-        {{ $slot }}
-    </{{ $tag }}>
+    <span role="tooltip"
+        class="pointer-events-none absolute left-full top-1/2 z-50 ml-2 hidden w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground group-data-[collapsible=icon]:peer-hover/menu-button:block">
+        {{ $tooltip }}
+    </span>
 @endif
