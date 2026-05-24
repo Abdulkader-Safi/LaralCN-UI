@@ -4,6 +4,29 @@ Roadmap for the missing components in [`all-components.md`](./all-components.md)
 sequenced so we can ship a real shadcn-style **block** (`sidebar-08`) as the first
 milestone.
 
+## Status — ✅ Track A shipped (Phases 0–4)
+
+`skeleton`, `collapsible`, `breadcrumb`, `sheet`, and the `sidebar` compound are
+built, tested (68 passing), and live on the site; `sidebar-08` ships as a
+full-screen demo at `/blocks/sidebar-08` and in the `/blocks` gallery. Registry is
+at **25 components**. What actually shipped vs. the plan below:
+
+- **`collapsible`** shipped as **3 namespaced files** (`index`/`trigger`/`content`,
+  used as `<x-ui.collapsible.*>`), not the named-slot variant the draft suggested —
+  consistent with breadcrumb/sidebar namespacing.
+- **`sidebar`** is **self-contained**: tooltip, separator and skeleton behaviour are
+  inlined into its parts, so its `dependencies.components` is empty (the *block*
+  composes button/breadcrumb/dropdown-menu/avatar/etc., not the primitive).
+- **Mobile off-canvas** is inlined in `sidebar/index.blade.php` (overlay + slide +
+  `x-trap`) rather than composing `<x-ui.sheet>`, because the sheet's trigger-slot
+  model doesn't fit the provider's `openMobile` state.
+- **Foundational:** `SmokeRenderTest` now installs by each `component.json`
+  `files[].path` (faithful to `FileInstaller`), which is what makes namespaced
+  multi-file components resolve. The docs "Manual" tab renders every file.
+
+**Phase 5** (installable `blocks/` registry type + `ui:add sidebar-08`) and
+Tracks B/C remain future work.
+
 ## Decisions driving this plan
 
 1. **Priority = the Sidebar.** We build only the components needed to assemble the
@@ -170,10 +193,10 @@ runtime library" rule. Revisit only if the policy changes.
 | Phase     | Deliverable                      | Components                              |
 | --------- | -------------------------------- | --------------------------------------- |
 | 0 ✅      | Theme tokens incl. `--sidebar-*` | (shipped in the OKLCH migration)        |
-| 1         | Quick wins                       | `skeleton`, `collapsible`, `breadcrumb` |
-| 2         | Off-canvas                       | `sheet`                                 |
-| 3         | The primitive                    | `sidebar` (compound)                    |
-| 4         | First block (website demo)       | `sidebar-08` page + route               |
+| 1 ✅      | Quick wins                       | `skeleton`, `collapsible`, `breadcrumb` |
+| 2 ✅      | Off-canvas                       | `sheet`                                 |
+| 3 ✅      | The primitive                    | `sidebar` (compound)                    |
+| 4 ✅      | First block (website demo)       | `sidebar-08` page + `/blocks` gallery   |
 | 5 (later) | Installable blocks               | `blocks/` registry type + CLI           |
 
 ## Per-component checklist (every PR)

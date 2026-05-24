@@ -3,8 +3,9 @@
 Comparison of every component listed at [ui.shadcn.com/docs/components](https://ui.shadcn.com/docs/components)
 against what LaralCN-UI currently ships in `registry/components/`.
 
-**Coverage: 20 / 60 shadcn entries.** (Several shadcn "entries" are guides/providers,
-not real components — see notes.)
+**Coverage: 25 / 60 shadcn entries.** (Several shadcn "entries" are guides/providers,
+not real components — see notes.) Plus the first **block**, `sidebar-08`, assembled
+from these components — see [`/blocks`](./website) on the site.
 
 Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 
@@ -16,7 +17,7 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 | 4   | Aspect Ratio     | ❌       | —               |                                                                          |
 | 5   | Avatar           | ✅       | `avatar`        |                                                                          |
 | 6   | Badge            | ✅       | `badge`         |                                                                          |
-| 7   | Breadcrumb       | ❌       | —               |                                                                          |
+| 7   | Breadcrumb       | ✅       | `breadcrumb`    | 7 namespaced parts (list/item/link/page/separator/ellipsis)              |
 | 8   | Button           | ✅       | `button`        |                                                                          |
 | 9   | Button Group     | ❌       | —               |                                                                          |
 | 10  | Calendar         | ❌       | —               |                                                                          |
@@ -24,7 +25,7 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 | 12  | Carousel         | ❌       | —               |                                                                          |
 | 13  | Chart            | ❌       | —               |                                                                          |
 | 14  | Checkbox         | ✅       | `checkbox`      | Native `<input type=checkbox>` styled to match                           |
-| 15  | Collapsible      | ❌       | —               |                                                                          |
+| 15  | Collapsible      | ✅       | `collapsible`   | Alpine + @alpinejs/collapse; namespaced (index/trigger/content)          |
 | 16  | Combobox         | ❌       | —               |                                                                          |
 | 17  | Command          | ❌       | —               |                                                                          |
 | 18  | Context Menu     | ❌       | —               | We have `dropdown-menu` (click), not right-click context menu            |
@@ -54,9 +55,9 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 | 42  | Scroll Area      | ❌       | —               |                                                                          |
 | 43  | Select           | ⚠️       | `select`        | We ship the **native** select, not the Radix popover/combobox select     |
 | 44  | Separator        | ✅       | `separator`     |                                                                          |
-| 45  | Sheet            | ❌       | —               |                                                                          |
-| 46  | Sidebar          | ❌       | —               |                                                                          |
-| 47  | Skeleton         | ❌       | —               |                                                                          |
+| 45  | Sheet            | ✅       | `sheet`         | Off-canvas overlay; `side=top\|right\|bottom\|left`, Alpine x-trap        |
+| 46  | Sidebar          | ✅       | `sidebar`       | 22-part compound: icon-collapse, mobile off-canvas, cookie + Ctrl/Cmd-B  |
+| 47  | Skeleton         | ✅       | `skeleton`      | Loading placeholder                                                      |
 | 48  | Slider           | ❌       | —               |                                                                          |
 | 49  | Sonner           | ⚠️       | `toast`         | Our `toast` is Sonner-style; shadcn now favors Sonner over the old Toast |
 | 50  | Spinner          | ❌       | —               |                                                                          |
@@ -70,18 +71,25 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 | 58  | Tooltip          | ✅       | `tooltip`       |                                                                          |
 | 59  | Typography       | ❌       | —               | Not a component (styling guide)                                          |
 
-## What we have (20)
+## What we have (25)
 
-`accordion`, `alert`, `avatar`, `badge`, `button`, `card`, `checkbox`, `dialog`,
-`dropdown-menu`, `input`, `label`, `radio`, `select`, `separator`, `switch`,
-`table`, `tabs`, `textarea`, `toast`, `tooltip`
+`accordion`, `alert`, `avatar`, `badge`, `breadcrumb`, `button`, `card`, `checkbox`,
+`collapsible`, `dialog`, `dropdown-menu`, `input`, `label`, `radio`, `select`,
+`separator`, `sheet`, `sidebar`, `skeleton`, `switch`, `table`, `tabs`, `textarea`,
+`toast`, `tooltip`
+
+## Blocks (1)
+
+- **`sidebar-08`** — application shell composed from `sidebar`, `breadcrumb`,
+  `collapsible`, `dropdown-menu`, `avatar`, `separator`, `button`, `skeleton`.
+  Browse it on the site's **Blocks** page (`/blocks`).
 
 ## Missing (high-value candidates to add next)
 
-- **Overlays:** Alert Dialog, Sheet, Drawer, Popover, Hover Card, Context Menu
+- **Overlays:** Alert Dialog, Drawer, Popover, Hover Card, Context Menu
 - **Forms/inputs:** Combobox, Input OTP, Input Group, Slider, Toggle, Toggle Group, Date Picker, Calendar
-- **Navigation:** Breadcrumb, Pagination, Navigation Menu, Menubar, Command, Sidebar
-- **Feedback/display:** Progress, Skeleton, Spinner, Empty, Aspect Ratio, Scroll Area, Resizable, Carousel, Chart, Data Table
+- **Navigation:** Pagination, Navigation Menu, Menubar, Command
+- **Feedback/display:** Progress, Spinner, Empty, Aspect Ratio, Scroll Area, Resizable, Carousel, Chart, Data Table
 
 > Notes: **Direction** and **Typography** are docs/guides upstream, not installable
 > components. **Select** is counted as a "have" only in its native flavor (it covers
