@@ -25,7 +25,7 @@ milestone.
 ## The key insight
 
 The sidebar primitive is built **once**. Every sidebar block (01–16) is just an
-*assembly* of that primitive plus already-shipped components. So this plan delivers
+_assembly_ of that primitive plus already-shipped components. So this plan delivers
 one hard compound component (`sidebar`) and four small ones; after that, `sidebar-08`
 — and every other sidebar block — is composition, not new primitives.
 
@@ -116,7 +116,7 @@ sidebar-08 (block)
     set on the provider; `collapsible="icon"` mode collapses to the icon width.
   - Desktop = inline collapsible panel; **mobile (`isMobile`) renders the panel
     inside `sheet`** (off-canvas). `isMobile` from a `matchMedia('(max-width:
-    768px)')` listener.
+768px)')` listener.
 - Colors: `bg-sidebar text-sidebar-foreground`, borders `border-sidebar-border`,
   active item `bg-sidebar-accent text-sidebar-accent-foreground`, focus
   `ring-sidebar-ring` — all tokens already in the theme.
@@ -146,12 +146,12 @@ sidebar-08 (block)
 Available to build with the same authoring rules **if/when wanted**. None block the
 sidebar; listed for completeness of "all missing components."
 
-| Group | Components | JS? |
-|-------|------------|-----|
-| Overlays | Alert Dialog, Drawer, Popover, Hover Card, Context Menu | Alpine (inline) |
-| Navigation | Pagination, Navigation Menu, Menubar | none / Alpine |
-| Form | Slider, Toggle, Toggle Group, Input Group, Input OTP, Field | none / Alpine |
-| Display | Progress, Spinner, Empty, Aspect Ratio, Kbd, Scroll Area, Resizable, Item | none / Alpine |
+| Group      | Components                                                                | JS?             |
+| ---------- | ------------------------------------------------------------------------- | --------------- |
+| Overlays   | Alert Dialog, Drawer, Popover, Hover Card, Context Menu                   | Alpine (inline) |
+| Navigation | Pagination, Navigation Menu, Menubar                                      | none / Alpine   |
+| Form       | Slider, Toggle, Toggle Group, Input Group, Input OTP, Field               | none / Alpine   |
+| Display    | Progress, Spinner, Empty, Aspect Ratio, Kbd, Scroll Area, Resizable, Item | none / Alpine   |
 
 > `Native Select` parity already met by our `select`. `Sonner`/`Toast` covered by
 > our `toast`. `Direction` and `Typography` are upstream guides, not components.
@@ -167,14 +167,14 @@ runtime library" rule. Revisit only if the policy changes.
 
 ## Milestones
 
-| Phase | Deliverable | Components |
-|-------|-------------|------------|
-| 0 ✅ | Theme tokens incl. `--sidebar-*` | (shipped in the OKLCH migration) |
-| 1 | Quick wins | `skeleton`, `collapsible`, `breadcrumb` |
-| 2 | Off-canvas | `sheet` |
-| 3 | The primitive | `sidebar` (compound) |
-| 4 | First block (website demo) | `sidebar-08` page + route |
-| 5 (later) | Installable blocks | `blocks/` registry type + CLI |
+| Phase     | Deliverable                      | Components                              |
+| --------- | -------------------------------- | --------------------------------------- |
+| 0 ✅      | Theme tokens incl. `--sidebar-*` | (shipped in the OKLCH migration)        |
+| 1         | Quick wins                       | `skeleton`, `collapsible`, `breadcrumb` |
+| 2         | Off-canvas                       | `sheet`                                 |
+| 3         | The primitive                    | `sidebar` (compound)                    |
+| 4         | First block (website demo)       | `sidebar-08` page + route               |
+| 5 (later) | Installable blocks               | `blocks/` registry type + CLI           |
 
 ## Per-component checklist (every PR)
 

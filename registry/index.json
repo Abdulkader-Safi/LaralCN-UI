@@ -59,6 +59,19 @@
             }
         },
         {
+            "name": "breadcrumb",
+            "type": "component",
+            "description": "Shows the path to the current resource as a hierarchy of links.",
+            "category": "Navigation",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "button",
             "type": "component",
             "description": "Clickable button with variant and size options.",
@@ -92,6 +105,22 @@
             "dependencies": {
                 "components": [],
                 "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "collapsible",
+            "type": "component",
+            "description": "An interactive panel that expands and collapses its content.",
+            "category": "Layout",
+            "dependencies": {
+                "components": [],
+                "js": [
+                    "alpinejs",
+                    "@alpinejs/collapse"
+                ],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -187,6 +216,51 @@
             "type": "component",
             "description": "Visual or semantic divider.",
             "category": "Layout",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "sheet",
+            "type": "component",
+            "description": "Panel that slides in from an edge of the screen.",
+            "category": "Overlays",
+            "dependencies": {
+                "components": [],
+                "js": [
+                    "alpinejs",
+                    "@alpinejs/focus"
+                ],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "sidebar",
+            "type": "component",
+            "description": "Composable, collapsible application sidebar with mobile off-canvas, icon mode, and keyboard toggle.",
+            "category": "Layout",
+            "dependencies": {
+                "components": [],
+                "js": [
+                    "alpinejs",
+                    "@alpinejs/focus"
+                ],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "skeleton",
+            "type": "component",
+            "description": "Placeholder shown while content loads.",
+            "category": "Feedback",
             "dependencies": {
                 "components": [],
                 "js": [],

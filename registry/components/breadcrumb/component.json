@@ -1,0 +1,24 @@
+{
+    "name": "breadcrumb",
+    "type": "component",
+    "description": "Shows the path to the current resource as a hierarchy of links.",
+    "category": "Navigation",
+    "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+    },
+    "files": [
+        { "path": "breadcrumb/index.blade.php", "source": "files/index.blade.php" },
+        { "path": "breadcrumb/list.blade.php", "source": "files/list.blade.php" },
+        { "path": "breadcrumb/item.blade.php", "source": "files/item.blade.php" },
+        { "path": "breadcrumb/link.blade.php", "source": "files/link.blade.php" },
+        { "path": "breadcrumb/page.blade.php", "source": "files/page.blade.php" },
+        { "path": "breadcrumb/separator.blade.php", "source": "files/separator.blade.php" },
+        { "path": "breadcrumb/ellipsis.blade.php", "source": "files/ellipsis.blade.php" }
+    ],
+    "tailwind": {
+        "cssVars": ["--muted-foreground", "--foreground"],
+        "notes": "Pure markup, no JS. Compose <x-ui.breadcrumb><x-ui.breadcrumb.list> with .item, .link, .page, .separator, .ellipsis. The .separator renders a chevron by default or its slot if provided."
+    }
+}

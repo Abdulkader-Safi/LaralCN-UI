@@ -1,0 +1,49 @@
+{
+    "name": "sidebar",
+    "type": "component",
+    "description": "Composable, collapsible application sidebar with mobile off-canvas, icon mode, and keyboard toggle.",
+    "category": "Layout",
+    "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+    },
+    "files": [
+        { "path": "sidebar/provider.blade.php", "source": "files/provider.blade.php" },
+        { "path": "sidebar/index.blade.php", "source": "files/index.blade.php" },
+        { "path": "sidebar/trigger.blade.php", "source": "files/trigger.blade.php" },
+        { "path": "sidebar/rail.blade.php", "source": "files/rail.blade.php" },
+        { "path": "sidebar/inset.blade.php", "source": "files/inset.blade.php" },
+        { "path": "sidebar/header.blade.php", "source": "files/header.blade.php" },
+        { "path": "sidebar/footer.blade.php", "source": "files/footer.blade.php" },
+        { "path": "sidebar/content.blade.php", "source": "files/content.blade.php" },
+        { "path": "sidebar/group.blade.php", "source": "files/group.blade.php" },
+        { "path": "sidebar/group-label.blade.php", "source": "files/group-label.blade.php" },
+        { "path": "sidebar/group-content.blade.php", "source": "files/group-content.blade.php" },
+        { "path": "sidebar/group-action.blade.php", "source": "files/group-action.blade.php" },
+        { "path": "sidebar/menu.blade.php", "source": "files/menu.blade.php" },
+        { "path": "sidebar/menu-item.blade.php", "source": "files/menu-item.blade.php" },
+        { "path": "sidebar/menu-button.blade.php", "source": "files/menu-button.blade.php" },
+        { "path": "sidebar/menu-action.blade.php", "source": "files/menu-action.blade.php" },
+        { "path": "sidebar/menu-badge.blade.php", "source": "files/menu-badge.blade.php" },
+        { "path": "sidebar/menu-skeleton.blade.php", "source": "files/menu-skeleton.blade.php" },
+        { "path": "sidebar/menu-sub.blade.php", "source": "files/menu-sub.blade.php" },
+        { "path": "sidebar/menu-sub-item.blade.php", "source": "files/menu-sub-item.blade.php" },
+        { "path": "sidebar/menu-sub-button.blade.php", "source": "files/menu-sub-button.blade.php" },
+        { "path": "sidebar/separator.blade.php", "source": "files/separator.blade.php" }
+    ],
+    "tailwind": {
+        "cssVars": [
+            "--sidebar",
+            "--sidebar-foreground",
+            "--sidebar-accent",
+            "--sidebar-accent-foreground",
+            "--sidebar-border",
+            "--sidebar-ring",
+            "--primary",
+            "--primary-foreground",
+            "--background"
+        ],
+        "notes": "Requires Alpine.js + the @alpinejs/focus plugin (x-trap, mobile off-canvas). Wrap everything in <x-ui.sidebar.provider>; place <x-ui.sidebar> (with side=left|right, collapsible=icon|offcanvas|none) and your page content in <x-ui.sidebar.inset>. State (expand/collapse) persists to a `sidebar_state` cookie and toggles with Ctrl/Cmd-B. Self-contained: composes no other registry components."
+    }
+}

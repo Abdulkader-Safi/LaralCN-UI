@@ -11,8 +11,8 @@
     );
 @endphp
 
-<button type="button" role="switch" x-data="{ on: @js((bool) $checked) }" x-on:click="on = !on"
-    x-bind:aria-checked="on.toString()"
+<button type="button" role="switch" x-data="{ on: @js((bool) $checked) }"
+    x-on:click="on = !on" x-bind:aria-checked="on.toString()"
     x-bind:class="on ? 'bg-primary' : 'bg-input dark:bg-input/80'"
     {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     <span

@@ -1,0 +1,20 @@
+{
+    "name": "collapsible",
+    "type": "component",
+    "description": "An interactive panel that expands and collapses its content.",
+    "category": "Layout",
+    "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+    },
+    "files": [
+        { "path": "collapsible/index.blade.php", "source": "files/index.blade.php" },
+        { "path": "collapsible/trigger.blade.php", "source": "files/trigger.blade.php" },
+        { "path": "collapsible/content.blade.php", "source": "files/content.blade.php" }
+    ],
+    "tailwind": {
+        "cssVars": ["--ring"],
+        "notes": "Requires Alpine.js + the @alpinejs/collapse plugin (x-collapse). Compose <x-ui.collapsible>, <x-ui.collapsible.trigger>, <x-ui.collapsible.content>; pass :open to start expanded."
+    }
+}

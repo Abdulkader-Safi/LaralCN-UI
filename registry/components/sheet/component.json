@@ -1,0 +1,18 @@
+{
+    "name": "sheet",
+    "type": "component",
+    "description": "Panel that slides in from an edge of the screen.",
+    "category": "Overlays",
+    "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+    },
+    "files": [
+        { "path": "sheet.blade.php", "source": "files/sheet.blade.php" }
+    ],
+    "tailwind": {
+        "cssVars": ["--background", "--border", "--muted-foreground", "--ring"],
+        "notes": "Requires Alpine.js + the @alpinejs/focus plugin (x-trap). The `trigger` slot opens the sheet; set `side` to top|right|bottom|left (default right). Optional `title`, `description` props and a `footer` slot."
+    }
+}
