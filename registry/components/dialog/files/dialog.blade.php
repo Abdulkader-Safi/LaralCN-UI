@@ -5,11 +5,11 @@
 
 @php
     $overlay = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'fixed inset-0 z-50 bg-black/80',
+        'fixed inset-0 z-50 bg-black/50',
     );
 
     $panel = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border border-border bg-background p-6 shadow-lg sm:rounded-lg',
+        'fixed left-1/2 top-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border bg-background p-6 shadow-lg sm:max-w-lg',
         $attributes->get('class'),
     );
 @endphp
@@ -30,10 +30,10 @@
                 @if ($description) aria-describedby="dialog-description" @endif
                 x-show="open" x-transition x-trap.noscroll.inert="open">
                 @if ($title || $description)
-                    <div class="flex flex-col gap-1.5 text-center sm:text-left">
+                    <div class="flex flex-col gap-2 text-center sm:text-left">
                         @if ($title)
                             <h2 id="dialog-title"
-                                class="text-lg font-semibold leading-none tracking-tight">
+                                class="text-lg font-semibold leading-none">
                                 {{ $title }}
                             </h2>
                         @endif
@@ -56,7 +56,7 @@
                 @endisset
 
                 <button type="button"
-                    class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    class="absolute right-4 top-4 rounded-xs opacity-70 outline-none transition-opacity hover:opacity-100 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
                     aria-label="Close" @click="open = false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16"
                         height="16" viewBox="0 0 24 24" fill="none"

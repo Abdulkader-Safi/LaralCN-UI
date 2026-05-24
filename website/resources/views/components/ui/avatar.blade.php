@@ -6,7 +6,7 @@
 
 @php
     $classes = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted',
+        'relative flex size-8 shrink-0 overflow-hidden rounded-full',
         $attributes->get('class'),
     );
 @endphp
@@ -14,10 +14,10 @@
 <span {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     @if ($src)
         <img src="{{ $src }}" alt="{{ $alt }}"
-            class="aspect-square h-full w-full object-cover" />
+            class="aspect-square size-full object-cover" />
     @else
         <span
-            class="flex h-full w-full items-center justify-center text-sm font-medium text-muted-foreground"
+            class="flex size-full items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground"
             aria-hidden="true">
             {{ $fallback ?? $slot }}
         </span>

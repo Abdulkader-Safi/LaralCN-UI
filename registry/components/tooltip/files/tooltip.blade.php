@@ -12,7 +12,7 @@
     };
 
     $tipClasses = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'absolute z-50 w-max max-w-xs rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground shadow-md',
+        'absolute z-50 w-fit max-w-xs text-balance rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground',
         $position,
         $attributes->get('class'),
     );

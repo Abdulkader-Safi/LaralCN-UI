@@ -5,7 +5,7 @@
 
 @php
     $rootClasses = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'divide-y divide-border rounded-md border border-border',
+        '',
         $attributes->get('class'),
     );
 @endphp
@@ -23,14 +23,14 @@
 }" class="{{ $rootClasses }}"
     {{ $attributes->except('class') }}>
     @foreach ($items as $key => $label)
-        <div>
-            <h3>
+        <div class="border-b last:border-b-0">
+            <h3 class="flex">
                 <button type="button"
                     @click="toggle(@js($key))"
                     x-bind:aria-expanded="open.includes(@js($key)).toString()"
-                    class="flex w-full items-center justify-between px-4 py-4 text-sm font-medium transition-all hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    class="flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium outline-none transition-all hover:underline focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50">
                     <span>{{ $label }}</span>
-                    <svg class="h-4 w-4 shrink-0 transition-transform"
+                    <svg class="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200"
                         x-bind:class="open.includes(@js($key)) ?
                             'rotate-180' : ''"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -42,7 +42,7 @@
                 </button>
             </h3>
             <div x-show="open.includes(@js($key))" x-collapse
-                x-cloak class="px-4 pb-4 text-sm text-muted-foreground">
+                x-cloak class="pb-4 pt-0 text-sm text-muted-foreground">
                 {{ ${'item_' . $key} ?? '' }}
             </div>
         </div>

@@ -32,7 +32,7 @@
     {{ $attributes->except('class') }}>
     <template x-for="toast in toasts" :key="toast.id">
         <div x-transition role="status"
-            class="pointer-events-auto flex items-start gap-3 rounded-md border border-border bg-background p-4 shadow-lg">
+            class="pointer-events-auto flex items-start gap-3 rounded-lg border bg-background p-4 text-foreground shadow-lg">
             <div class="flex-1">
                 <p class="text-sm font-semibold" x-text="toast.title"></p>
                 <p class="text-sm text-muted-foreground"

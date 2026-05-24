@@ -7,7 +7,7 @@
     );
 @endphp
 
-<div class="relative w-full overflow-auto">
+<div class="relative w-full overflow-x-auto">
     <table {{ $attributes->except('class')->merge(['class' => $classes]) }}>
         {{ $slot }}
     </table>
