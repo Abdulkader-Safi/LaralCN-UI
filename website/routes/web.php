@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [DocsController::class, "home"])->name("home");
 Route::get("/components", [DocsController::class, "index"])->name("docs.index");
-Route::get("/getting-started", [
-    DocsController::class,
-    "gettingStarted",
-])->name("docs.getting-started");
+Route::get("/getting-started", [DocsController::class, "gettingStarted"])->name(
+    "docs.getting-started",
+);
 Route::get("/theming", [DocsController::class, "theming"])->name(
     "docs.theming",
 );

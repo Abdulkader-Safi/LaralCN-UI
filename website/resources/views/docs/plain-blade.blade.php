@@ -15,19 +15,22 @@
             (CSS-first, <code>@import "tailwindcss"</code>).
         </li>
         <li>
-            Install the class-merge helper so overrides work: <code
-                class="block rounded bg-card p-2">composer require
-                gehrisandro/tailwind-merge-laravel</code>
+            Install the class-merge helper so overrides work:
+            <code class="block rounded bg-card p-2">
+                composer require gehrisandro/tailwind-merge-laravel
+            </code>
         </li>
         <li>
-            Copy the theme variables once from the <a class="underline"
-                href="{{ route('docs.theming') }}">Theming page</a> into your
-            stylesheet.
+            Copy the theme variables once from the
+            <a class="underline" href="{{ route('docs.theming') }}">
+                Theming page
+            </a>
+            into your stylesheet.
         </li>
         <li>
-            Open any component page, click <strong>Copy</strong>, and paste the
-            source into
-            <code>resources/views/components/ui/&lt;name&gt;.blade.php</code>.
+            Open any component page, click <strong>Copy</strong>, and paste
+            the source into <code>
+                resources/views/components/ui/&lt;name&gt;.blade.php </code>.
         </li>
         <li>
             Use it: <code>&lt;x-ui.button&gt;Save&lt;/x-ui.button&gt;</code>.
