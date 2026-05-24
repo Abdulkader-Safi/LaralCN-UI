@@ -55,7 +55,7 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 | 42  | Scroll Area      | ❌       | —               |                                                                          |
 | 43  | Select           | ⚠️       | `select`        | We ship the **native** select, not the Radix popover/combobox select     |
 | 44  | Separator        | ✅       | `separator`     |                                                                          |
-| 45  | Sheet            | ✅       | `sheet`         | Off-canvas overlay; `side=top\|right\|bottom\|left`, Alpine x-trap        |
+| 45  | Sheet            | ✅       | `sheet`         | Off-canvas overlay; `side=top\|right\|bottom\|left`, Alpine x-trap       |
 | 46  | Sidebar          | ✅       | `sidebar`       | 22-part compound: icon-collapse, mobile off-canvas, cookie + Ctrl/Cmd-B  |
 | 47  | Skeleton         | ✅       | `skeleton`      | Loading placeholder                                                      |
 | 48  | Slider           | ❌       | —               |                                                                          |
