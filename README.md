@@ -48,4 +48,4 @@ Read `docs/AUTHORING.md` (the component standard) and `docs/DECISIONS.md` (the l
 
 ## License
 
-MIT © 2026 AbdulKader Safi
+MIT © 2026 [AbdulKader Safi](https://abdulkadersafi.com)
