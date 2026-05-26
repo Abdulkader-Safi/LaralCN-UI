@@ -8,7 +8,7 @@
 
 @php
     $base =
-        'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0';
+        'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0';
 
     $variants = match ($variant) {
         'outline'
@@ -40,10 +40,10 @@
     @if ($href) href="{{ $href }}" @else type="button" @endif
     {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     {{ $slot }}
-</{{ $tag }}>
-@if ($tooltip)
-    <span role="tooltip"
-        class="pointer-events-none absolute left-full top-1/2 z-50 ml-2 hidden w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground group-data-[collapsible=icon]:peer-hover/menu-button:block">
-        {{ $tooltip }}
-    </span>
-@endif
+    </{{ $tag }}>
+    @if ($tooltip)
+        <span role="tooltip"
+            class="pointer-events-none absolute left-full top-1/2 z-50 ml-2 hidden w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground group-data-[collapsible=icon]:peer-hover/menu-button:block">
+            {{ $tooltip }}
+        </span>
+    @endif

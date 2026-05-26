@@ -53,7 +53,8 @@
             <div x-show="tab === 'preview'"
                 class="overflow-hidden rounded-lg border border-border">
                 <iframe src="{{ $block['route'] }}" class="h-[600px] w-full"
-                    title="{{ $block['title'] }} preview" loading="lazy"></iframe>
+                    title="{{ $block['title'] }} preview"
+                    loading="lazy"></iframe>
             </div>
 
             <div x-show="tab === 'code'" x-cloak>
@@ -83,7 +84,8 @@
                     <p class="text-sm text-muted-foreground">
                         Grab the source from the <strong>Code</strong> tab above
                         (it's the standalone demo page). Drop the
-                        <code class="text-foreground">&lt;x-ui.sidebar.provider&gt;</code>
+                        <code
+                            class="text-foreground">&lt;x-ui.sidebar.provider&gt;</code>
                         composition into your own layout — everything inside is
                         plain Blade you already own.
                     </p>
