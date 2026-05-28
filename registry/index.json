@@ -1,359 +1,304 @@
 {
-    "name": "LaralCN-UI",
-    "homepage": "https://github.com/Abdulkader-Safi/LaralCN-UI",
-    "schema": "schema.json",
-    "components": [
-        {
-            "name": "accordion",
-            "type": "component",
-            "description": "Collapsible disclosure list (single or multiple open).",
-            "category": "Navigation",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/collapse"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "alert",
-            "type": "component",
-            "description": "Callout for short, important messages.",
-            "category": "Feedback",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "avatar",
-            "type": "component",
-            "description": "User image with text fallback.",
-            "category": "Data Display",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "badge",
-            "type": "component",
-            "description": "Small status / label pill with variants.",
-            "category": "Data Display",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "breadcrumb",
-            "type": "component",
-            "description": "Shows the path to the current resource as a hierarchy of links.",
-            "category": "Navigation",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "button",
-            "type": "component",
-            "description": "Clickable button with variant and size options.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "card",
-            "type": "component",
-            "description": "Container with header, content, and footer slots.",
-            "category": "Layout",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "checkbox",
-            "type": "component",
-            "description": "Native checkbox styled to the theme.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "collapsible",
-            "type": "component",
-            "description": "An interactive panel that expands and collapses its content.",
-            "category": "Layout",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/collapse"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "dialog",
-            "type": "component",
-            "description": "Modal dialog with focus trap, backdrop, and Esc-to-close.",
-            "category": "Overlays",
-            "dependencies": {
-                "components": [
-                    "button"
-                ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "dropdown-menu",
-            "type": "component",
-            "description": "Click-triggered menu with outside-click and Esc to close.",
-            "category": "Overlays",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "input",
-            "type": "component",
-            "description": "Form text input.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "label",
-            "type": "component",
-            "description": "Accessible form label.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "radio",
-            "type": "component",
-            "description": "Native radio input styled to the theme.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "select",
-            "type": "component",
-            "description": "Native select styled to the theme.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "separator",
-            "type": "component",
-            "description": "Visual or semantic divider.",
-            "category": "Layout",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "sheet",
-            "type": "component",
-            "description": "Panel that slides in from an edge of the screen.",
-            "category": "Overlays",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "sidebar",
-            "type": "component",
-            "description": "Composable, collapsible application sidebar with mobile off-canvas, icon mode, and keyboard toggle.",
-            "category": "Layout",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "skeleton",
-            "type": "component",
-            "description": "Placeholder shown while content loads.",
-            "category": "Feedback",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "switch",
-            "type": "component",
-            "description": "Toggle switch (Alpine-powered) with optional hidden form input.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "table",
-            "type": "component",
-            "description": "Responsive data table wrapper.",
-            "category": "Data Display",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "tabs",
-            "type": "component",
-            "description": "Tabbed interface; panels supplied via named slots.",
-            "category": "Navigation",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "textarea",
-            "type": "component",
-            "description": "Multi-line text input.",
-            "category": "Forms",
-            "dependencies": {
-                "components": [],
-                "js": [],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "toast",
-            "type": "component",
-            "description": "Toast region; dispatch a `toast` window event to show one.",
-            "category": "Feedback",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        },
-        {
-            "name": "tooltip",
-            "type": "component",
-            "description": "Hover/focus tooltip with side positioning.",
-            "category": "Overlays",
-            "dependencies": {
-                "components": [],
-                "js": [
-                    "alpinejs"
-                ],
-                "composer": [
-                    "gehrisandro/tailwind-merge-laravel"
-                ]
-            }
-        }
-    ]
+  "name": "LaralCN-UI",
+  "homepage": "https://github.com/Abdulkader-Safi/LaralCN-UI",
+  "schema": "schema.json",
+  "components": [
+    {
+      "name": "accordion",
+      "type": "component",
+      "description": "Collapsible disclosure list (single or multiple open).",
+      "category": "Navigation",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "alert",
+      "type": "component",
+      "description": "Callout for short, important messages.",
+      "category": "Feedback",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "avatar",
+      "type": "component",
+      "description": "User image with text fallback.",
+      "category": "Data Display",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "badge",
+      "type": "component",
+      "description": "Small status / label pill with variants.",
+      "category": "Data Display",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "breadcrumb",
+      "type": "component",
+      "description": "Shows the path to the current resource as a hierarchy of links.",
+      "category": "Navigation",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "description": "Clickable button with variant and size options.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "card",
+      "type": "component",
+      "description": "Container with header, content, and footer slots.",
+      "category": "Layout",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "description": "Native checkbox styled to the theme.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "collapsible",
+      "type": "component",
+      "description": "An interactive panel that expands and collapses its content.",
+      "category": "Layout",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "dialog",
+      "type": "component",
+      "description": "Modal dialog with focus trap, backdrop, and Esc-to-close.",
+      "category": "Overlays",
+      "dependencies": {
+        "components": ["button"],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "component",
+      "description": "Click-triggered menu with outside-click and Esc to close.",
+      "category": "Overlays",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "description": "Form text input.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "label",
+      "type": "component",
+      "description": "Accessible form label.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "radio",
+      "type": "component",
+      "description": "Native radio input styled to the theme.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "select",
+      "type": "component",
+      "description": "Native select styled to the theme.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "separator",
+      "type": "component",
+      "description": "Visual or semantic divider.",
+      "category": "Layout",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "sheet",
+      "type": "component",
+      "description": "Panel that slides in from an edge of the screen.",
+      "category": "Overlays",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "sidebar",
+      "type": "component",
+      "description": "Composable, collapsible application sidebar with mobile off-canvas, icon mode, and keyboard toggle.",
+      "category": "Layout",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "skeleton",
+      "type": "component",
+      "description": "Placeholder shown while content loads.",
+      "category": "Feedback",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "switch",
+      "type": "component",
+      "description": "Toggle switch (Alpine-powered) with optional hidden form input.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "table",
+      "type": "component",
+      "description": "Responsive data table wrapper.",
+      "category": "Data Display",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "description": "Tabbed interface; panels supplied via named slots.",
+      "category": "Navigation",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "textarea",
+      "type": "component",
+      "description": "Multi-line text input.",
+      "category": "Forms",
+      "dependencies": {
+        "components": [],
+        "js": [],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "toast",
+      "type": "component",
+      "description": "Toast region; dispatch a `toast` window event to show one.",
+      "category": "Feedback",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "tooltip",
+      "type": "component",
+      "description": "Hover/focus tooltip with side positioning.",
+      "category": "Overlays",
+      "dependencies": {
+        "components": [],
+        "js": ["alpinejs"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "sidebar-08",
+      "type": "block",
+      "description": "Collapsible sidebar shell with workspace switcher, nav groups, and user footer. Ctrl/Cmd-B toggles it.",
+      "category": "Application Shell",
+      "dependencies": {
+        "components": [
+          "sidebar",
+          "breadcrumb",
+          "collapsible",
+          "dropdown-menu",
+          "avatar",
+          "separator",
+          "button",
+          "skeleton"
+        ],
+        "js": ["alpinejs", "@alpinejs/focus"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    }
+  ]
 }

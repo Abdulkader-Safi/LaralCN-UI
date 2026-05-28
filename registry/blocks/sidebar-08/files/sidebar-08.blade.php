@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" x-data="{ dark: false }" :class="{ 'dark': dark }">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>sidebar-08, LaralCN-UI Blocks</title>
-    <meta name="description"
-        content="sidebar-08 block built from LaralCN-UI components.">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        [x-cloak] {
-            display: none !important
-        }
-    </style>
-</head>
-
-<body class="bg-background text-foreground antialiased">
+<div x-data="{ dark: false }" :class="{ 'dark': dark }">
     <x-ui.sidebar.provider>
         {{-- Sidebar --}}
         <x-ui.sidebar side="left" collapsible="icon">
@@ -31,9 +14,11 @@
                                         class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2"
+                                            stroke="currentColor"
+                                            stroke-width="2"
                                             stroke-linecap="round"
-                                            stroke-linejoin="round" class="size-4">
+                                            stroke-linejoin="round"
+                                            class="size-4">
                                             <path
                                                 d="M12 2 2 7l10 5 10-5-10-5Z" />
                                             <path d="m2 17 10 5 10-5" />
@@ -59,7 +44,8 @@
                                 </x-ui.sidebar.menu-button>
                             </x-slot:trigger>
 
-                            <div class="px-2 py-1.5 text-xs text-muted-foreground">
+                            <div
+                                class="px-2 py-1.5 text-xs text-muted-foreground">
                                 Teams</div>
                             <a href="#"
                                 class="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground">Acme
@@ -86,15 +72,16 @@
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="7" height="9" x="3" y="3"
-                                        rx="1" />
-                                    <rect width="7" height="5" x="14" y="3"
-                                        rx="1" />
-                                    <rect width="7" height="9" x="14" y="12"
-                                        rx="1" />
-                                    <rect width="7" height="5" x="3" y="16"
-                                        rx="1" />
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect width="7" height="9" x="3"
+                                        y="3" rx="1" />
+                                    <rect width="7" height="5" x="14"
+                                        y="3" rx="1" />
+                                    <rect width="7" height="9" x="14"
+                                        y="12" rx="1" />
+                                    <rect width="7" height="5" x="3"
+                                        y="16" rx="1" />
                                 </svg>
                                 <span>Dashboard</span>
                             </x-ui.sidebar.menu-button>
@@ -106,7 +93,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M3 3v18h18" />
                                     <path d="m19 9-5 5-4-4-3 3" />
                                 </svg>
@@ -143,14 +131,17 @@
                                 <x-ui.collapsible.content>
                                     <x-ui.sidebar.menu-sub>
                                         <x-ui.sidebar.menu-sub-item>
-                                            <x-ui.sidebar.menu-sub-button href="#">Data
+                                            <x-ui.sidebar.menu-sub-button
+                                                href="#">Data
                                                 Library</x-ui.sidebar.menu-sub-button>
                                         </x-ui.sidebar.menu-sub-item>
                                         <x-ui.sidebar.menu-sub-item>
-                                            <x-ui.sidebar.menu-sub-button href="#">Reports</x-ui.sidebar.menu-sub-button>
+                                            <x-ui.sidebar.menu-sub-button
+                                                href="#">Reports</x-ui.sidebar.menu-sub-button>
                                         </x-ui.sidebar.menu-sub-item>
                                         <x-ui.sidebar.menu-sub-item>
-                                            <x-ui.sidebar.menu-sub-button href="#">Word
+                                            <x-ui.sidebar.menu-sub-button
+                                                href="#">Word
                                                 Assistant</x-ui.sidebar.menu-sub-button>
                                         </x-ui.sidebar.menu-sub-item>
                                     </x-ui.sidebar.menu-sub>
@@ -159,14 +150,17 @@
                         </x-ui.sidebar.menu-item>
 
                         <x-ui.sidebar.menu-item>
-                            <x-ui.sidebar.menu-button tooltip="Team" href="#">
+                            <x-ui.sidebar.menu-button tooltip="Team"
+                                href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path
                                         d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
+                                    <circle cx="9" cy="7"
+                                        r="4" />
                                     <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                 </svg>
@@ -241,8 +235,7 @@
             <header
                 class="flex h-16 shrink-0 items-center gap-2 border-b border-border px-4">
                 <x-ui.sidebar.trigger class="-ml-1" />
-                <x-ui.separator orientation="vertical"
-                    class="mr-2 h-4" />
+                <x-ui.separator orientation="vertical" class="mr-2 h-4" />
                 <x-ui.breadcrumb>
                     <x-ui.breadcrumb.list>
                         <x-ui.breadcrumb.item class="hidden md:block">
@@ -251,16 +244,14 @@
                         </x-ui.breadcrumb.item>
                         <x-ui.breadcrumb.separator class="hidden md:block" />
                         <x-ui.breadcrumb.item>
-                            <x-ui.breadcrumb.page>Data Fetching</x-ui.breadcrumb.page>
+                            <x-ui.breadcrumb.page>Data
+                                Fetching</x-ui.breadcrumb.page>
                         </x-ui.breadcrumb.item>
                     </x-ui.breadcrumb.list>
                 </x-ui.breadcrumb>
 
-                <a href="{{ route('docs.index') }}"
-                    class="ml-auto text-sm text-muted-foreground hover:text-foreground">&larr;
-                    Docs</a>
                 <button type="button" @click="dark = !dark"
-                    class="rounded-md border border-border px-2 py-1 text-xs">
+                    class="ml-auto rounded-md border border-border px-2 py-1 text-xs">
                     <span x-show="!dark">Dark</span>
                     <span x-show="dark" x-cloak>Light</span>
                 </button>
@@ -272,11 +263,10 @@
                     <div class="aspect-video rounded-xl bg-muted/50"></div>
                     <div class="aspect-video rounded-xl bg-muted/50"></div>
                 </div>
-                <div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+                <div
+                    class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
                 </div>
             </div>
         </x-ui.sidebar.inset>
     </x-ui.sidebar.provider>
-</body>
-
-</html>
+</div>

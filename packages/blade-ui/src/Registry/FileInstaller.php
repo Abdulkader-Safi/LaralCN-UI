@@ -8,9 +8,11 @@ use Closure;
 use Illuminate\Filesystem\Filesystem;
 
 /**
- * Writes a component's files into the consumer's components_path.
- * On an existing file it defers the decision to a caller-supplied
- * resolver so the command layer owns the interactive UX.
+ * Writes a set of registry files into the consumer's components_path.
+ * Source resolution is delegated to a caller-supplied closure so the same
+ * installer serves both components and blocks. On an existing file the
+ * conflict decision is delegated to a second closure so the command layer
+ * owns the interactive UX.
  */
 final class FileInstaller
 {
@@ -18,24 +20,22 @@ final class FileInstaller
 
     /**
      * @param  array<int, array{path: string, source: string}>  $fileEntries
+     * @param  Closure(string $source): string  $fetchSource
+     *         Returns the raw incoming contents for a registry source path.
      * @param  Closure(string $targetPath, string $existing, string $incoming): string  $onConflict
      *         Must return 'overwrite' or 'skip'.
      * @return array<int, array{path: string, status: 'written'|'skipped'|'overwritten'}>
      */
     public function install(
-        string $componentName,
         array $fileEntries,
-        RegistryClient $registry,
+        Closure $fetchSource,
         string $componentsBasePath,
         Closure $onConflict,
     ): array {
         $results = [];
 
         foreach ($fileEntries as $entry) {
-            $incoming = $registry->fileContents(
-                $componentName,
-                $entry["source"],
-            );
+            $incoming = $fetchSource($entry["source"]);
             $target =
                 rtrim($componentsBasePath, "/") .
                 "/" .

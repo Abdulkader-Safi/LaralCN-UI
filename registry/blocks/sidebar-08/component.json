@@ -1,0 +1,26 @@
+{
+  "name": "sidebar-08",
+  "type": "block",
+  "description": "Collapsible sidebar shell with workspace switcher, nav groups, and user footer. Ctrl/Cmd-B toggles it.",
+  "category": "Application Shell",
+  "dependencies": {
+    "components": [
+      "sidebar",
+      "breadcrumb",
+      "collapsible",
+      "dropdown-menu",
+      "avatar",
+      "separator",
+      "button",
+      "skeleton"
+    ],
+    "js": ["alpinejs", "@alpinejs/focus"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/sidebar-08.blade.php",
+      "source": "files/sidebar-08.blade.php"
+    }
+  ]
+}

@@ -24,14 +24,22 @@
     },
     "category": {
       "type": "string",
-      "description": "Website grouping.",
+      "description": "Website grouping. Component categories first, then block categories.",
       "enum": [
         "Forms",
         "Overlays",
         "Navigation",
         "Feedback",
         "Layout",
-        "Data Display"
+        "Data Display",
+        "Application Shell",
+        "Marketing",
+        "Hero",
+        "Navbar",
+        "Footer",
+        "FAQ",
+        "Pricing",
+        "Authentication"
       ]
     },
     "dependencies": {

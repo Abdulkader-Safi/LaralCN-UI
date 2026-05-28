@@ -66,39 +66,58 @@ final class DocsController extends Controller
         ]);
     }
 
-    /**
-     * Blocks gallery. Blocks are multi-component compositions rendered as
-     * standalone pages; until the installable `blocks/` registry type lands,
-     * each is described here with the components it is composed of and the
-     * `ui:add` command that pulls those in.
-     */
-    public function blocks(): View
+    public function blocksIndex(): View
     {
-        $blocks = [
-            [
-                "name" => "sidebar-08",
-                "title" => "Sidebar 08",
-                "category" => "Application Shell",
-                "description" =>
-                    "A collapsible sidebar with icon mode, mobile off-canvas, a workspace switcher, collapsible nav groups, and a nav-user footer. Ctrl/Cmd-B toggles it.",
-                "route" => route("blocks.sidebar-08"),
-                "components" => [
-                    "sidebar",
-                    "breadcrumb",
-                    "collapsible",
-                    "dropdown-menu",
-                    "avatar",
-                    "separator",
-                    "button",
-                    "skeleton",
-                ],
-                "source" => $this->blockSource("sidebar-08"),
-            ],
-        ];
-
         return view("docs.blocks", [
             "all" => $this->registry->byCategory(),
-            "blocks" => $blocks,
+            "blocks" => $this->registry->blocksByCategory(),
+            "total" => $this->registry->blocks()->count(),
+        ]);
+    }
+
+    public function blockShow(string $slug): View
+    {
+        $entry = $this->registry->findBlock($slug);
+
+        if ($entry === null) {
+            throw new NotFoundHttpException("Unknown block [{$slug}].");
+        }
+
+        $files = array_map(
+            fn(array $file) => [
+                "path" => $file["path"],
+                "code" => $this->registry->blockSource($slug, $file["source"]),
+            ],
+            $entry["files"],
+        );
+
+        return view("docs.block-show", [
+            "all" => $this->registry->byCategory(),
+            "entry" => $entry,
+            "files" => $files,
+            "source" => $files[0]["code"] ?? "",
+            "command" => $this->registry->blockCommand($slug),
+            "previewUrl" => route("blocks.preview", $slug),
+        ]);
+    }
+
+    public function blockPreview(string $slug): View
+    {
+        $entry = $this->registry->findBlock($slug);
+
+        if ($entry === null) {
+            throw new NotFoundHttpException("Unknown block [{$slug}].");
+        }
+
+        $source = $this->registry->blockSource(
+            $slug,
+            $entry["files"][0]["source"] ?? "",
+        );
+
+        return view("docs.block-preview", [
+            "slug" => $slug,
+            "title" => $entry["name"],
+            "source" => $source,
         ]);
     }
 
@@ -149,13 +168,4 @@ final class DocsController extends Controller
         return is_file($path) ? (string) file_get_contents($path) : null;
     }
 
-    /**
-     * Raw markup of a block's standalone demo view (resources/views/blocks).
-     */
-    private function blockSource(string $name): string
-    {
-        $path = resource_path("views/blocks/{$name}.blade.php");
-
-        return is_file($path) ? (string) file_get_contents($path) : "";
-    }
 }

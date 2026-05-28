@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Safi\LaralcnUi;
 
 use Illuminate\Support\ServiceProvider;
+use Safi\LaralcnUi\Console\AddBlockCommand;
 use Safi\LaralcnUi\Console\AddCommand;
 use Safi\LaralcnUi\Console\DiffCommand;
 use Safi\LaralcnUi\Console\InitCommand;
@@ -35,6 +36,7 @@ final class LaralcnUiServiceProvider extends ServiceProvider
         $this->commands([
             InitCommand::class,
             AddCommand::class,
+            AddBlockCommand::class,
             ListCommand::class,
             DiffCommand::class,
         ]);

@@ -18,7 +18,10 @@ beforeEach(function () {
     // to files[].path under the components dir. This honours namespaced/multi-file
     // components (e.g. sidebar/*.blade.php => <x-ui.sidebar.*>), not just basenames.
     foreach (
-        glob($this->registryPath() . "/components/*/component.json")
+        array_merge(
+            glob($this->registryPath() . "/components/*/component.json"),
+            glob($this->registryPath() . "/blocks/*/component.json"),
+        )
         as $manifest
     ) {
         $dir = dirname($manifest);
@@ -98,3 +101,14 @@ it("applies the destructive variant", function () {
 
     expect($html)->toContain("bg-destructive");
 });
+
+it("renders every registered block end-to-end", function (string $name) {
+    $html = Blade::render("<x-ui.blocks.{$name} />");
+
+    expect(trim($html))->not->toBeEmpty();
+})->with(
+    array_map(
+        fn(string $path): string => basename(dirname($path)),
+        glob(dirname(__DIR__) . "/registry/blocks/*/component.json"),
+    ),
+);

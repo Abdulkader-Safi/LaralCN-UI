@@ -14,9 +14,15 @@ Route::get("/theming", [DocsController::class, "theming"])->name(
 Route::get("/plain-blade", [DocsController::class, "plainBlade"])->name(
     "docs.plain-blade",
 );
-Route::get("/blocks", [DocsController::class, "blocks"])->name("blocks.index");
-Route::view("/blocks/sidebar-08", "blocks.sidebar-08")->name(
-    "blocks.sidebar-08",
+Route::get("/blocks", [DocsController::class, "blocksIndex"])->name(
+    "blocks.index",
+);
+Route::get("/blocks/{slug}/preview", [
+    DocsController::class,
+    "blockPreview",
+])->name("blocks.preview");
+Route::get("/blocks/{slug}", [DocsController::class, "blockShow"])->name(
+    "blocks.show",
 );
 Route::get("/components/{name}", [DocsController::class, "show"])->name(
     "docs.show",

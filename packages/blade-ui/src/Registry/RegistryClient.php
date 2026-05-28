@@ -47,11 +47,29 @@ final class RegistryClient
     }
 
     /**
+     * A single block's registry entry.
+     *
+     * @return array<string, mixed>
+     */
+    public function block(string $name): array
+    {
+        return $this->json("blocks/{$name}/component.json");
+    }
+
+    /**
      * Raw contents of one of a component's source files.
      */
     public function fileContents(string $name, string $source): string
     {
         return $this->raw("components/{$name}/{$source}");
+    }
+
+    /**
+     * Raw contents of one of a block's source files.
+     */
+    public function blockFileContents(string $name, string $source): string
+    {
+        return $this->raw("blocks/{$name}/{$source}");
     }
 
     /**
