@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "486923187c4f2e9d591561e14cc6eb22",
+    "content-hash": "c4eb5e264887203a2493f2c82d722391",
     "packages": [
         {
             "name": "brick/math",
@@ -3443,16 +3443,16 @@
         },
         {
             "name": "safi/laralcn-ui",
-            "version": "v0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Abdulkader-Safi/LaralCN-UI.git",
-                "reference": "465e90f473fe7502e619b396e8c81a4796126bfa"
+                "reference": "49d92aaa3ee846879dab00e3f568de64ecd3fcd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Abdulkader-Safi/LaralCN-UI/zipball/465e90f473fe7502e619b396e8c81a4796126bfa",
-                "reference": "465e90f473fe7502e619b396e8c81a4796126bfa",
+                "url": "https://api.github.com/repos/Abdulkader-Safi/LaralCN-UI/zipball/49d92aaa3ee846879dab00e3f568de64ecd3fcd9",
+                "reference": "49d92aaa3ee846879dab00e3f568de64ecd3fcd9",
                 "shasum": ""
             },
             "require": {
@@ -3503,7 +3503,7 @@
                 "issues": "https://github.com/Abdulkader-Safi/LaralCN-UI/issues",
                 "source": "https://github.com/Abdulkader-Safi/LaralCN-UI"
             },
-            "time": "2026-05-16T08:58:49+00:00"
+            "time": "2026-06-11T10:46:48+00:00"
         },
         {
             "name": "symfony/clock",
