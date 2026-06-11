@@ -4,7 +4,7 @@ A shadcn/ui-style **copy-and-own** component system for Laravel & Blade.
 
 LaralCN-UI is **not** a component library. You do not depend on a runtime package for the components. You pull individual components into your own project as plain `.blade.php` files that you fully own and can edit.
 
-- **25 components + blocks.** Matched to current shadcn/ui (OKLCH theme, Tailwind v4 sizing/variants), including a full composable `sidebar` and the `sidebar-08` block.
+- **25 components + blocks.** Matched to current shadcn/ui (OKLCH theme, Tailwind v4 sizing/variants), including a full composable `sidebar` and the `sidebar-01` block.
 - **Pure Blade + Tailwind v4.** Alpine.js only when interactivity is unavoidable. No React/Vue, no base UI primitive dependency.
 - **Two channels.** Install via Artisan CLI, or copy from the website.
 - **Yours to edit.** Components live in your source tree. No version coupling.
@@ -30,13 +30,13 @@ Every component has a docs page with a live preview and one-click copyable sourc
 
 ## Blocks
 
-Blocks are ready-made, multi-component layouts you copy and own. The site's **Blocks** page (`/blocks`) shows each block with a live preview, the `ui:add` command for the components it composes, and its full source. The first block is **`sidebar-08`** — a collapsible application shell (icon mode, mobile off-canvas, workspace switcher, nav-user) built from `sidebar`, `breadcrumb`, `collapsible`, `dropdown-menu`, `avatar`, `separator`, `button`, and `skeleton`.
+Blocks are ready-made, multi-component layouts you copy and own. The site's **Blocks** page (`/blocks`) shows each block with a live preview, the `ui:add` command for the components it composes, and its full source. The first block is **`sidebar-01`** — a collapsible application shell (icon mode, mobile off-canvas, workspace switcher, nav-user) built from `sidebar`, `breadcrumb`, `collapsible`, `dropdown-menu`, `avatar`, `separator`, `button`, and `skeleton`.
 
 ```bash
 php artisan ui:add sidebar breadcrumb collapsible dropdown-menu avatar separator button skeleton
 ```
 
-Then paste the block's `<x-ui.sidebar.provider>` composition into your layout. (An installable `ui:add sidebar-08` one-shot is planned — see `component-plan.md`.)
+Then paste the block's `<x-ui.sidebar.provider>` composition into your layout. (An installable `ui:add sidebar-01` one-shot is planned — see `component-plan.md`.)
 
 ## Requirements
 

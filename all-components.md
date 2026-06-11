@@ -4,7 +4,7 @@ Comparison of every component listed at [ui.shadcn.com/docs/components](https://
 against what LaralCN-UI currently ships in `registry/components/`.
 
 **Coverage: 25 / 60 shadcn entries.** (Several shadcn "entries" are guides/providers,
-not real components — see notes.) Plus the first **block**, `sidebar-08`, assembled
+not real components — see notes.) Plus the first **block**, `sidebar-01`, assembled
 from these components — see [`/blocks`](./website) on the site.
 
 Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
@@ -80,7 +80,7 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 
 ## Blocks (1)
 
-- **`sidebar-08`** — application shell composed from `sidebar`, `breadcrumb`,
+- **`sidebar-01`** — application shell composed from `sidebar`, `breadcrumb`,
   `collapsible`, `dropdown-menu`, `avatar`, `separator`, `button`, `skeleton`.
   Browse it on the site's **Blocks** page (`/blocks`).
 

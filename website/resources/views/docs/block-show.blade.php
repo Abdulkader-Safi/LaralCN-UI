@@ -39,10 +39,22 @@
             </button>
         </div>
 
-        <div x-show="tab === 'preview'"
+        {{-- Preview is rendered at a 1280px desktop viewport and scaled to fit
+             the content column, so the block's desktop layout is always shown
+             (the column is narrower than the lg breakpoint). --}}
+        <div x-show="tab === 'preview'" x-data="{ vw: 1280, h: 720, scale: 1 }"
+            x-init="
+                const fit = () => { if ($el.clientWidth) scale = Math.min(1, $el.clientWidth / vw); };
+                fit();
+                new ResizeObserver(fit).observe($el);
+            "
             class="overflow-hidden rounded-lg border border-border bg-background">
-            <iframe src="{{ $previewUrl }}" class="h-[640px] w-full"
-                title="{{ $entry['name'] }} preview" loading="lazy"></iframe>
+            <div :style="`height: ${h * scale}px`">
+                <iframe src="{{ $previewUrl }}"
+                    :style="`width: ${vw}px; height: ${h}px; transform: scale(${scale}); transform-origin: top left`"
+                    class="block border-0"
+                    title="{{ $entry['name'] }} preview" loading="lazy"></iframe>
+            </div>
         </div>
 
         <div x-show="tab === 'code'" x-cloak>

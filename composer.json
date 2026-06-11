@@ -1,5 +1,6 @@
 {
     "name": "safi/laralcn-ui",
+    "version": "0.2.0",
     "description": "LaralCN-UI: a shadcn-style copy-and-own Blade component installer for Laravel.",
     "keywords": ["laravel", "blade", "tailwind", "components", "shadcn", "ui"],
     "license": "MIT",

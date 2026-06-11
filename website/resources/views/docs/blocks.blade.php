@@ -9,7 +9,7 @@
 
         <div
             class="mt-6 rounded-lg border border-border bg-card p-4 font-mono text-sm text-card-foreground">
-            <div>php artisan ui:add-block sidebar-08</div>
+            <div>php artisan ui:add-block sidebar-01</div>
         </div>
 
         <p class="mt-3 text-sm text-muted-foreground">

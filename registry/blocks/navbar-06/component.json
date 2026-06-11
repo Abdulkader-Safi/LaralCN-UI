@@ -1,5 +1,5 @@
 {
-  "name": "navbar-14",
+  "name": "navbar-06",
   "type": "block",
   "description": "Floating pill navbar that detaches from the top edge, with centered links, a dropdown, and dual actions. Collapses into a sheet on mobile.",
   "category": "Navbar",
@@ -10,8 +10,8 @@
   },
   "files": [
     {
-      "path": "blocks/navbar-14.blade.php",
-      "source": "files/navbar-14.blade.php"
+      "path": "blocks/navbar-06.blade.php",
+      "source": "files/navbar-06.blade.php"
     }
   ]
 }

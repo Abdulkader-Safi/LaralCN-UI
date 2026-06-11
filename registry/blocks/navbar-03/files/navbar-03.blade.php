@@ -53,6 +53,17 @@
         ],
     ];
 
+    $featured = [
+        [
+            'Article title',
+            'A short standfirst that previews the article and invites the reader in.',
+        ],
+        [
+            'Article title',
+            'A short standfirst that previews the article and invites the reader in.',
+        ],
+    ];
+
     $megaGroups = [
         'Page group one' => $groupOne,
         'Page group two' => $groupTwo,
@@ -60,25 +71,25 @@
 @endphp
 
 <div class="min-h-screen bg-background text-foreground">
-    <div class="mx-auto max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
-        <header
-            class="relative flex h-14 items-center justify-between gap-4 rounded-xl border border-border bg-background px-3 shadow-sm"
+    <header
+        class="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
             x-data="{ mega: false }" @mouseleave="mega = false">
             {{-- Logo --}}
             <a href="#"
-                class="flex items-center gap-2 pl-1 font-semibold text-foreground">
+                class="flex items-center gap-2 font-semibold text-foreground">
                 <span
-                    class="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                    class="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round"
-                        class="size-4" aria-hidden="true">
+                        class="size-5" aria-hidden="true">
                         <path d="M12 2 2 7l10 5 10-5-10-5Z" />
                         <path d="m2 17 10 5 10-5" />
                         <path d="m2 12 10 5 10-5" />
                     </svg>
                 </span>
-                <span>Logo</span>
+                <span class="text-lg">Logo</span>
             </a>
 
             {{-- Desktop navigation --}}
@@ -86,11 +97,14 @@
                 <a href="#"
                     class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
                     One</a>
+                <a href="#"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
+                    Two</a>
                 <button type="button" @mouseenter="mega = true"
                     @click="mega = !mega" x-bind:aria-expanded="mega.toString()"
                     class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                     x-bind:class="mega ? 'bg-accent text-accent-foreground' : ''">
-                    Link Two
+                    Products
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round"
@@ -100,19 +114,12 @@
                         <path d="m6 9 6 6 6-6" />
                     </svg>
                 </button>
-                <a href="#"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
-                    Three</a>
-                <a href="#"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
-                    Four</a>
             </nav>
 
             {{-- Desktop actions --}}
             <div class="hidden items-center gap-2 lg:flex">
-                <x-ui.button variant="outline" size="sm">Sign
-                    in</x-ui.button>
-                <x-ui.button size="sm">Get Started</x-ui.button>
+                <x-ui.button variant="ghost">Sign in</x-ui.button>
+                <x-ui.button>Get Started</x-ui.button>
             </div>
 
             {{-- Mega menu panel --}}
@@ -123,14 +130,14 @@
                 x-transition:leave="transition ease-in duration-100"
                 x-transition:leave-start="opacity-100 translate-y-0"
                 x-transition:leave-end="opacity-0 -translate-y-1"
-                class="absolute inset-x-0 top-full hidden justify-center pt-3 lg:flex">
+                class="absolute inset-x-4 top-full hidden justify-center pt-3 lg:flex">
                 <div
-                    class="w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-lg">
-                    <div class="grid grid-cols-2 gap-2 p-4">
+                    class="grid w-full max-w-5xl grid-cols-3 gap-6 rounded-xl border border-border bg-popover p-6 text-popover-foreground shadow-lg">
+                    <div class="col-span-2 grid grid-cols-2 gap-x-6 gap-y-6">
                         @foreach ($megaGroups as $label => $items)
                             <div>
                                 <p
-                                    class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                    class="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                                     {{ $label }}</p>
                                 @foreach ($items as [$title, $desc, $svg])
                                     <a href="#"
@@ -148,22 +155,25 @@
                             </div>
                         @endforeach
                     </div>
-                    <div
-                        class="flex items-center justify-between gap-4 border-t border-border bg-muted/40 px-5 py-3">
-                        <p class="text-sm text-muted-foreground">Not sure where
-                            to start?</p>
-                        <a href="#"
-                            class="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:underline">
-                            Contact sales
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="size-4" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="m12 5 7 7-7 7" />
-                            </svg>
-                        </a>
+
+                    <div class="rounded-lg bg-muted/50 p-5">
+                        <p
+                            class="pb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                            From the blog</p>
+                        <div class="flex flex-col gap-4">
+                            @foreach ($featured as [$title, $desc])
+                                <a href="#" class="group block">
+                                    <div
+                                        class="aspect-video w-full rounded-md bg-muted">
+                                    </div>
+                                    <p
+                                        class="mt-2 text-sm font-medium text-foreground group-hover:underline">
+                                        {{ $title }}</p>
+                                    <p class="text-sm text-muted-foreground">
+                                        {{ $desc }}</p>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,7 +183,7 @@
                 <x-ui.sheet side="right">
                     <x-slot:trigger>
                         <button type="button" aria-label="Open menu"
-                            class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                            class="inline-flex size-10 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2"
@@ -191,10 +201,14 @@
                         <a href="#"
                             class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
                             One</a>
+                        <a href="#"
+                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
+                            Two</a>
+
                         <button type="button" @click="sub = !sub"
                             x-bind:aria-expanded="sub.toString()"
                             class="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">
-                            Link Two
+                            Products
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2"
@@ -218,12 +232,6 @@
                                 @endforeach
                             @endforeach
                         </div>
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
-                            Three</a>
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
-                            Four</a>
                     </nav>
 
                     <x-slot:footer>
@@ -233,19 +241,19 @@
                     </x-slot:footer>
                 </x-ui.sheet>
             </div>
-        </header>
-    </div>
+        </div>
+    </header>
 
     {{-- Demo page content (not part of the navbar) --}}
     <main class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
             <h1
                 class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Compact bar, full menu
+                A mega menu with room to breathe
             </h1>
             <p class="mt-4 text-lg text-muted-foreground">
-                A rounded, contained header. Open "Link Two" for a grouped menu
-                with a call-to-action footer baked into the panel.
+                Hover or tap "Products" to open a full-width panel with grouped
+                links and a featured area. Hover out to close it.
             </p>
         </div>
     </main>

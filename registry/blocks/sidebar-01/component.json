@@ -1,5 +1,5 @@
 {
-  "name": "sidebar-08",
+  "name": "sidebar-01",
   "type": "block",
   "description": "Collapsible sidebar shell with workspace switcher, nav groups, and user footer. Ctrl/Cmd-B toggles it.",
   "category": "Application Shell",
@@ -19,8 +19,8 @@
   },
   "files": [
     {
-      "path": "blocks/sidebar-08.blade.php",
-      "source": "files/sidebar-08.blade.php"
+      "path": "blocks/sidebar-01.blade.php",
+      "source": "files/sidebar-01.blade.php"
     }
   ]
 }

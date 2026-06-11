@@ -1,5 +1,5 @@
 {
-  "name": "navbar-10",
+  "name": "navbar-04",
   "type": "block",
   "description": "Navbar with a mega menu laid out as a two-column grid of icon, title, and description items. Mobile menu uses an expandable sheet.",
   "category": "Navbar",
@@ -10,8 +10,8 @@
   },
   "files": [
     {
-      "path": "blocks/navbar-10.blade.php",
-      "source": "files/navbar-10.blade.php"
+      "path": "blocks/navbar-04.blade.php",
+      "source": "files/navbar-04.blade.php"
     }
   ]
 }

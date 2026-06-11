@@ -92,28 +92,6 @@
                     </x-ui.sidebar.menu>
                 </x-ui.sidebar.group>
 
-                {{-- Blocks by category --}}
-                @foreach ($blocks ?? [] as $category => $items)
-                    <x-ui.sidebar.group>
-                        <x-ui.sidebar.group-label>{{ $category }}</x-ui.sidebar.group-label>
-                        <x-ui.sidebar.menu>
-                            @foreach ($items as $item)
-                                <x-ui.sidebar.menu-item>
-                                    <x-ui.sidebar.menu-button :href="route(
-                                        'blocks.show',
-                                        $item['name'],
-                                    )"
-                                        :tooltip="$item['name']" :is-active="isset($entry) &&
-                                            ($entry['type'] ?? null) === 'block' &&
-                                            $entry['name'] === $item['name']">
-                                        <span>{{ $item['name'] }}</span>
-                                    </x-ui.sidebar.menu-button>
-                                </x-ui.sidebar.menu-item>
-                            @endforeach
-                        </x-ui.sidebar.menu>
-                    </x-ui.sidebar.group>
-                @endforeach
-
                 {{-- Components by category --}}
                 @foreach ($all ?? [] as $category => $items)
                     <x-ui.sidebar.group>

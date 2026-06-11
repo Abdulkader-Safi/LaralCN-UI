@@ -79,7 +79,7 @@ bash deploy.sh
 
 ## Package
 
-`website/composer.json` requires `safi/laralcn-ui ^0.1.0` from **Packagist**
+`website/composer.json` requires `safi/laralcn-ui ^0.2.0` from **Packagist**
 (no path repository). Bump the package tag and `composer update safi/laralcn-ui`
 to surface CLI/package changes in the showcase.
 

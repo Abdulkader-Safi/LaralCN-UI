@@ -7,7 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 beforeEach(function () {
     $this->files = new Filesystem();
     $this->blockTarget = $this->sandboxPath(
-        "components/blocks/sidebar-08.blade.php",
+        "components/blocks/sidebar-01.blade.php",
     );
     $this->componentTarget = $this->sandboxPath(
         "components/sidebar/provider.blade.php",
@@ -15,7 +15,7 @@ beforeEach(function () {
 });
 
 it("writes the block file into components_path/blocks", function () {
-    $this->artisan("ui:add-block", ["block" => ["sidebar-08"]])
+    $this->artisan("ui:add-block", ["block" => ["sidebar-01"]])
         ->assertSuccessful();
 
     expect($this->files->exists($this->blockTarget))->toBeTrue();
@@ -25,7 +25,7 @@ it("writes the block file into components_path/blocks", function () {
 });
 
 it("recursively installs every component the block depends on", function () {
-    $this->artisan("ui:add-block", ["block" => ["sidebar-08"]])
+    $this->artisan("ui:add-block", ["block" => ["sidebar-01"]])
         ->assertSuccessful();
 
     // The block declares 8 component deps, several of which are multi-file
@@ -51,7 +51,7 @@ it("recursively installs every component the block depends on", function () {
 });
 
 it("reports the manual js and composer dependencies", function () {
-    $this->artisan("ui:add-block", ["block" => ["sidebar-08"]])
+    $this->artisan("ui:add-block", ["block" => ["sidebar-01"]])
         ->expectsOutputToContain("alpinejs")
         ->expectsOutputToContain("gehrisandro/tailwind-merge-laravel")
         ->assertSuccessful();
@@ -62,7 +62,7 @@ it("overwrites without prompting when --overwrite is passed", function () {
     $this->files->put($this->blockTarget, "{{-- my local edits --}}");
 
     $this->artisan("ui:add-block", [
-        "block" => ["sidebar-08"],
+        "block" => ["sidebar-01"],
         "--overwrite" => true,
     ])->assertSuccessful();
 
