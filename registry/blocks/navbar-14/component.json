@@ -1,0 +1,17 @@
+{
+  "name": "navbar-14",
+  "type": "block",
+  "description": "Floating pill navbar that detaches from the top edge, with centered links, a dropdown, and dual actions. Collapses into a sheet on mobile.",
+  "category": "Navbar",
+  "dependencies": {
+    "components": ["button", "dropdown-menu", "sheet"],
+    "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/navbar-14.blade.php",
+      "source": "files/navbar-14.blade.php"
+    }
+  ]
+}

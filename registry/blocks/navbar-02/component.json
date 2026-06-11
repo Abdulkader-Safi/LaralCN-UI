@@ -1,0 +1,17 @@
+{
+  "name": "navbar-02",
+  "type": "block",
+  "description": "Minimal top navbar with centered links, a dropdown, and a single primary action. Collapses into a slide-in sheet on mobile.",
+  "category": "Navbar",
+  "dependencies": {
+    "components": ["button", "dropdown-menu", "sheet"],
+    "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/navbar-02.blade.php",
+      "source": "files/navbar-02.blade.php"
+    }
+  ]
+}

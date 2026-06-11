@@ -281,6 +281,72 @@
   ],
   "blocks": [
     {
+      "name": "navbar-01",
+      "type": "block",
+      "description": "Classic top navbar with centered links, a dropdown, and dual call-to-action buttons. Collapses into a slide-in sheet on mobile.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "dropdown-menu", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "navbar-02",
+      "type": "block",
+      "description": "Minimal top navbar with centered links, a dropdown, and a single primary action. Collapses into a slide-in sheet on mobile.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "dropdown-menu", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "navbar-05",
+      "type": "block",
+      "description": "Navbar with a full-width mega menu: two grouped link columns plus a featured-articles panel. Mobile menu uses an expandable sheet.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "navbar-10",
+      "type": "block",
+      "description": "Navbar with a mega menu laid out as a two-column grid of icon, title, and description items. Mobile menu uses an expandable sheet.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "navbar-12",
+      "type": "block",
+      "description": "Compact navbar with a two-group mega menu and a footer call-to-action row inside the panel. Mobile menu uses an expandable sheet.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
+      "name": "navbar-14",
+      "type": "block",
+      "description": "Floating pill navbar that detaches from the top edge, with centered links, a dropdown, and dual actions. Collapses into a sheet on mobile.",
+      "category": "Navbar",
+      "dependencies": {
+        "components": ["button", "dropdown-menu", "sheet"],
+        "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+        "composer": ["gehrisandro/tailwind-merge-laravel"]
+      }
+    },
+    {
       "name": "sidebar-08",
       "type": "block",
       "description": "Collapsible sidebar shell with workspace switcher, nav groups, and user footer. Ctrl/Cmd-B toggles it.",

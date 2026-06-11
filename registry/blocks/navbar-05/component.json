@@ -1,0 +1,17 @@
+{
+  "name": "navbar-05",
+  "type": "block",
+  "description": "Navbar with a full-width mega menu: two grouped link columns plus a featured-articles panel. Mobile menu uses an expandable sheet.",
+  "category": "Navbar",
+  "dependencies": {
+    "components": ["button", "sheet"],
+    "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/navbar-05.blade.php",
+      "source": "files/navbar-05.blade.php"
+    }
+  ]
+}
