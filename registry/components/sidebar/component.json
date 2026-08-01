@@ -5,7 +5,7 @@
     "category": "Layout",
     "dependencies": {
         "components": [],
-        "js": ["alpinejs", "@alpinejs/focus"],
+        "js": [],
         "composer": ["gehrisandro/tailwind-merge-laravel"]
     },
     "files": [
@@ -44,6 +44,6 @@
             "--primary-foreground",
             "--background"
         ],
-        "notes": "Requires Alpine.js + the @alpinejs/focus plugin (x-trap, mobile off-canvas). Wrap everything in <x-ui.sidebar.provider>; place <x-ui.sidebar> (with side=left|right, collapsible=icon|offcanvas|none) and your page content in <x-ui.sidebar.inset>. State (expand/collapse) persists to a `sidebar_state` cookie and toggles with Ctrl/Cmd-B. Self-contained: composes no other registry components."
+        "notes": "Ships its own inline <script>; no JS dependencies (the mobile off-canvas is a native <dialog>). Wrap everything in <x-ui.sidebar.provider>; place <x-ui.sidebar> (with side=left|right, collapsible=icon|offcanvas|none) and your page content in <x-ui.sidebar.inset>. State (expand/collapse) persists to a `sidebar_state` cookie and toggles with Ctrl/Cmd-B. Self-contained: composes no other registry components."
     }
 }

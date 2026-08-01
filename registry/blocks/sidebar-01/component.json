@@ -14,7 +14,7 @@
       "button",
       "skeleton"
     ],
-    "js": ["alpinejs", "@alpinejs/focus"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [

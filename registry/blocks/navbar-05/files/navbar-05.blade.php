@@ -59,194 +59,212 @@
     ];
 @endphp
 
-<div class="min-h-screen bg-background text-foreground">
-    <div class="mx-auto max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
-        <header
-            class="relative flex h-14 items-center justify-between gap-4 rounded-xl border border-border bg-background px-3 shadow-sm"
-            x-data="{ mega: false }" @mouseleave="mega = false">
-            {{-- Logo --}}
+<div class="mx-auto max-w-6xl px-4 pt-4 sm:px-6 lg:px-8">
+    <header
+        class="group/mega relative flex h-14 items-center justify-between gap-4 rounded-xl border border-border bg-background px-3 shadow-sm"
+        data-ui-mega data-state="closed">
+        {{-- Logo --}}
+        <a href="#"
+            class="flex items-center gap-2 pl-1 font-semibold text-foreground">
+            <span
+                class="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="size-4" aria-hidden="true">
+                    <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+                    <path d="m2 17 10 5 10-5" />
+                    <path d="m2 12 10 5 10-5" />
+                </svg>
+            </span>
+            <span>Logo</span>
+        </a>
+
+        {{-- Desktop navigation --}}
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Main">
             <a href="#"
-                class="flex items-center gap-2 pl-1 font-semibold text-foreground">
-                <span
-                    class="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round"
-                        class="size-4" aria-hidden="true">
-                        <path d="M12 2 2 7l10 5 10-5-10-5Z" />
-                        <path d="m2 17 10 5 10-5" />
-                        <path d="m2 12 10 5 10-5" />
-                    </svg>
-                </span>
-                <span>Logo</span>
-            </a>
+                class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
+                One</a>
+            <button type="button" data-ui-mega-trigger aria-expanded="false"
+                class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground group-data-[state=open]/mega:bg-accent group-data-[state=open]/mega:text-accent-foreground">
+                Link Two
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="size-4 transition-transform duration-200 group-data-[state=open]/mega:rotate-180"
+                    aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                </svg>
+            </button>
+            <a href="#"
+                class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
+                Three</a>
+            <a href="#"
+                class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
+                Four</a>
+        </nav>
 
-            {{-- Desktop navigation --}}
-            <nav class="hidden items-center gap-1 lg:flex" aria-label="Main">
-                <a href="#"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
-                    One</a>
-                <button type="button" @mouseenter="mega = true"
-                    @click="mega = !mega" x-bind:aria-expanded="mega.toString()"
-                    class="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                    x-bind:class="mega ? 'bg-accent text-accent-foreground' : ''">
-                    Link Two
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round"
-                        class="size-4 transition-transform duration-200"
-                        x-bind:class="mega ? 'rotate-180' : ''"
-                        aria-hidden="true">
-                        <path d="m6 9 6 6 6-6" />
-                    </svg>
-                </button>
-                <a href="#"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
-                    Three</a>
-                <a href="#"
-                    class="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">Link
-                    Four</a>
-            </nav>
+        {{-- Desktop actions --}}
+        <div class="hidden items-center gap-2 lg:flex">
+            <x-ui.button variant="outline" size="sm">Sign
+                in</x-ui.button>
+            <x-ui.button size="sm">Get Started</x-ui.button>
+        </div>
 
-            {{-- Desktop actions --}}
-            <div class="hidden items-center gap-2 lg:flex">
-                <x-ui.button variant="outline" size="sm">Sign
-                    in</x-ui.button>
-                <x-ui.button size="sm">Get Started</x-ui.button>
-            </div>
-
-            {{-- Mega menu panel --}}
-            <div x-show="mega" x-cloak @mouseenter="mega = true"
-                x-transition:enter="transition ease-out duration-150"
-                x-transition:enter-start="opacity-0 -translate-y-1"
-                x-transition:enter-end="opacity-100 translate-y-0"
-                x-transition:leave="transition ease-in duration-100"
-                x-transition:leave-start="opacity-100 translate-y-0"
-                x-transition:leave-end="opacity-0 -translate-y-1"
-                class="absolute inset-x-0 top-full hidden justify-center pt-3 lg:flex">
-                <div
-                    class="w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-lg">
-                    <div class="grid grid-cols-2 gap-2 p-4">
-                        @foreach ($megaGroups as $label => $items)
-                            <div>
-                                <p
-                                    class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                    {{ $label }}</p>
-                                @foreach ($items as [$title, $desc, $svg])
-                                    <a href="#"
-                                        class="flex items-start gap-3 rounded-md p-3 transition-colors hover:bg-accent">
+        {{-- Mega menu panel --}}
+        <div class="invisible absolute inset-x-0 top-full hidden -translate-y-1 justify-center pt-3 opacity-0 transition duration-150 ease-out group-data-[state=open]/mega:visible group-data-[state=open]/mega:translate-y-0 group-data-[state=open]/mega:opacity-100 lg:flex">
+            <div
+                class="w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-lg">
+                <div class="grid grid-cols-2 gap-2 p-4">
+                    @foreach ($megaGroups as $label => $items)
+                        <div>
+                            <p
+                                class="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                {{ $label }}</p>
+                            @foreach ($items as [$title, $desc, $svg])
+                                <a href="#"
+                                    class="flex items-start gap-3 rounded-md p-3 transition-colors hover:bg-accent">
+                                    <span
+                                        class="mt-0.5 text-primary">{!! $svg !!}</span>
+                                    <span>
                                         <span
-                                            class="mt-0.5 text-primary">{!! $svg !!}</span>
-                                        <span>
-                                            <span
-                                                class="block text-sm font-medium text-foreground">{{ $title }}</span>
-                                            <span
-                                                class="block text-sm text-muted-foreground">{{ $desc }}</span>
-                                        </span>
-                                    </a>
-                                @endforeach
-                            </div>
-                        @endforeach
-                    </div>
-                    <div
-                        class="flex items-center justify-between gap-4 border-t border-border bg-muted/40 px-5 py-3">
-                        <p class="text-sm text-muted-foreground">Not sure where
-                            to start?</p>
-                        <a href="#"
-                            class="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:underline">
-                            Contact sales
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="size-4" aria-hidden="true">
-                                <path d="M5 12h14" />
-                                <path d="m12 5 7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
+                                            class="block text-sm font-medium text-foreground">{{ $title }}</span>
+                                        <span
+                                            class="block text-sm text-muted-foreground">{{ $desc }}</span>
+                                    </span>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <div
+                    class="flex items-center justify-between gap-4 border-t border-border bg-muted/40 px-5 py-3">
+                    <p class="text-sm text-muted-foreground">Not sure where
+                        to start?</p>
+                    <a href="#"
+                        class="inline-flex items-center gap-1 text-sm font-medium text-foreground hover:underline">
+                        Contact sales
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="size-4" aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
             </div>
+        </div>
 
-            {{-- Mobile menu --}}
-            <div class="lg:hidden">
-                <x-ui.sheet side="right">
-                    <x-slot:trigger>
-                        <button type="button" aria-label="Open menu"
-                            class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="size-5" aria-hidden="true">
-                                <path d="M4 12h16" />
-                                <path d="M4 6h16" />
-                                <path d="M4 18h16" />
-                            </svg>
-                        </button>
-                    </x-slot:trigger>
+        {{-- Mobile menu --}}
+        <div class="lg:hidden">
+            <x-ui.sheet side="right">
+                <x-slot:trigger>
+                    <button type="button" aria-label="Open menu"
+                        class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="size-5" aria-hidden="true">
+                            <path d="M4 12h16" />
+                            <path d="M4 6h16" />
+                            <path d="M4 18h16" />
+                        </svg>
+                    </button>
+                </x-slot:trigger>
 
-                    <nav class="flex flex-col gap-1 px-2 pt-2"
-                        aria-label="Mobile" x-data="{ sub: false }">
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
-                            One</a>
-                        <button type="button" @click="sub = !sub"
-                            x-bind:aria-expanded="sub.toString()"
+                <nav class="flex flex-col gap-1 px-2 pt-2" aria-label="Mobile">
+                    <a href="#"
+                        class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
+                        One</a>
+                    <x-ui.collapsible class="flex flex-col">
+                        <x-ui.collapsible.trigger
                             class="flex items-center justify-between rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">
                             Link Two
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="size-4 transition-transform duration-200"
-                                x-bind:class="sub ? 'rotate-180' : ''"
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                                class="size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180"
                                 aria-hidden="true">
                                 <path d="m6 9 6 6 6-6" />
                             </svg>
-                        </button>
-                        <div x-show="sub" x-cloak x-collapse.duration.200ms
-                            class="ml-3 flex flex-col gap-1 border-l border-border pl-3">
-                            @foreach ($megaGroups as $items)
-                                @foreach ($items as [$title, $desc, $svg])
-                                    <a href="#"
-                                        class="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground">
-                                        <span
-                                            class="text-primary">{!! $svg !!}</span>
-                                        {{ $title }}
-                                    </a>
-                                @endforeach
+                        </x-ui.collapsible.trigger>
+
+                        <x-ui.collapsible.content
+                            class="ml-3 flex-col gap-1 border-l border-border pl-3 group-data-[state=open]/collapsible:flex">
+                        @foreach ($megaGroups as $items)
+                            @foreach ($items as [$title, $desc, $svg])
+                                <a href="#"
+                                    class="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground">
+                                    <span
+                                        class="text-primary">{!! $svg !!}</span>
+                                    {{ $title }}
+                                </a>
                             @endforeach
-                        </div>
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
-                            Three</a>
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
-                            Four</a>
-                    </nav>
+                        @endforeach
+                        </x-ui.collapsible.content>
+                    </x-ui.collapsible>
+                    <a href="#"
+                        class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
+                        Three</a>
+                    <a href="#"
+                        class="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground">Link
+                        Four</a>
+                </nav>
 
-                    <x-slot:footer>
-                        <x-ui.button variant="outline" class="w-full">Sign
-                            in</x-ui.button>
-                        <x-ui.button class="w-full">Get Started</x-ui.button>
-                    </x-slot:footer>
-                </x-ui.sheet>
-            </div>
-        </header>
-    </div>
-
-    {{-- Demo page content (not part of the navbar) --}}
-    <main class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-            <h1
-                class="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Compact bar, full menu
-            </h1>
-            <p class="mt-4 text-lg text-muted-foreground">
-                A rounded, contained header. Open "Link Two" for a grouped menu
-                with a call-to-action footer baked into the panel.
-            </p>
+                <x-slot:footer>
+                    <x-ui.button variant="outline" class="w-full">Sign
+                        in</x-ui.button>
+                    <x-ui.button class="w-full">Get Started</x-ui.button>
+                </x-slot:footer>
+            </x-ui.sheet>
         </div>
-    </main>
+    </header>
 </div>
+
+@once
+    <script>
+        (function() {
+            // One listener set is enough even if two navbar blocks land on the
+            // same page, so bail out if another block already installed it.
+            if (window.__laralcnMegaMenu) return;
+            window.__laralcnMegaMenu = true;
+
+            function setState(root, open) {
+                root.dataset.state = open ? 'open' : 'closed';
+                root.querySelector('[data-ui-mega-trigger]')
+                    .setAttribute('aria-expanded', String(open));
+            }
+
+            document.addEventListener('click', function(event) {
+                var trigger = event.target.closest('[data-ui-mega-trigger]');
+                if (!trigger) return;
+
+                var root = trigger.closest('[data-ui-mega]');
+                setState(root, root.dataset.state !== 'open');
+            });
+
+            // Hovering the trigger opens it; leaving the header closes it.
+            document.addEventListener('mouseover', function(event) {
+                document.querySelectorAll('[data-ui-mega][data-state="open"]').forEach(function(root) {
+                    if (!root.contains(event.target)) setState(root, false);
+                });
+
+                var trigger = event.target.closest('[data-ui-mega-trigger]');
+                if (trigger) setState(trigger.closest('[data-ui-mega]'), true);
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key !== 'Escape') return;
+
+                document.querySelectorAll('[data-ui-mega][data-state="open"]').forEach(function(root) {
+                    setState(root, false);
+                    root.querySelector('[data-ui-mega-trigger]').focus();
+                });
+            });
+        })();
+    </script>
+@endonce

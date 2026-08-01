@@ -29,23 +29,26 @@ Reason: a component copied from the website must be 100% self-contained. The onl
 The fixed structure (see `AUTHORING.md` for the full rule) is:
 
 ```blade
-@props(['variant' => 'default', 'size' => 'md'])
+@props(["variant" => "default", "size" => "md"])
 @php
-    $base = '...';
-    $variants = match ($variant) {
-        'destructive' => '...',
-        default => '...',
-    };
-    $sizes = match ($size) {
-        'sm' => '...',
-        default => '...',
-    };
-    $classes = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        $base, $variants, $sizes, $attributes->get('class')
-    );
+  $base = "...";
+  $variants = match ($variant) {
+      "destructive" => "...",
+      default => "...",
+  };
+  $sizes = match ($size) {
+      "sm" => "...",
+      default => "...",
+  };
+  $classes = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
+      $base,
+      $variants,
+      $sizes,
+      $attributes->get("class"),
+  );
 @endphp
-<button {{ $attributes->except('class')->merge(['class' => $classes]) }}>
-    {{ $slot }}
+<button {{ $attributes->except("class")->merge(["class" => $classes]) }}>
+  {{ $slot }}
 </button>
 ```
 
@@ -69,14 +72,13 @@ We do not support Tailwind v3. Plain-Blade/Statamic users on older setups are se
 
 `config/laralcn-ui.php` keys (locked):
 
-| key               | default                         | meaning                                  |
-| ----------------- | ------------------------------- | ---------------------------------------- |
-| `components_path` | `resources/views/components/ui` | where components are written             |
-| `prefix`          | `ui`                            | tag prefix → `<x-ui.button>`             |
-| `theme`           | `css-variables`                 | theming strategy                         |
-| `registry_url`    | public raw GitHub base          | registry root; overridable for forks     |
-| `js`              | `alpine`                        | interactivity strategy (`alpine`/`none`) |
-| `css_path`        | `resources/css/app.css`         | file `ui:init` injects theme vars into   |
+| key               | default                         | meaning                                |
+| ----------------- | ------------------------------- | -------------------------------------- |
+| `components_path` | `resources/views/components/ui` | where components are written           |
+| `prefix`          | `ui`                            | tag prefix → `<x-ui.button>`           |
+| `theme`           | `css-variables`                 | theming strategy                       |
+| `registry_url`    | public raw GitHub base          | registry root; overridable for forks   |
+| `css_path`        | `resources/css/app.css`         | file `ui:init` injects theme vars into |
 
 ## D7. CLI scope
 
@@ -84,4 +86,4 @@ We do not support Tailwind v3. Plain-Blade/Statamic users on older setups are se
 - Laravel-only (requires `php artisan`). No non-Laravel CLI mode in v1.
 - `ui:init` must be idempotent (safe to run repeatedly).
 - `ui:diff` compares against registry **latest**. No per-component version pinning in v1.
-- Alpine.js is **not** bundled. `ui:init` detects it and prints guidance only.
+- No JavaScript package is ever required. Interactive components carry their own `@once` inline `<script>`, so `ui:init` has no JS step and `ui:add` never prints an `npm install`.

@@ -73,9 +73,13 @@ A component is judged against this file in review. If it breaks a MUST, it does 
 
 ## 6. Interactivity
 
-- Zero JavaScript unless interactivity is genuinely unavoidable.
-- When needed, use **Alpine.js**, inline via `x-data` on the component root, so the file stays self-contained. No external JS file, no Alpine component registered elsewhere.
-- A component that needs Alpine **MUST** list `alpinejs` in its registry entry's `dependencies.js` and state it in its docs.
+- Zero JavaScript unless interactivity is genuinely unavoidable. Reach for the platform first: a native `<dialog>` (top layer, focus trap, Esc, inert page), a native checkbox or `<details>`, or a CSS-only `group-hover` / `focus-within` / `peer-checked` state beats any script. `tooltip` and `switch` ship no JS at all for this reason.
+- When a script is genuinely needed, write **plain JavaScript in a `<script>` block inside the same `.blade.php` file**, wrapped in `@once` so it renders a single time no matter how often the component is used. No framework, no npm package, no external JS file. A consumer copies one file and it works in the browser as-is.
+- Open the block with a `window.__laralcn<Name>` flag guard and return if it is already set. `@once` is not enough on its own: a component rendered into a slot that gets echoed twice (the sidebar does this for its desktop and mobile panels) ships the markup twice, and a second listener set makes every click fire twice.
+- Watch the wording of comments inside the script. Blade compiles component tags anywhere in the file, including inside `<script>` and `//` comments, so writing a tag like `x-ui.sidebar` in angle brackets there breaks the view.
+- The script **MUST** be delegated from `document` (one listener set, not one per instance) and find its elements through `data-ui-<component>` attributes, so it keeps working for markup added after page load.
+- State that other markup needs to react to goes on the root as `data-state`, with a named Tailwind group (e.g. `group/dropdown`), so consumers style the open state in CSS: `group-data-[state=open]/dropdown:rotate-180`. Never expose a JS variable for consumers to bind to.
+- `dependencies.js` **MUST** stay empty. A component that would need an npm package does not ship.
 
 ## 7. Registry entry
 
@@ -89,6 +93,6 @@ Every component ships with `registry/components/<name>/component.json` that vali
 - [ ] `$attributes->except('class')->merge(...)` on the root element
 - [ ] only theme tokens, no hardcoded colors, no stylesheet
 - [ ] semantic markup + ARIA + keyboard + focus management
-- [ ] Alpine only if unavoidable, inline `x-data`, declared in registry
+- [ ] no JS unless unavoidable; when needed, an `@once` inline `<script>` in the same file, delegated from `document`, `dependencies.js` empty
 - [ ] `component.json` validates against `schema.json`
 - [ ] no reference to any symbol other than `TailwindMerge`

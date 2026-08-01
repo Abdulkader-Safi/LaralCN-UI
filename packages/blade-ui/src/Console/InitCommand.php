@@ -80,19 +80,8 @@ final class InitCommand extends Command
             );
         }
 
-        // 6. Alpine guidance (never auto-installed).
-        if (
-            config("laralcn-ui.js") === "alpine" &&
-            !$this->npmHas("alpinejs")
-        ) {
-            $this->newLine();
-            $this->line(
-                "  Interactive components (dialog, dropdown, ...) need Alpine.js.",
-            );
-            $this->line(
-                "  When you add one:  <fg=cyan>npm install alpinejs</>",
-            );
-        }
+        // Interactive components carry their own inline <script>, so there is
+        // no JS package to install and nothing to report here.
 
         $this->newLine();
         $this->components->info(

@@ -7,7 +7,7 @@
     );
 @endphp
 
-<button type="button" aria-label="Toggle Sidebar" @click="toggleSidebar()"
+<button type="button" aria-label="Toggle Sidebar" data-ui-sidebar-trigger
     {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round"

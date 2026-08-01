@@ -8,5 +8,5 @@
 @endphp
 
 <button type="button" aria-label="Toggle Sidebar" tabindex="-1"
-    title="Toggle Sidebar" @click="toggleSidebar()"
+    title="Toggle Sidebar" data-ui-sidebar-trigger
     {{ $attributes->except('class')->merge(['class' => $classes]) }}></button>

@@ -17,30 +17,73 @@
     );
 @endphp
 
-<div x-data="{
-    toasts: [],
-    add(detail) {
-        const id = Date.now() + Math.random();
-        this.toasts.push({ id, ...detail });
-        setTimeout(() => this.remove(id), detail.duration ?? 4000);
-    },
-    remove(id) {
-        this.toasts = this.toasts.filter(t => t.id !== id);
-    },
-}" @toast.window="add($event.detail)"
-    class="{{ $regionClasses }}" role="region" aria-live="polite"
-    {{ $attributes->except('class') }}>
-    <template x-for="toast in toasts" :key="toast.id">
-        <div x-transition role="status"
-            class="pointer-events-auto flex items-start gap-3 rounded-lg border bg-background p-4 text-foreground shadow-lg">
+<div data-ui-toast-region class="{{ $regionClasses }}" role="region"
+    aria-live="polite" {{ $attributes->except('class') }}>
+    {{-- Cloned once per toast; edit the markup here to restyle them. --}}
+    <template data-ui-toast-template>
+        <div role="status"
+            class="pointer-events-auto flex translate-y-1 items-start gap-3 rounded-lg border bg-background p-4 text-foreground opacity-0 shadow-lg transition-all duration-200 data-[state=visible]:translate-y-0 data-[state=visible]:opacity-100">
             <div class="flex-1">
-                <p class="text-sm font-semibold" x-text="toast.title"></p>
-                <p class="text-sm text-muted-foreground"
-                    x-show="toast.description" x-text="toast.description"></p>
+                <p class="text-sm font-semibold" data-ui-toast-title></p>
+                <p class="hidden text-sm text-muted-foreground"
+                    data-ui-toast-description></p>
             </div>
             <button type="button"
                 class="text-muted-foreground hover:text-foreground"
-                aria-label="Dismiss" @click="remove(toast.id)">&times;</button>
+                aria-label="Dismiss" data-ui-toast-close>&times;</button>
         </div>
     </template>
 </div>
+
+@once
+    <script>
+        (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnToast) return;
+            window.__laralcnToast = true;
+
+            function dismiss(toast) {
+                toast.dataset.state = 'hidden';
+                setTimeout(function() {
+                    toast.remove();
+                }, 200);
+            }
+
+            function show(region, detail) {
+                var template = region.querySelector('[data-ui-toast-template]');
+                var toast = template.content.firstElementChild.cloneNode(true);
+
+                toast.querySelector('[data-ui-toast-title]').textContent = detail.title || '';
+
+                var description = toast.querySelector('[data-ui-toast-description]');
+                description.textContent = detail.description || '';
+                description.classList.toggle('hidden', !detail.description);
+
+                region.appendChild(toast);
+                // Flush the hidden frame, then reveal in the same tick, so the
+                // toast still shows in a background tab (no requestAnimationFrame).
+                toast.getBoundingClientRect();
+                toast.dataset.state = 'visible';
+
+                setTimeout(function() {
+                    dismiss(toast);
+                }, detail.duration || 4000);
+            }
+
+            window.addEventListener('toast', function(event) {
+                document.querySelectorAll('[data-ui-toast-region]').forEach(function(region) {
+                    show(region, event.detail || {});
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                var close = event.target.closest('[data-ui-toast-close]');
+                if (close) dismiss(close.closest('[role="status"]'));
+            });
+        })();
+    </script>
+@endonce

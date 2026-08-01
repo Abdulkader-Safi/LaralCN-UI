@@ -4,8 +4,8 @@
   "description": "Navbar with a mega menu laid out as a two-column grid of icon, title, and description items. Mobile menu uses an expandable sheet.",
   "category": "Navbar",
   "dependencies": {
-    "components": ["button", "sheet"],
-    "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+    "components": ["button", "collapsible", "sheet"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [

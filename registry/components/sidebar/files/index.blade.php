@@ -8,56 +8,47 @@
     $offscreen = $side === 'right' ? 'translate-x-full' : '-translate-x-full';
 
     // Layout gap the sidebar reserves: full → icon width → 0 (offcanvas).
-    $gapWidth =
-        "state === 'expanded' ? 'var(--sidebar-width)' : " .
-        ($isIcon ? "'var(--sidebar-width-icon)'" : "'0px'");
+    $gapWidth = $isIcon
+        ? 'w-(--sidebar-width) group-data-[state=collapsed]:w-(--sidebar-width-icon)'
+        : 'w-(--sidebar-width) group-data-[state=collapsed]:w-0';
 
     // The fixed panel: icon mode shrinks its width; offcanvas keeps full width
     // and slides off-screen (so icon-mode tooltips are never clipped).
     $panelWidth = $isIcon
-        ? "state === 'expanded' ? 'var(--sidebar-width)' : 'var(--sidebar-width-icon)'"
-        : "'var(--sidebar-width)'";
-    $panelSlide = $isIcon
-        ? "''"
-        : "state === 'collapsed' ? '{$offscreen}' : ''";
+        ? 'w-(--sidebar-width) group-data-[state=collapsed]:w-(--sidebar-width-icon)'
+        : "w-(--sidebar-width) group-data-[state=collapsed]:{$offscreen}";
 @endphp
 
-{{-- Desktop sidebar --}}
-<div class="group peer hidden text-sidebar-foreground md:block"
-    x-bind:data-state="state"
-    x-bind:data-collapsible="state === 'collapsed' ? '{{ $collapsible }}' : ''"
+{{-- Desktop sidebar. data-state / data-collapsible are kept in sync by the
+     script that ships with <x-ui.sidebar.provider>. --}}
+<div class="group peer hidden text-sidebar-foreground md:block" data-ui-sidebar
+    data-mode="{{ $collapsible }}" data-state="expanded" data-collapsible=""
     data-side="{{ $side }}" data-variant="sidebar">
     {{-- gap handler --}}
-    <div class="relative bg-transparent transition-[width] duration-200 ease-linear"
-        x-bind:style="`width: ${ {{ $gapWidth }} }`"></div>
+    <div
+        class="relative bg-transparent transition-[width] duration-200 ease-linear {{ $gapWidth }}">
+    </div>
     {{-- fixed panel --}}
-    <div class="fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width,transform] duration-200 ease-linear md:flex {{ $side === 'right' ? 'right-0' : 'left-0' }}"
-        x-bind:style="`width: ${ {{ $panelWidth }} }`"
-        x-bind:class="{{ $panelSlide }}">
-        <div data-sidebar="sidebar"
+    <div class="fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width,transform] duration-200 ease-linear md:flex {{ $side === 'right' ? 'right-0' : 'left-0' }} {{ $panelWidth }}"
+        data-sidebar="sidebar">
+        <div
             class="flex h-full w-full flex-col bg-sidebar {{ $side === 'right' ? 'border-l' : 'border-r' }} border-sidebar-border">
             {{ $slot }}
         </div>
     </div>
 </div>
 
-{{-- Mobile sidebar (off-canvas sheet) --}}
-<template x-if="isMobile">
-    <div x-show="openMobile" x-cloak @keydown.escape.window="openMobile = false">
-        <div class="fixed inset-0 z-50 bg-black/50" x-show="openMobile"
-            x-transition.opacity @click="openMobile = false"></div>
-        <div class="fixed inset-y-0 z-50 flex h-svh w-(--sidebar-width-mobile) flex-col bg-sidebar text-sidebar-foreground {{ $side === 'right' ? 'right-0' : 'left-0' }}"
-            role="dialog" aria-modal="true" data-sidebar="sidebar" data-mobile="true"
-            x-show="openMobile" x-trap.noscroll.inert="openMobile"
-            x-transition:enter="transition ease-in-out duration-300"
-            x-transition:enter-start="{{ $offscreen }}"
-            x-transition:enter-end="translate-x-0"
-            x-transition:leave="transition ease-in-out duration-300"
-            x-transition:leave-start="translate-x-0"
-            x-transition:leave-end="{{ $offscreen }}">
-            <div class="flex h-full w-full flex-col">
-                {{ $slot }}
-            </div>
+{{-- Mobile sidebar: a native <dialog>, so it lands in the top layer with a
+     focus trap and Esc handling already wired. --}}
+<dialog data-ui-sidebar-mobile data-state="closed"
+    class="group/mobile m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 backdrop:bg-transparent md:hidden">
+    <div class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-data-[state=open]/mobile:opacity-100"
+        data-ui-sidebar-mobile-close></div>
+
+    <div class="absolute inset-y-0 flex h-svh w-(--sidebar-width-mobile) flex-col bg-sidebar text-sidebar-foreground transition-transform duration-300 ease-in-out {{ $side === 'right' ? 'right-0' : 'left-0' }} {{ $offscreen }} group-data-[state=open]/mobile:translate-x-0"
+        data-sidebar="sidebar" data-mobile="true">
+        <div class="flex h-full w-full flex-col">
+            {{ $slot }}
         </div>
     </div>
-</template>
+</dialog>

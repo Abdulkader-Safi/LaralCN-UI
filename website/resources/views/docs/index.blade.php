@@ -24,13 +24,7 @@
                 @foreach ($items as $item)
                     <a href="{{ route('docs.show', $item['name']) }}"
                         class="block rounded-lg border border-border bg-card p-5 text-card-foreground transition-colors hover:border-foreground/30">
-                        <div class="flex items-center justify-between">
-                            <span class="font-medium">{{ $item['name'] }}</span>
-                            @if (in_array('alpinejs', $item['dependencies']['js'] ?? []))
-                                <span
-                                    class="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">Alpine</span>
-                            @endif
-                        </div>
+                        <span class="font-medium">{{ $item['name'] }}</span>
                         <p class="mt-1 text-sm text-muted-foreground">
                             {{ $item['description'] }}
                         </p>

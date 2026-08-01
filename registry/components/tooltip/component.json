@@ -5,7 +5,7 @@
   "category": "Overlays",
   "dependencies": {
     "components": [],
-    "js": ["alpinejs"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [
@@ -13,6 +13,6 @@
   ],
   "tailwind": {
     "cssVars": ["--primary", "--primary-foreground", "--radius"],
-    "notes": "Requires Alpine.js. Wrap the trigger in the slot; pass `text` and optional `side` (top|bottom|left|right)."
+    "notes": "Pure CSS (hover plus focus-within), no JavaScript at all. Wrap the trigger in the slot; pass `text` and optional `side` (top|bottom|left|right)."
   }
 }

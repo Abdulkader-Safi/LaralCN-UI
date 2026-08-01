@@ -12,8 +12,8 @@
             LaralCN-UI is a shadcn-style component system for Laravel &amp;
             Blade. The CLI copies plain <code
                 class="rounded bg-muted px-1 py-0.5 text-sm">.blade.php</code>
-            files straight into your source tree, pure Blade + Tailwind v4,
-            Alpine.js only when interactivity is unavoidable.
+            files straight into your source tree: pure Blade + Tailwind v4,
+            with no JavaScript package to install.
             <strong class="text-foreground">{{ $total }}</strong>
             components,
             zero lock-in.
@@ -53,12 +53,12 @@
                         'CSS-first @theme tokens, no tailwind.config.js. Every component reads theme tokens, never hardcoded colors.',
                     ],
                     [
-                        'Alpine only when needed',
-                        'Static components stay static. Interactivity is opt-in and declared per component.',
+                        'No JavaScript package',
+                        'Static components stay static. Interactive ones carry a small inline <script> in the same file, so a fresh Laravel app needs nothing extra.',
                     ],
                     [
                         'Dependency resolver',
-                        'ui:add walks the dependency graph, components, JS, and Composer deps are resolved and installed for you.',
+                        'ui:add walks the dependency graph, components and Composer deps are resolved and installed for you.',
                     ],
                 ];
             @endphp

@@ -15,23 +15,19 @@
     </div>
 
     {{-- Preview / Code --}}
-    <section class="mb-10" x-data="{ tab: 'preview' }">
+    <section class="mb-10" data-site-tabs>
         <div class="mb-3 flex items-center gap-1 border-b border-border text-sm">
-            <button type="button" @click="tab = 'preview'"
-                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors"
-                :class="tab === 'preview' ? 'border-foreground text-foreground' :
-                    'border-transparent text-muted-foreground hover:text-foreground'">
+            <button type="button" data-site-tab="preview" aria-selected="true"
+                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Preview
             </button>
-            <button type="button" @click="tab = 'code'"
-                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors"
-                :class="tab === 'code' ? 'border-foreground text-foreground' :
-                    'border-transparent text-muted-foreground hover:text-foreground'">
+            <button type="button" data-site-tab="code" aria-selected="false"
+                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Code
             </button>
         </div>
 
-        <div x-show="tab === 'preview'"
+        <div data-site-panel="preview"
             class="flex min-h-[280px] items-center justify-center rounded-lg border border-border bg-card p-10">
             @if ($hasDemo)
                 @include($demoView)
@@ -42,7 +38,7 @@
             @endif
         </div>
 
-        <div x-show="tab === 'code'" x-cloak>
+        <div data-site-panel="code" class="hidden">
             @if ($demoSource !== null)
                 <x-code-block :code="$demoSource" class="min-h-[280px]" />
             @else
@@ -54,30 +50,26 @@
     </section>
 
     {{-- Installation --}}
-    <section class="mb-10" x-data="{ tab: 'command' }">
+    <section class="mb-10" data-site-tabs>
         <h2 class="mb-3 text-xl font-semibold tracking-tight">Installation</h2>
 
         <div
             class="mb-3 flex items-center gap-1 border-b border-border text-sm">
-            <button type="button" @click="tab = 'command'"
-                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors"
-                :class="tab === 'command' ? 'border-foreground text-foreground' :
-                    'border-transparent text-muted-foreground hover:text-foreground'">
+            <button type="button" data-site-tab="command" aria-selected="true"
+                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Command
             </button>
-            <button type="button" @click="tab = 'manual'"
-                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors"
-                :class="tab === 'manual' ? 'border-foreground text-foreground' :
-                    'border-transparent text-muted-foreground hover:text-foreground'">
+            <button type="button" data-site-tab="manual" aria-selected="false"
+                class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Manual
             </button>
         </div>
 
-        <div x-show="tab === 'command'">
+        <div data-site-panel="command">
             <x-code-block :code="$command" language="bash" />
         </div>
 
-        <div x-show="tab === 'manual'" x-cloak class="space-y-6">
+        <div data-site-panel="manual" class="hidden space-y-6">
             <div>
                 <p class="mb-2 text-sm font-medium">
                     <span class="text-muted-foreground">1.</span>
