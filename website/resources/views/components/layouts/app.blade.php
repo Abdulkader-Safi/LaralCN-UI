@@ -14,7 +14,7 @@
     <meta property="og:description"
         content="A shadcn-style copy-and-own Blade component system for Laravel.">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:image" content="{{ url('og/og-image.png') }}">
+    <meta property="og:image" content="{{ url('og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt"
