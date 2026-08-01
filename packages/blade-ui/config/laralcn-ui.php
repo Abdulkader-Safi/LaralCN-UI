@@ -58,19 +58,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | JavaScript / interactivity strategy
-    |--------------------------------------------------------------------------
-    |
-    | "alpine" or "none". Interactive components use Alpine.js inline. Alpine
-    | is never bundled or installed for you; `ui:init` only detects it and
-    | prints guidance.
-    |
-    */
-
-    "js" => "alpine",
-
-    /*
-    |--------------------------------------------------------------------------
     | App CSS file
     |--------------------------------------------------------------------------
     |

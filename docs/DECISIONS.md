@@ -75,7 +75,6 @@ We do not support Tailwind v3. Plain-Blade/Statamic users on older setups are se
 | `prefix`          | `ui`                            | tag prefix → `<x-ui.button>`             |
 | `theme`           | `css-variables`                 | theming strategy                         |
 | `registry_url`    | public raw GitHub base          | registry root; overridable for forks     |
-| `js`              | `alpine`                        | interactivity strategy (`alpine`/`none`) |
 | `css_path`        | `resources/css/app.css`         | file `ui:init` injects theme vars into   |
 
 ## D7. CLI scope
@@ -84,4 +83,4 @@ We do not support Tailwind v3. Plain-Blade/Statamic users on older setups are se
 - Laravel-only (requires `php artisan`). No non-Laravel CLI mode in v1.
 - `ui:init` must be idempotent (safe to run repeatedly).
 - `ui:diff` compares against registry **latest**. No per-component version pinning in v1.
-- Alpine.js is **not** bundled. `ui:init` detects it and prints guidance only.
+- No JavaScript package is ever required. Interactive components carry their own `@once` inline `<script>`, so `ui:init` has no JS step and `ui:add` never prints an `npm install`.

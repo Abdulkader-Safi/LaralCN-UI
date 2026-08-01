@@ -5,7 +5,7 @@ A shadcn/ui-style **copy-and-own** component system for Laravel & Blade.
 LaralCN-UI is **not** a component library. You do not depend on a runtime package for the components. You pull individual components into your own project as plain `.blade.php` files that you fully own and can edit.
 
 - **25 components + blocks.** Matched to current shadcn/ui (OKLCH theme, Tailwind v4 sizing/variants), including a full composable `sidebar` and the `sidebar-01` block.
-- **Pure Blade + Tailwind v4.** Alpine.js only when interactivity is unavoidable. No React/Vue, no base UI primitive dependency.
+- **Pure Blade + Tailwind v4.** No React/Vue, no Alpine, no npm package at all. Interactive components carry their own plain-JavaScript `<script>` in the same file.
 - **Two channels.** Install via Artisan CLI, or copy from the website.
 - **Yours to edit.** Components live in your source tree. No version coupling.
 - **MIT licensed.**
@@ -42,7 +42,7 @@ Then paste the block's `<x-ui.sidebar.provider>` composition into your layout. (
 
 - Laravel app on Tailwind CSS **v4** (the default `laravel new` setup: CSS-first `@import "tailwindcss"`, `@tailwindcss/vite`, no `tailwind.config.js`).
 - `gehrisandro/tailwind-merge-laravel` in the consuming project (so `class="px-8"` correctly overrides a component's built-in `px-4`). `ui:init` detects this and prints the install command.
-- Alpine.js only for interactive components (Dialog, Dropdown, etc.).
+- No JavaScript package. Interactive components (dialog, dropdown, tabs, …) ship a small `@once` inline `<script>` in their own `.blade.php` file, so a fresh `laravel new` project needs nothing extra.
 
 ## Repository layout (monorepo)
 
