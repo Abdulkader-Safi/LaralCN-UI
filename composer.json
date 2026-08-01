@@ -1,6 +1,6 @@
 {
   "name": "safi/laralcn-ui",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "LaralCN-UI: a shadcn-style copy-and-own Blade component installer for Laravel.",
   "keywords": [
     "laravel",
