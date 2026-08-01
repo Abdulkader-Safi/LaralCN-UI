@@ -5,7 +5,7 @@
   "category": "Navbar",
   "dependencies": {
     "components": ["button", "dropdown-menu", "sheet"],
-    "js": ["alpinejs", "@alpinejs/focus", "@alpinejs/collapse"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [

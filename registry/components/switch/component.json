@@ -1,16 +1,16 @@
 {
   "name": "switch",
   "type": "component",
-  "description": "Toggle switch (Alpine-powered) with optional hidden form input.",
+  "description": "Toggle switch built on a native checkbox, submits with the form.",
   "category": "Forms",
   "dependencies": {
     "components": [],
-    "js": ["alpinejs"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [{ "path": "switch.blade.php", "source": "files/switch.blade.php" }],
   "tailwind": {
     "cssVars": ["--primary", "--input", "--background", "--ring"],
-    "notes": "Requires Alpine.js. Pass `name` to submit its state in a form."
+    "notes": "Pure CSS over a native checkbox, no JavaScript at all. Pass `name` to submit its state in a form."
   }
 }

@@ -11,20 +11,19 @@
         default => 'bottom-full mb-2 left-1/2 -translate-x-1/2',
     };
 
+    // Shown while the wrapper is hovered or anything inside it holds focus, so
+    // pointer and keyboard both work. No JavaScript needed.
     $tipClasses = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
-        'absolute z-50 w-fit max-w-xs text-balance rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground',
+        'pointer-events-none invisible absolute z-50 w-fit max-w-xs text-balance rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100',
         $position,
         $attributes->get('class'),
     );
 @endphp
 
-<span class="relative inline-flex" x-data="{ show: false }"
-    @mouseenter="show = true" @mouseleave="show = false" @focusin="show = true"
-    @focusout="show = false">
+<span class="group relative inline-flex" {{ $attributes->except('class') }}>
     {{ $slot }}
 
-    <span x-show="show" x-cloak x-transition role="tooltip"
-        class="{{ $tipClasses }}">
+    <span role="tooltip" class="{{ $tipClasses }}">
         {{ $text }}
     </span>
 </span>

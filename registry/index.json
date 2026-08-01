@@ -10,10 +10,7 @@
             "category": "Navigation",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -117,10 +114,7 @@
             "category": "Layout",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -135,10 +129,7 @@
                 "components": [
                     "button"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -151,9 +142,7 @@
             "category": "Overlays",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -231,10 +220,7 @@
             "category": "Overlays",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -247,10 +233,7 @@
             "category": "Layout",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -272,13 +255,11 @@
         {
             "name": "switch",
             "type": "component",
-            "description": "Toggle switch (Alpine-powered) with optional hidden form input.",
+            "description": "Toggle switch built on a native checkbox, submits with the form.",
             "category": "Forms",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -304,9 +285,7 @@
             "category": "Navigation",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -332,9 +311,7 @@
             "category": "Feedback",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -347,9 +324,7 @@
             "category": "Overlays",
             "dependencies": {
                 "components": [],
-                "js": [
-                    "alpinejs"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -368,11 +343,7 @@
                     "dropdown-menu",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -389,11 +360,7 @@
                     "dropdown-menu",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -409,11 +376,7 @@
                     "button",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -429,11 +392,7 @@
                     "button",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -449,11 +408,7 @@
                     "button",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -470,11 +425,7 @@
                     "dropdown-menu",
                     "sheet"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus",
-                    "@alpinejs/collapse"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]
@@ -496,10 +447,7 @@
                     "button",
                     "skeleton"
                 ],
-                "js": [
-                    "alpinejs",
-                    "@alpinejs/focus"
-                ],
+                "js": [],
                 "composer": [
                     "gehrisandro/tailwind-merge-laravel"
                 ]

@@ -57,7 +57,7 @@
           "type": "array",
           "items": { "type": "string" },
           "uniqueItems": true,
-          "description": "npm packages the consumer must install (e.g. alpinejs). Reported, never auto-installed."
+          "description": "npm packages the consumer must install. Components ship their own inline <script>, so this is normally empty. Reported, never auto-installed."
         },
         "composer": {
           "type": "array",

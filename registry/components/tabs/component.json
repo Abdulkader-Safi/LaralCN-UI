@@ -5,7 +5,7 @@
   "category": "Navigation",
   "dependencies": {
     "components": [],
-    "js": ["alpinejs"],
+    "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
   "files": [{ "path": "tabs.blade.php", "source": "files/tabs.blade.php" }],
@@ -17,6 +17,6 @@
       "--foreground",
       "--ring"
     ],
-    "notes": "Requires Alpine.js. Pass `:tabs` as ['key' => 'Label']; provide each panel via a named slot `tab_<key>`."
+    "notes": "Ships its own inline <script> (click plus arrow/Home/End keys); no JS dependencies. Pass `:tabs` as ['key' => 'Label']; provide each panel via a named slot `tab_<key>`."
   }
 }
