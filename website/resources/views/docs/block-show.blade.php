@@ -23,13 +23,13 @@
     </div>
 
     {{-- Preview / Code --}}
-    <section class="mb-10" data-tabs>
+    <section class="mb-10" data-site-tabs>
         <div class="mb-3 flex items-center gap-1 border-b border-border text-sm">
-            <button type="button" data-tab="preview" aria-selected="true"
+            <button type="button" data-site-tab="preview" aria-selected="true"
                 class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Preview
             </button>
-            <button type="button" data-tab="code" aria-selected="false"
+            <button type="button" data-site-tab="code" aria-selected="false"
                 class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Code
             </button>
@@ -38,35 +38,35 @@
         {{-- Preview is rendered at a 1280px desktop viewport and scaled to fit
              the content column, so the block's desktop layout is always shown
              (the column is narrower than the lg breakpoint). --}}
-        <div data-panel="preview" data-preview data-preview-width="1280"
+        <div data-site-panel="preview" data-preview data-preview-width="1280"
             data-preview-min-height="200" data-preview-max-height="800"
             class="overflow-hidden rounded-lg border border-border bg-background">
             <iframe src="{{ $previewUrl }}" class="block border-0"
                 title="{{ $entry['name'] }} preview" loading="lazy"></iframe>
         </div>
 
-        <div data-panel="code" class="hidden">
+        <div data-site-panel="code" class="hidden">
             <x-code-block :code="$source" />
         </div>
     </section>
 
     {{-- Installation --}}
-    <section class="mb-10" data-tabs>
+    <section class="mb-10" data-site-tabs>
         <h2 class="mb-3 text-xl font-semibold tracking-tight">Installation</h2>
 
         <div
             class="mb-3 flex items-center gap-1 border-b border-border text-sm">
-            <button type="button" data-tab="command" aria-selected="true"
+            <button type="button" data-site-tab="command" aria-selected="true"
                 class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Command
             </button>
-            <button type="button" data-tab="manual" aria-selected="false"
+            <button type="button" data-site-tab="manual" aria-selected="false"
                 class="-mb-px border-b-2 px-3 py-2 font-medium transition-colors border-transparent text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground">
                 Manual
             </button>
         </div>
 
-        <div data-panel="command">
+        <div data-site-panel="command">
             <x-code-block :code="$command" language="bash" />
             <p class="mt-3 text-sm text-muted-foreground">
                 A single command installs the block's Blade file
@@ -94,7 +94,7 @@
             @endif
         </div>
 
-        <div data-panel="manual" class="hidden space-y-6">
+        <div data-site-panel="manual" class="hidden space-y-6">
             <div>
                 <p class="mb-2 text-sm font-medium">
                     <span class="text-muted-foreground">1.</span>

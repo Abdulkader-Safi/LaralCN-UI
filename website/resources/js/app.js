@@ -11,17 +11,17 @@ document.addEventListener('click', (event) => {
     setTimeout(() => delete button.dataset.copied, 1500);
 });
 
-// Tab strips: [data-tabs] wraps [data-tab="key"] buttons and [data-panel="key"].
+// Tab strips: [data-site-tabs] wraps [data-site-tab="key"] buttons and [data-site-panel="key"].
 document.addEventListener('click', (event) => {
-    const tab = event.target.closest('[data-tab]');
+    const tab = event.target.closest('[data-site-tab]');
     if (!tab) return;
 
-    const root = tab.closest('[data-tabs]');
-    root.querySelectorAll('[data-tab]').forEach((el) => {
+    const root = tab.closest('[data-site-tabs]');
+    root.querySelectorAll('[data-site-tab]').forEach((el) => {
         el.setAttribute('aria-selected', String(el === tab));
     });
-    root.querySelectorAll('[data-panel]').forEach((panel) => {
-        panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.tab);
+    root.querySelectorAll('[data-site-panel]').forEach((panel) => {
+        panel.classList.toggle('hidden', panel.dataset.sitePanel !== tab.dataset.siteTab);
     });
 });
 
