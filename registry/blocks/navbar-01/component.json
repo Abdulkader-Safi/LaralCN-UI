@@ -4,7 +4,7 @@
   "description": "Classic top navbar with centered links, a dropdown, and dual call-to-action buttons. Collapses into a slide-in sheet on mobile.",
   "category": "Navbar",
   "dependencies": {
-    "components": ["button", "dropdown-menu", "sheet"],
+    "components": ["button", "collapsible", "dropdown-menu", "sheet"],
     "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },

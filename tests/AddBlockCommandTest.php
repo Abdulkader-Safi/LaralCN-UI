@@ -50,10 +50,10 @@ it("recursively installs every component the block depends on", function () {
     }
 });
 
-it("reports the manual js and composer dependencies", function () {
+it("reports the manual composer dependencies and no npm ones", function () {
     $this->artisan("ui:add-block", ["block" => ["sidebar-01"]])
-        ->expectsOutputToContain("alpinejs")
         ->expectsOutputToContain("gehrisandro/tailwind-merge-laravel")
+        ->doesntExpectOutputToContain("npm install")
         ->assertSuccessful();
 });
 

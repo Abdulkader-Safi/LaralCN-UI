@@ -340,6 +340,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "dropdown-menu",
                     "sheet"
                 ],
@@ -357,6 +358,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "dropdown-menu",
                     "sheet"
                 ],
@@ -374,6 +376,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "sheet"
                 ],
                 "js": [],
@@ -390,6 +393,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "sheet"
                 ],
                 "js": [],
@@ -406,6 +410,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "sheet"
                 ],
                 "js": [],
@@ -422,6 +427,7 @@
             "dependencies": {
                 "components": [
                     "button",
+                    "collapsible",
                     "dropdown-menu",
                     "sheet"
                 ],

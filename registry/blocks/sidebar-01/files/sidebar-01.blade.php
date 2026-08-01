@@ -1,4 +1,4 @@
-<div x-data="{ dark: false }" :class="{ 'dark': dark }">
+<div class="group/demo" data-ui-theme-demo>
     <x-ui.sidebar.provider>
         {{-- Sidebar --}}
         <x-ui.sidebar side="left" collapsible="icon">
@@ -107,7 +107,7 @@
                         <x-ui.sidebar.menu-item>
                             <x-ui.collapsible :open="true">
                                 <x-ui.sidebar.menu-button tooltip="Documents"
-                                    @click="open = !open">
+                                    data-ui-collapsible-trigger>
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2"
@@ -123,8 +123,7 @@
                                         stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="ml-auto transition-transform duration-200"
-                                        x-bind:class="open ? 'rotate-90' : ''">
+                                        class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90">
                                         <path d="m9 18 6-6-6-6" />
                                     </svg>
                                 </x-ui.sidebar.menu-button>
@@ -250,10 +249,10 @@
                     </x-ui.breadcrumb.list>
                 </x-ui.breadcrumb>
 
-                <button type="button" @click="dark = !dark"
+                <button type="button" data-ui-theme-toggle
                     class="ml-auto rounded-md border border-border px-2 py-1 text-xs">
-                    <span x-show="!dark">Dark</span>
-                    <span x-show="dark" x-cloak>Light</span>
+                    <span class="group-[.dark]/demo:hidden">Dark</span>
+                    <span class="hidden group-[.dark]/demo:inline">Light</span>
                 </button>
             </header>
 
@@ -270,3 +269,16 @@
         </x-ui.sidebar.inset>
     </x-ui.sidebar.provider>
 </div>
+
+@once
+    <script>
+        (function() {
+            // Demo-only: flips the .dark class on this block so you can preview
+            // both themes. Wire your real theme switch however you prefer.
+            document.addEventListener('click', function(event) {
+                var toggle = event.target.closest('[data-ui-theme-toggle]');
+                if (toggle) toggle.closest('[data-ui-theme-demo]').classList.toggle('dark');
+            });
+        })();
+    </script>
+@endonce

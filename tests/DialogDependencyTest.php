@@ -21,7 +21,7 @@ it("resolves dialog with button first (install order)", function () {
         "button",
         "dialog",
     ]);
-    expect($resolved["js"])->toContain("alpinejs");
+    expect($resolved["js"])->toBeEmpty();
 });
 
 it("ui:add dialog also installs the button dependency", function () {
@@ -37,9 +37,9 @@ it("ui:add dialog also installs the button dependency", function () {
     )->toBeTrue();
 });
 
-it("reports the alpine npm dependency the user must install", function () {
+it("asks for no npm package: components ship their own inline script", function () {
     $this->artisan("ui:add", ["component" => ["dialog"]])
-        ->expectsOutputToContain("npm install")
+        ->doesntExpectOutputToContain("npm install")
         ->assertSuccessful();
 });
 

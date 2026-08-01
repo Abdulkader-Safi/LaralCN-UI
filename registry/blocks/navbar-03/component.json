@@ -4,7 +4,7 @@
   "description": "Navbar with a full-width mega menu: two grouped link columns plus a featured-articles panel. Mobile menu uses an expandable sheet.",
   "category": "Navbar",
   "dependencies": {
-    "components": ["button", "sheet"],
+    "components": ["button", "collapsible", "sheet"],
     "js": [],
     "composer": ["gehrisandro/tailwind-merge-laravel"]
   },
