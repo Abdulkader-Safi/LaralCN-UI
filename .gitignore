@@ -3,7 +3,8 @@
 /packages/*/vendor/
 /website/vendor/
 /website/node_modules/
-/website/public/build/
+# /website/public/build/ is intentionally NOT ignored: the VPS Node is too old
+# to run Vite, so assets are built locally and deployed via git (DEPLOYMENT.md).
 /website/.env
 laralcn-sandbox/
 .phpunit.cache/
