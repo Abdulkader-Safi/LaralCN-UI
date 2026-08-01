@@ -39,7 +39,7 @@
              the content column, so the block's desktop layout is always shown
              (the column is narrower than the lg breakpoint). --}}
         <div data-panel="preview" data-preview data-preview-width="1280"
-            data-preview-height="720"
+            data-preview-min-height="200" data-preview-max-height="800"
             class="overflow-hidden rounded-lg border border-border bg-background">
             <iframe src="{{ $previewUrl }}" class="block border-0"
                 title="{{ $entry['name'] }} preview" loading="lazy"></iframe>

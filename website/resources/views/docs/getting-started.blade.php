@@ -87,15 +87,8 @@
                         class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                         button source
                     </h3>
-                    <button type="button"
-                        class="group rounded-md border border-border px-3 py-1 text-xs hover:bg-accent hover:text-accent-foreground"
-                        data-copy="{{ $source }}">
-                        <span class="group-data-[copied]:hidden">Copy</span>
-                        <span class="hidden group-data-[copied]:inline">Copied!</span>
-                    </button>
                 </div>
-                <pre
-                    class="overflow-x-auto rounded-lg border border-border text-xs leading-relaxed"><code class="language-php rounded-lg">{{ $source }}</code></pre>
+                <x-code-block :code="$source" />
             </div>
         @endif
     </section>

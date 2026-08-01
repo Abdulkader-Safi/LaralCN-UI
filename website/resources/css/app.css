@@ -131,3 +131,18 @@
     --color-sidebar-ring: var(--sidebar-ring);
 }
 /* laralcn-ui:end */
+
+/* Shiki renders <pre class="shiki"> with its own inline background; these are
+   the bits it leaves to us. */
+.shiki {
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.shiki code {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+}
