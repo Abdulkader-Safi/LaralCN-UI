@@ -1,57 +1,64 @@
 {
-    "name": "safi/laralcn-ui",
-    "version": "0.2.0",
-    "description": "LaralCN-UI: a shadcn-style copy-and-own Blade component installer for Laravel.",
-    "keywords": ["laravel", "blade", "tailwind", "components", "shadcn", "ui"],
-    "license": "MIT",
-    "homepage": "https://github.com/Abdulkader-Safi/LaralCN-UI",
-    "support": {
-        "issues": "https://github.com/Abdulkader-Safi/LaralCN-UI/issues",
-        "source": "https://github.com/Abdulkader-Safi/LaralCN-UI"
-    },
-    "authors": [
-        {
-            "name": "Abdul Kader Safi",
-            "email": "safi.abdulkader@gmail.com"
-        }
-    ],
-    "require": {
-        "php": "^8.2",
-        "illuminate/console": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/filesystem": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/support": "^11.0 || ^12.0 || ^13.0"
-    },
-    "require-dev": {
-        "gehrisandro/tailwind-merge-laravel": "^1.2",
-        "orchestra/testbench": "^9.0 || ^10.0",
-        "pestphp/pest": "^3.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Safi\\LaralcnUi\\": "packages/blade-ui/src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Safi\\LaralcnUi\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Safi\\LaralcnUi\\LaralcnUiServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    },
-    "scripts": {
-        "test": "pest"
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+  "name": "safi/laralcn-ui",
+  "version": "0.3.0",
+  "description": "LaralCN-UI: a shadcn-style copy-and-own Blade component installer for Laravel.",
+  "keywords": [
+    "laravel",
+    "blade",
+    "tailwind",
+    "components",
+    "shadcn",
+    "ui"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Abdulkader-Safi/LaralCN-UI",
+  "support": {
+    "issues": "https://github.com/Abdulkader-Safi/LaralCN-UI/issues",
+    "source": "https://github.com/Abdulkader-Safi/LaralCN-UI"
+  },
+  "authors": [
+    {
+      "name": "Abdul Kader Safi",
+      "email": "safi.abdulkader@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/console": "^11.0 || ^12.0 || ^13.0",
+    "illuminate/filesystem": "^11.0 || ^12.0 || ^13.0",
+    "illuminate/support": "^11.0 || ^12.0 || ^13.0"
+  },
+  "require-dev": {
+    "gehrisandro/tailwind-merge-laravel": "^1.2",
+    "orchestra/testbench": "^9.0 || ^10.0",
+    "pestphp/pest": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Safi\\LaralcnUi\\": "packages/blade-ui/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Safi\\LaralcnUi\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Safi\\LaralcnUi\\LaralcnUiServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "scripts": {
+    "test": "pest"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

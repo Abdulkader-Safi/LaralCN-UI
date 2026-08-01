@@ -5,7 +5,7 @@ at `/var/www/LaralCN-UI`, served from `website/public` by Caddy → php-fpm 8.4.
 
 ## One-time server setup
 
-The VPS runs another site on **PHP 8.3**, so PHP 8.4 is installed *alongside*
+The VPS runs another site on **PHP 8.3**, so PHP 8.4 is installed _alongside_
 it — never replace the default `php`.
 
 ```bash
@@ -83,15 +83,20 @@ bash deploy.sh
 (no path repository). Bump the package tag and `composer update safi/laralcn-ui`
 to surface CLI/package changes in the showcase.
 
+Release order matters: `website/composer.lock` is committed and the server runs
+`composer install --no-dev`, so raise the constraint **only after** the new tag
+is live on Packagist, and commit `composer.json` and `composer.lock` together.
+Raising it first leaves the lock stale and the deploy install fails.
+
 ## Troubleshooting
 
-| Symptom | Cause | Fix |
-|---|---|---|
-| `Composer detected ... requires PHP >= 8.4` | ran under default 8.3 | use `php8.4` for every artisan/composer call |
-| `Registry not found at https://...` | old code or misspelled URL | ensure latest `main`; default URL is `Abdulkader-Safi` (hyphen) |
-| `attempt to write a readonly database` | `.env` still on `database` drivers | set `SESSION_DRIVER=file` + `CACHE_STORE=file`, then `php8.4 artisan config:cache` |
-| `Vite manifest not found` | `public/build/` missing | it's committed — `git pull`; rebuild+commit locally if stale |
-| 500 after moving/clone | stale cached paths | `php8.4 artisan optimize:clear` then re-cache |
-| `Permission denied` writing storage/db | dirs owned by www-data | run writes as www-data, or `sudo chown` per above |
+| Symptom                                     | Cause                              | Fix                                                                                |
+| ------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| `Composer detected ... requires PHP >= 8.4` | ran under default 8.3              | use `php8.4` for every artisan/composer call                                       |
+| `Registry not found at https://...`         | old code or misspelled URL         | ensure latest `main`; default URL is `Abdulkader-Safi` (hyphen)                    |
+| `attempt to write a readonly database`      | `.env` still on `database` drivers | set `SESSION_DRIVER=file` + `CACHE_STORE=file`, then `php8.4 artisan config:cache` |
+| `Vite manifest not found`                   | `public/build/` missing            | it's committed — `git pull`; rebuild+commit locally if stale                       |
+| 500 after moving/clone                      | stale cached paths                 | `php8.4 artisan optimize:clear` then re-cache                                      |
+| `Permission denied` writing storage/db      | dirs owned by www-data             | run writes as www-data, or `sudo chown` per above                                  |
 
 Config check: `php8.4 artisan tinker --execute="echo config('session.driver').' / '.config('cache.default');"` → expect `file / file`.
