@@ -7,6 +7,24 @@
     <title>{{ $title ?? 'LaralCN-UI' }}, LaralCN-UI</title>
     <meta name="description"
         content="A shadcn-style copy-and-own Blade component system for Laravel.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LaralCN-UI">
+    <meta property="og:title" content="{{ $title ?? 'LaralCN-UI' }}, LaralCN-UI">
+    <meta property="og:description"
+        content="A shadcn-style copy-and-own Blade component system for Laravel.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ url('og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"
+        content="Plate I: the twenty-five LaralCN-UI primitives drawn as specimens.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title ?? 'LaralCN-UI' }}, LaralCN-UI">
+    <meta name="twitter:description"
+        content="A shadcn-style copy-and-own Blade component system for Laravel.">
+    <meta name="twitter:image" content="{{ url('og-image.png') }}">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://u.abdulkadersafi.com/script.js"
         data-website-id="759e2030-fd85-4a3c-91c7-59f411fa5698"></script>
