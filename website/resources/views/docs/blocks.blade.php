@@ -33,14 +33,8 @@
                                 loading="lazy" aria-hidden="true"></iframe>
                         </div>
                         <div class="p-5">
-                            <div class="flex items-center justify-between">
-                                <span
-                                    class="font-medium">{{ $item['name'] }}</span>
-                                @if (in_array('alpinejs', $item['dependencies']['js'] ?? []))
-                                    <span
-                                        class="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">Alpine</span>
-                                @endif
-                            </div>
+                            <span
+                                class="font-medium">{{ $item['name'] }}</span>
                             <p
                                 class="mt-1 line-clamp-2 text-sm text-muted-foreground">
                                 {{ $item['description'] }}

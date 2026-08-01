@@ -34,8 +34,8 @@
         </li>
         <li>
             Use it: <code>&lt;x-ui.button&gt;Save&lt;/x-ui.button&gt;</code>.
-            For interactive components, include Alpine.js (and the noted
-            plugins).
+            Interactive components carry their own inline
+            <code>&lt;script&gt;</code>, so there is nothing else to load.
         </li>
     </ol>
 

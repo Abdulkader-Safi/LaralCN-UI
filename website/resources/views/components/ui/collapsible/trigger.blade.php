@@ -7,8 +7,9 @@
     );
 @endphp
 
-<button type="button" @click="open = !open"
-    x-bind:aria-expanded="open.toString()"
+{{-- aria-expanded is seeded from the parent's data-state on load, then kept in
+     sync by the script that ships with <x-ui.collapsible>. --}}
+<button type="button" data-ui-collapsible-trigger
     {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     {{ $slot }}
 </button>

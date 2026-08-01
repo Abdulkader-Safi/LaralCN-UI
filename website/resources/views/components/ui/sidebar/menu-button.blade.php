@@ -40,10 +40,10 @@
     @if ($href) href="{{ $href }}" @else type="button" @endif
     {{ $attributes->except('class')->merge(['class' => $classes]) }}>
     {{ $slot }}
-    </{{ $tag }}>
-    @if ($tooltip)
-        <span role="tooltip"
-            class="pointer-events-none absolute left-full top-1/2 z-50 ml-2 hidden w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground group-data-[collapsible=icon]:peer-hover/menu-button:block">
-            {{ $tooltip }}
-        </span>
-    @endif
+</{{ $tag }}>
+@if ($tooltip)
+    <span role="tooltip"
+        class="pointer-events-none absolute left-full top-1/2 z-50 ml-2 hidden w-fit -translate-y-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground group-data-[collapsible=icon]:peer-hover/menu-button:block">
+        {{ $tooltip }}
+    </span>
+@endif

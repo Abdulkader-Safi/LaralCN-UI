@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ dark: false }" :class="{ 'dark': dark }">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -10,11 +10,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://u.abdulkadersafi.com/script.js"
         data-website-id="759e2030-fd85-4a3c-91c7-59f411fa5698"></script>
-    <style>
-        [x-cloak] {
-            display: none !important
-        }
-    </style>
 </head>
 
 <body class="bg-background text-foreground antialiased">
@@ -108,12 +103,6 @@
                                             $entry['name'] === $item['name']">
                                         <span>{{ $item['name'] }}</span>
                                     </x-ui.sidebar.menu-button>
-                                    @if (in_array('alpinejs', $item['dependencies']['js'] ?? []))
-                                        <x-ui.sidebar.menu-badge
-                                            class="text-[10px] text-muted-foreground">
-                                            JS
-                                        </x-ui.sidebar.menu-badge>
-                                    @endif
                                 </x-ui.sidebar.menu-item>
                             @endforeach
                         </x-ui.sidebar.menu>
@@ -162,10 +151,10 @@
                     </x-ui.breadcrumb.list>
                 </x-ui.breadcrumb>
 
-                <button type="button" @click="dark = !dark"
+                <button type="button" data-theme-toggle
                     class="ml-auto rounded-md border border-border px-2 py-1 text-xs">
-                    <span x-show="!dark">Dark</span>
-                    <span x-show="dark" x-cloak>Light</span>
+                    <span class="dark:hidden">Dark</span>
+                    <span class="hidden dark:inline">Light</span>
                 </button>
             </header>
 

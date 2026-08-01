@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ dark: false }" :class="{ 'dark': dark }">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -8,11 +8,6 @@
     <meta name="description"
         content="{{ $title }} block built from LaralCN-UI components.">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        [x-cloak] {
-            display: none !important
-        }
-    </style>
 </head>
 
 <body class="bg-background text-foreground antialiased">

@@ -10,16 +10,16 @@
         </p>
     </div>
 
-    <section x-data="{ copied: false, theme: @js($theme) }">
+    <section>
         <div class="mb-3 flex items-center justify-between">
             <h2
                 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                 Theme variables</h2>
             <button type="button"
-                class="rounded-md border border-border px-3 py-1 text-xs hover:bg-accent hover:text-accent-foreground"
-                @click="navigator.clipboard.writeText(theme); copied = true; setTimeout(() => copied = false, 1500)">
-                <span x-show="!copied">Copy</span>
-                <span x-show="copied" x-cloak>Copied!</span>
+                class="group rounded-md border border-border px-3 py-1 text-xs hover:bg-accent hover:text-accent-foreground"
+                data-copy="{{ $theme }}">
+                <span class="group-data-[copied]:hidden">Copy</span>
+                <span class="hidden group-data-[copied]:inline">Copied!</span>
             </button>
         </div>
         <pre
