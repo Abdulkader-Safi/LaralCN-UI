@@ -18,6 +18,14 @@
 @once
     <script>
         (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnSidebar) return;
+            window.__laralcnSidebar = true;
+
             var mobile = window.matchMedia('(max-width: 767px)');
 
             function sidebars(provider) {
@@ -49,9 +57,11 @@
                     } else {
                         panel.showModal();
                         document.documentElement.style.overflow = 'hidden';
-                        requestAnimationFrame(function() {
-                            panel.dataset.state = 'open';
-                        });
+                        // Flush the closed frame before flipping the state; a
+                        // requestAnimationFrame would not fire in a background
+                        // tab and the panel would open off-screen.
+                        panel.getBoundingClientRect();
+                        panel.dataset.state = 'open';
                     }
                     return;
                 }

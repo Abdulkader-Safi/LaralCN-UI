@@ -4,7 +4,8 @@
 ])
 
 @php
-    // A native <dialog> opened with showModal() gives us the top layer (so no
+    // A native dialog element opened with showModal() gives us the top
+    // layer (so no
     // ancestor transform or backdrop-filter can clip it), a focus trap, Esc to
     // close and an inert page for free. The script below only handles opening,
     // the exit animation and the scroll lock.
@@ -72,12 +73,27 @@
 @once
     <script>
         (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnDialog) return;
+            window.__laralcnDialog = true;
+
             function open(dialog) {
+                // The top layer does not rescue a display:none ancestor, so if
+                // the trigger sits inside a responsive wrapper, move the dialog
+                // out to the body before showing it.
+                if (dialog.parentElement !== document.body) document.body.appendChild(dialog);
+
                 dialog.showModal();
                 document.documentElement.style.overflow = 'hidden';
-                requestAnimationFrame(function() {
-                    dialog.dataset.state = 'open';
-                });
+                // Flush the closed frame, then flip the state in the same tick.
+                // requestAnimationFrame would not fire in a background tab and
+                // the panel would sit open but transformed off-screen.
+                dialog.getBoundingClientRect();
+                dialog.dataset.state = 'open';
             }
 
             function close(dialog) {

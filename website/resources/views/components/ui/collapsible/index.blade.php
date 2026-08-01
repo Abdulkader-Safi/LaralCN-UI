@@ -17,6 +17,14 @@
 @once
     <script>
         (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnCollapsible) return;
+            window.__laralcnCollapsible = true;
+
             var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
             function slide(el, show) {

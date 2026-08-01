@@ -273,6 +273,14 @@
 @once
     <script>
         (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnThemeDemo) return;
+            window.__laralcnThemeDemo = true;
+
             // Demo-only: flips the .dark class on this block so you can preview
             // both themes. Wire your real theme switch however you prefer.
             document.addEventListener('click', function(event) {

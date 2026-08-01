@@ -9,7 +9,7 @@
 
     <x-slot:footer>
         <x-ui.button variant="outline"
-            x-on:click="open = false">Cancel</x-ui.button>
+            data-ui-dialog-close>Cancel</x-ui.button>
         <x-ui.button variant="destructive">Delete</x-ui.button>
     </x-slot:footer>
 </x-ui.dialog>

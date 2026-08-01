@@ -38,6 +38,14 @@
 @once
     <script>
         (function() {
+            // The Blade once-directive above keeps this to a single copy per
+            // page, except when a component is rendered into a slot that is
+            // echoed twice, the way the sidebar does for its desktop and its
+            // mobile panel. Then the markup ships twice and every click would
+            // fire the handler twice, so this flag is the real guard.
+            if (window.__laralcnToast) return;
+            window.__laralcnToast = true;
+
             function dismiss(toast) {
                 toast.dataset.state = 'hidden';
                 setTimeout(function() {
@@ -56,9 +64,10 @@
                 description.classList.toggle('hidden', !detail.description);
 
                 region.appendChild(toast);
-                requestAnimationFrame(function() {
-                    toast.dataset.state = 'visible';
-                });
+                // Flush the hidden frame, then reveal in the same tick, so the
+                // toast still shows in a background tab (no requestAnimationFrame).
+                toast.getBoundingClientRect();
+                toast.dataset.state = 'visible';
 
                 setTimeout(function() {
                     dismiss(toast);

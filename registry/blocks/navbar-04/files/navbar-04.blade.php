@@ -185,8 +185,8 @@
         (function() {
             // One listener set is enough even if two navbar blocks land on the
             // same page, so bail out if another block already installed it.
-            if (window.__uiMegaMenu) return;
-            window.__uiMegaMenu = true;
+            if (window.__laralcnMegaMenu) return;
+            window.__laralcnMegaMenu = true;
 
             function setState(root, open) {
                 root.dataset.state = open ? 'open' : 'closed';
