@@ -60,7 +60,7 @@ bash deploy.sh
 `deploy.sh` does: `git pull` → `php8.4 composer install --no-dev` →
 `optimize:clear` + re-cache config/routes/views → re-chown to www-data.
 
-## Why there is no database / no Node on the server
+## Why there is no database on the server
 
 - **Registry** is fetched over HTTPS from the published raw-GitHub registry
   (`App\Support\Registry` remote mode, cached 10 min). No local `registry/`
@@ -68,13 +68,27 @@ bash deploy.sh
 - **Sessions + cache** use the `file` driver (`storage/framework/`), so the
   app makes **zero DB queries**. `database/database.sqlite` is never created
   or opened; `php artisan migrate` is intentionally **not** in `deploy.sh`.
-- **Assets** (`website/public/build/`) are **committed to the repo**. The VPS
-  Node is too old for Vite 8 / rolldown, so assets are built locally and ship
-  via `git`. After changing CSS/JS:
+- **Assets** (`website/public/build/`) are **committed to the repo** and must
+  stay tracked: do not add them to `.gitignore`. Assets are built locally and
+  ship via `git`; never run `npm run build` on the server, since Vite empties
+  `public/build` first and would delete the deployed files. After changing
+  CSS/JS:
 
   ```bash
   cd website && npm run build
   git add public/build && git commit -m "rebuild assets" && git push
+  ```
+
+- **Node is optional on the server** and affects exactly one thing: Shiki
+  syntax highlighting in `<x-code-block>`. Without a `node` binary on
+  **php-fpm's** PATH, code blocks render plain instead of highlighted; pages
+  still work. An nvm install does not count, because php-fpm does not read
+  your shell profile. To turn highlighting on, expose node somewhere Shiki
+  looks (it searches PATH plus `/usr/local/bin` and `/opt/homebrew/bin`):
+
+  ```bash
+  sudo ln -sf "$(which node)" /usr/local/bin/node
+  cd website && php8.4 artisan cache:clear   # drop the un-highlighted cache
   ```
 
 ## Package
