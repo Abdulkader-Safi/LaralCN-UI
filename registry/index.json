@@ -463,6 +463,130 @@
     ],
     "blocks": [
         {
+            "name": "footer-01",
+            "type": "block",
+            "description": "Newsletter footer: signup form beside two link columns and a social 'Follow Us' list, with a legal bar underneath.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button",
+                    "input"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-02",
+            "type": "block",
+            "description": "Wide sitemap footer: newsletter row on top, logo beside five link columns, then a legal bar with social icons.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button",
+                    "input"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-03",
+            "type": "block",
+            "description": "Boxed footer: logo, three link columns and a subscribe form inside a bordered card, with the legal bar outside it.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button",
+                    "input"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-04",
+            "type": "block",
+            "description": "Call-to-action footer: headline, blurb and two buttons on the left, two link columns and social icons on the right, inside a bordered card.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-05",
+            "type": "block",
+            "description": "Large sitemap footer: headline with two buttons, six link columns, and a logo row with an overlapping avatar stack.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "avatar",
+                    "button"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-06",
+            "type": "block",
+            "description": "Contact footer: address, phone and email beside two link columns, closing on an oversized company wordmark.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-07",
+            "type": "block",
+            "description": "Newsletter footer with an oversized company wordmark: signup form, two link columns and a social list above the brand statement.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button",
+                    "input"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "footer-08",
+            "type": "block",
+            "description": "Minimal footer: logo with a single row of links, a subscribe form, and an oversized company wordmark above the legal bar.",
+            "category": "Footer",
+            "dependencies": {
+                "components": [
+                    "button",
+                    "input"
+                ],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "navbar-01",
             "type": "block",
             "description": "Classic top navbar with centered links, a dropdown, and dual call-to-action buttons. Collapses into a slide-in sheet on mobile.",

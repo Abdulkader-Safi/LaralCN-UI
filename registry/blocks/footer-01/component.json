@@ -1,0 +1,17 @@
+{
+  "name": "footer-01",
+  "type": "block",
+  "description": "Newsletter footer: signup form beside two link columns and a social 'Follow Us' list, with a legal bar underneath.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button", "input"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-01.blade.php",
+      "source": "files/footer-01.blade.php"
+    }
+  ]
+}

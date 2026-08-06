@@ -1,0 +1,17 @@
+{
+  "name": "footer-08",
+  "type": "block",
+  "description": "Minimal footer: logo with a single row of links, a subscribe form, and an oversized company wordmark above the legal bar.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button", "input"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-08.blade.php",
+      "source": "files/footer-08.blade.php"
+    }
+  ]
+}

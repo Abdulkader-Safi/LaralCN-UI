@@ -1,0 +1,17 @@
+{
+  "name": "footer-04",
+  "type": "block",
+  "description": "Call-to-action footer: headline, blurb and two buttons on the left, two link columns and social icons on the right, inside a bordered card.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-04.blade.php",
+      "source": "files/footer-04.blade.php"
+    }
+  ]
+}

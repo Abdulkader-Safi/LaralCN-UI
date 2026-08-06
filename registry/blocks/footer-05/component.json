@@ -1,0 +1,17 @@
+{
+  "name": "footer-05",
+  "type": "block",
+  "description": "Large sitemap footer: headline with two buttons, six link columns, and a logo row with an overlapping avatar stack.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["avatar", "button"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-05.blade.php",
+      "source": "files/footer-05.blade.php"
+    }
+  ]
+}

@@ -88,7 +88,7 @@
                     <path d="m2 12 10 5 10-5" />
                 </svg>
             </span>
-            <span class="text-lg">Logo</span>
+            <span class="text-lg">LaralCN</span>
         </a>
 
         {{-- Desktop navigation --}}

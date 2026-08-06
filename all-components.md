@@ -4,7 +4,7 @@ Comparison of every component listed at [ui.shadcn.com/docs/components](https://
 against what LaralCN-UI currently ships in `registry/components/`.
 
 **Coverage: 35 / 59 shadcn entries.** (Several shadcn "entries" are guides/providers,
-not real components — see notes.) Plus 7 **blocks** assembled from these components —
+not real components — see notes.) Plus 15 **blocks** assembled from these components —
 see [`/blocks`](./website) on the site.
 
 Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
@@ -79,7 +79,7 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `slider`, `switch`, `table`,
 `tabs`, `textarea`, `toast`, `toggle`, `toggle-group`, `tooltip`
 
-## Blocks (7)
+## Blocks (15)
 
 - **`sidebar-01`** — application shell with workspace switcher, nav groups, and a
   user footer. Ctrl/Cmd-B toggles it.
@@ -89,9 +89,17 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 - **`navbar-04`** — mega menu as a two-column grid of icon / title / description.
 - **`navbar-05`** — compact two-group mega menu with a footer CTA row.
 - **`navbar-06`** — floating pill navbar detached from the top edge.
+- **`footer-01`** — newsletter signup, two link columns, a social "Follow Us" list.
+- **`footer-02`** — newsletter row on top, logo beside five link columns.
+- **`footer-03`** — logo, three link columns and a subscribe form inside a bordered card.
+- **`footer-04`** — headline, blurb and two buttons beside two link columns.
+- **`footer-05`** — six link columns, headline actions, an overlapping avatar stack.
+- **`footer-06`** — address and contact details, two link columns, oversized wordmark.
+- **`footer-07`** — newsletter and social list above an oversized wordmark.
+- **`footer-08`** — one row of links, a subscribe form, oversized wordmark.
 
-Every navbar collapses into a slide-in sheet on mobile. Browse them on the site's
-**Blocks** page (`/blocks`).
+Every navbar collapses into a slide-in sheet on mobile, and every footer stacks to a
+single column. Browse them on the site's **Blocks** page (`/blocks`).
 
 ## Missing (high-value candidates to add next)
 

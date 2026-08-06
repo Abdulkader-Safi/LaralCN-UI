@@ -77,7 +77,7 @@
                     <path d="m2 12 10 5 10-5" />
                 </svg>
             </span>
-            <span>Logo</span>
+            <span>LaralCN</span>
         </a>
 
         {{-- Desktop navigation --}}

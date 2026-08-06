@@ -66,7 +66,19 @@ final class Registry
     /** @return Collection<string, Collection<int, array<string, mixed>>> */
     public function blocksByCategory(): Collection
     {
-        return $this->blocks()->groupBy("category");
+        // Fixed display order, alphabetical would put Footer first. Categories
+        // not listed here fall to the end.
+        $order = ["Navbar", "Application Shell", "Footer"];
+
+        return $this->blocks()
+            ->groupBy("category")
+            ->sortBy(function (Collection $items, string $category) use (
+                $order,
+            ): int {
+                $rank = array_search($category, $order, true);
+
+                return $rank === false ? count($order) : $rank;
+            });
     }
 
     /** @return array<string, mixed>|null */

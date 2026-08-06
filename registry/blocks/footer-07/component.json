@@ -1,0 +1,17 @@
+{
+  "name": "footer-07",
+  "type": "block",
+  "description": "Newsletter footer with an oversized company wordmark: signup form, two link columns and a social list above the brand statement.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button", "input"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-07.blade.php",
+      "source": "files/footer-07.blade.php"
+    }
+  ]
+}

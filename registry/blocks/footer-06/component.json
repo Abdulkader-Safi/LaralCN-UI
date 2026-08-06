@@ -1,0 +1,17 @@
+{
+  "name": "footer-06",
+  "type": "block",
+  "description": "Contact footer: address, phone and email beside two link columns, closing on an oversized company wordmark.",
+  "category": "Footer",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-06.blade.php",
+      "source": "files/footer-06.blade.php"
+    }
+  ]
+}

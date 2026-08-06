@@ -1,0 +1,17 @@
+{
+  "name": "footer-02",
+  "type": "block",
+  "description": "Wide sitemap footer: newsletter row on top, logo beside five link columns, then a legal bar with social icons.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button", "input"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-02.blade.php",
+      "source": "files/footer-02.blade.php"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "footer-03",
+  "type": "block",
+  "description": "Boxed footer: logo, three link columns and a subscribe form inside a bordered card, with the legal bar outside it.",
+  "category": "Footer",
+  "dependencies": {
+    "components": ["button", "input"],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "blocks/footer-03.blade.php",
+      "source": "files/footer-03.blade.php"
+    }
+  ]
+}
