@@ -1,0 +1,19 @@
+{
+  "name": "carousel",
+  "type": "component",
+  "description": "Horizontally scrolling slides with snap points and arrow controls.",
+  "category": "Data Display",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "carousel/index.blade.php", "source": "files/index.blade.php" },
+    { "path": "carousel/item.blade.php", "source": "files/item.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--background", "--accent", "--input", "--ring"],
+    "notes": "CSS scroll-snap does the scrolling; the inline <script> only drives the two arrow buttons, and no JS dependencies. Items are basis-full by default, override with class for a multi-up layout."
+  }
+}

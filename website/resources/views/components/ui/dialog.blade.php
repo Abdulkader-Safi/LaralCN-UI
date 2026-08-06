@@ -11,7 +11,11 @@
     // the exit animation and the scroll lock.
     $id = 'ui-dialog-' . bin2hex(random_bytes(4));
 
-    $overlay = 'absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-200 group-data-[state=open]/dialog:opacity-100';
+    // Not bg-black/50. Tailwind v4 compiles that to oklab(0 0 0 / 0.5), and
+    // Chrome does not paint a modern colour function with alpha inside the
+    // dialog top layer, so the scrim silently renders as nothing. A legacy
+    // rgb() with alpha composites correctly in the same place.
+    $overlay = 'absolute inset-0 bg-[rgb(0_0_0/0.5)] opacity-0 transition-opacity duration-200 group-data-[state=open]/dialog:opacity-100';
 
     $panel = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
         'absolute left-1/2 top-1/2 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 scale-95 gap-4 rounded-lg border bg-background p-6 opacity-0 shadow-lg transition-all duration-200 group-data-[state=open]/dialog:scale-100 group-data-[state=open]/dialog:opacity-100 sm:max-w-lg',

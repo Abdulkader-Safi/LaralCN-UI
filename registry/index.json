@@ -30,6 +30,32 @@
             }
         },
         {
+            "name": "alert-dialog",
+            "type": "component",
+            "description": "Modal that interrupts the user and waits for a deliberate response.",
+            "category": "Overlays",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "aspect-ratio",
+            "type": "component",
+            "description": "Holds its children to a fixed width-to-height ratio.",
+            "category": "Layout",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "avatar",
             "type": "component",
             "description": "User image with text fallback.",
@@ -95,6 +121,19 @@
             }
         },
         {
+            "name": "carousel",
+            "type": "component",
+            "description": "Horizontally scrolling slides with snap points and arrow controls.",
+            "category": "Data Display",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "checkbox",
             "type": "component",
             "description": "Native checkbox styled to the theme.",
@@ -149,6 +188,19 @@
             }
         },
         {
+            "name": "hover-card",
+            "type": "component",
+            "description": "Preview card shown when a trigger is hovered or focused.",
+            "category": "Overlays",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "input",
             "type": "component",
             "description": "Form text input.",
@@ -175,10 +227,49 @@
             }
         },
         {
+            "name": "pagination",
+            "type": "component",
+            "description": "Page navigation with previous, next, numbered links and an ellipsis.",
+            "category": "Navigation",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "progress",
+            "type": "component",
+            "description": "Progress bar showing completion of a task.",
+            "category": "Feedback",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "radio",
             "type": "component",
             "description": "Native radio input styled to the theme.",
             "category": "Forms",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "scroll-area",
+            "type": "component",
+            "description": "Scrollable region with a styled, themed scrollbar.",
+            "category": "Layout",
             "dependencies": {
                 "components": [],
                 "js": [],
@@ -253,6 +344,19 @@
             }
         },
         {
+            "name": "slider",
+            "type": "component",
+            "description": "Range slider built on a native input, submits with the form.",
+            "category": "Forms",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
             "name": "switch",
             "type": "component",
             "description": "Toggle switch built on a native checkbox, submits with the form.",
@@ -309,6 +413,32 @@
             "type": "component",
             "description": "Toast region; dispatch a `toast` window event to show one.",
             "category": "Feedback",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "toggle",
+            "type": "component",
+            "description": "Two-state button built on a native checkbox, submits with the form.",
+            "category": "Forms",
+            "dependencies": {
+                "components": [],
+                "js": [],
+                "composer": [
+                    "gehrisandro/tailwind-merge-laravel"
+                ]
+            }
+        },
+        {
+            "name": "toggle-group",
+            "type": "component",
+            "description": "A joined set of toggles, single or multiple selection.",
+            "category": "Forms",
             "dependencies": {
                 "components": [],
                 "js": [],

@@ -1,0 +1,18 @@
+{
+  "name": "hover-card",
+  "type": "component",
+  "description": "Preview card shown when a trigger is hovered or focused.",
+  "category": "Overlays",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "hover-card.blade.php", "source": "files/hover-card.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--popover", "--popover-foreground", "--border"],
+    "notes": "CSS only, no JavaScript: opens on hover and on keyboard focus. Put the trigger in the `trigger` slot and the card body in the default slot. Sides: top, bottom, left, right."
+  }
+}

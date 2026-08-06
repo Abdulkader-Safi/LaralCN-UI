@@ -1,0 +1,33 @@
+{
+  "name": "pagination",
+  "type": "component",
+  "description": "Page navigation with previous, next, numbered links and an ellipsis.",
+  "category": "Navigation",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "pagination/index.blade.php", "source": "files/index.blade.php" },
+    {
+      "path": "pagination/content.blade.php",
+      "source": "files/content.blade.php"
+    },
+    { "path": "pagination/item.blade.php", "source": "files/item.blade.php" },
+    { "path": "pagination/link.blade.php", "source": "files/link.blade.php" },
+    {
+      "path": "pagination/previous.blade.php",
+      "source": "files/previous.blade.php"
+    },
+    { "path": "pagination/next.blade.php", "source": "files/next.blade.php" },
+    {
+      "path": "pagination/ellipsis.blade.php",
+      "source": "files/ellipsis.blade.php"
+    }
+  ],
+  "tailwind": {
+    "cssVars": ["--accent", "--background", "--input", "--ring"],
+    "notes": "No JavaScript. Plain links, so it works with a Laravel paginator or a hand-built list; mark the current page with :is-active on the link."
+  }
+}

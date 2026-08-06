@@ -63,6 +63,7 @@ A component is judged against this file in review. If it breaks a MUST, it does 
 ## 4. Theming
 
 - Colors, radius, and spacing **MUST** come from theme tokens (`bg-primary`, `text-muted-foreground`, `rounded-md`, etc.), never hardcoded hex/rgb. Theming a project must require zero edits to component files. The token set is defined once by `ui:init` / the theming page. Components only consume tokens; they never define them.
+- **Exception, modal scrims:** inside a `<dialog>` top layer, Chrome parses but does not paint a modern colour function carrying alpha. Tailwind v4 compiles `bg-black/50` to `oklab(0 0 0 / 0.5)`, so the scrim computes correctly and renders as nothing at all. Overlays in `dialog`, `alert-dialog`, `sheet` and the mobile `sidebar` therefore use `bg-[rgb(0_0_0/0.5)]`, which composites. This applies only to the top layer: `/opacity` utilities in normal flow (e.g. `bg-primary/20`) are fine. Do not "tidy" these back to `bg-black/50`.
 
 ## 5. Accessibility (MUST)
 

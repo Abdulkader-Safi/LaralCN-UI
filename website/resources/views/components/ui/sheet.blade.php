@@ -27,7 +27,11 @@
         default => 'translate-x-full group-data-[state=open]/sheet:translate-x-0',
     };
 
-    $overlay = 'absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-data-[state=open]/sheet:opacity-100';
+    // Not bg-black/50. Tailwind v4 compiles that to oklab(0 0 0 / 0.5), and
+    // Chrome does not paint a modern colour function with alpha inside the
+    // dialog top layer, so the scrim silently renders as nothing. A legacy
+    // rgb() with alpha composites correctly in the same place.
+    $overlay = 'absolute inset-0 bg-[rgb(0_0_0/0.5)] opacity-0 transition-opacity duration-300 group-data-[state=open]/sheet:opacity-100';
 
     $panel = \TailwindMerge\Laravel\Facades\TailwindMerge::merge(
         'absolute flex flex-col gap-4 bg-background shadow-lg transition-transform duration-300 ease-in-out',

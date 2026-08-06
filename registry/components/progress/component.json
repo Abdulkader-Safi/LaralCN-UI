@@ -1,0 +1,18 @@
+{
+  "name": "progress",
+  "type": "component",
+  "description": "Progress bar showing completion of a task.",
+  "category": "Feedback",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "progress.blade.php", "source": "files/progress.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--primary"],
+    "notes": "No JavaScript. Pass `value` (and `max`, default 100); the fill is positioned with an inline transform because a dynamic width class cannot be compiled by Tailwind."
+  }
+}

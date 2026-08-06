@@ -1,0 +1,16 @@
+{
+  "name": "slider",
+  "type": "component",
+  "description": "Range slider built on a native input, submits with the form.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "slider.blade.php", "source": "files/slider.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--primary", "--background", "--ring"],
+    "notes": "A native input[type=range], so no JavaScript: drag, arrow keys and Home/End all come from the browser. Track and thumb are styled twice, once for WebKit and once for Firefox."
+  }
+}

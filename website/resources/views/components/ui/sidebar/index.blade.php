@@ -42,7 +42,11 @@
      focus trap and Esc handling already wired. --}}
 <dialog data-ui-sidebar-mobile data-state="closed"
     class="group/mobile m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 backdrop:bg-transparent md:hidden">
-    <div class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 group-data-[state=open]/mobile:opacity-100"
+    {{-- Not bg-black/50. Tailwind v4 compiles that to oklab(0 0 0 / 0.5), and
+         Chrome does not paint a modern colour function with alpha inside the
+         dialog top layer, so the scrim silently renders as nothing. A legacy
+         rgb() with alpha composites correctly in the same place. --}}
+    <div class="absolute inset-0 bg-[rgb(0_0_0/0.5)] opacity-0 transition-opacity duration-300 group-data-[state=open]/mobile:opacity-100"
         data-ui-sidebar-mobile-close></div>
 
     <div class="absolute inset-y-0 flex h-svh w-(--sidebar-width-mobile) flex-col bg-sidebar text-sidebar-foreground transition-transform duration-300 ease-in-out {{ $side === 'right' ? 'right-0' : 'left-0' }} {{ $offscreen }} group-data-[state=open]/mobile:translate-x-0"

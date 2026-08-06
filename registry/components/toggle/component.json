@@ -1,0 +1,16 @@
+{
+  "name": "toggle",
+  "type": "component",
+  "description": "Two-state button built on a native checkbox, submits with the form.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [{ "path": "toggle.blade.php", "source": "files/toggle.blade.php" }],
+  "tailwind": {
+    "cssVars": ["--accent", "--muted", "--input", "--ring"],
+    "notes": "Pure CSS over a native checkbox, no JavaScript. Variants: default, outline. Sizes: sm, md, lg. Pass `name` to submit its state and `pressed` to start on."
+  }
+}

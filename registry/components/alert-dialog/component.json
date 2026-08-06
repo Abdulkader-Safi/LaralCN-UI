@@ -1,0 +1,18 @@
+{
+  "name": "alert-dialog",
+  "type": "component",
+  "description": "Modal that interrupts the user and waits for a deliberate response.",
+  "category": "Overlays",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    { "path": "alert-dialog.blade.php", "source": "files/alert-dialog.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--background", "--foreground", "--muted-foreground", "--border"],
+    "notes": "Native dialog element plus its own inline <script>; no JS dependencies. Unlike dialog there is no close button and the overlay is inert. Put dismiss buttons in the `footer` slot and mark them data-ui-alert-dialog-close."
+  }
+}

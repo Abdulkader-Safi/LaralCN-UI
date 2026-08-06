@@ -1,0 +1,21 @@
+{
+  "name": "aspect-ratio",
+  "type": "component",
+  "description": "Holds its children to a fixed width-to-height ratio.",
+  "category": "Layout",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "aspect-ratio.blade.php",
+      "source": "files/aspect-ratio.blade.php"
+    }
+  ],
+  "tailwind": {
+    "cssVars": [],
+    "notes": "No JavaScript and no tokens. Pass `ratio` as any CSS aspect-ratio value (\"16/9\", \"1/1\", \"1.85\"). Give the child `size-full object-cover` to fill the box."
+  }
+}

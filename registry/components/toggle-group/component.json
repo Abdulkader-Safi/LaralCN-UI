@@ -1,0 +1,22 @@
+{
+  "name": "toggle-group",
+  "type": "component",
+  "description": "A joined set of toggles, single or multiple selection.",
+  "category": "Forms",
+  "dependencies": {
+    "components": [],
+    "js": [],
+    "composer": ["gehrisandro/tailwind-merge-laravel"]
+  },
+  "files": [
+    {
+      "path": "toggle-group/index.blade.php",
+      "source": "files/index.blade.php"
+    },
+    { "path": "toggle-group/item.blade.php", "source": "files/item.blade.php" }
+  ],
+  "tailwind": {
+    "cssVars": ["--accent", "--muted", "--input", "--ring"],
+    "notes": "Native radios (single) or checkboxes (multiple), so no JavaScript; radios also give arrow-key navigation for free. Set `multiple`, `name`, `variant` and `size` on the group; items read them via @aware."
+  }
+}
