@@ -10,3 +10,5 @@ laralcn-sandbox/
 .phpunit.cache/
 .DS_Store
 demo/
+
+CLAUDE.local.md
