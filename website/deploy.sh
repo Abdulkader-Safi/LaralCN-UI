@@ -32,6 +32,9 @@ echo "==> rebuild caches"
 "$PHP" artisan view:cache
 
 echo "==> fix ownership for php-fpm (www-data)"
-sudo chown -R www-data:www-data storage bootstrap/cache public/build
+# Only the directories php-fpm WRITES to. public/build is deliberately absent:
+# it is served read-only, it arrives via git, and handing it to www-data makes
+# the next `git pull` fail with "unable to unlink old public/build/manifest.json".
+sudo chown -R www-data:www-data storage bootstrap/cache
 
 echo "==> done — reload https://laralcn-ui.abdulkadersafi.com"

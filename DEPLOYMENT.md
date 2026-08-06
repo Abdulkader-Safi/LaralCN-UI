@@ -42,13 +42,22 @@ DB_CONNECTION=sqlite      # present but never opened (see below)
 # LARALCN_UI_REGISTRY_URL  — leave unset; the default raw-GitHub URL is correct
 ```
 
-Initial ownership (php-fpm runs as `www-data`):
+Initial ownership. The split matters: the deploy user owns the checkout so
+`git pull` can rewrite any tracked file, and php-fpm owns only the two
+directories it actually writes to.
 
 ```bash
+sudo chown -R safi:safi /var/www/LaralCN-UI          # whole checkout, for git
+
 cd /var/www/LaralCN-UI/website
-sudo chown -R www-data:www-data storage bootstrap/cache public/build
+sudo chown -R www-data:www-data storage bootstrap/cache
 sudo find storage bootstrap/cache -type d -exec chmod 775 {} \;
 ```
+
+`public/build` is **not** in that second command on purpose. php-fpm serves it
+read-only and never writes to it, and giving it to `www-data` breaks the next
+deploy with `error: unable to unlink old 'website/public/build/manifest.json':
+Permission denied`, followed by a `git pull` that refuses to fast-forward.
 
 ## Every deploy
 
@@ -110,6 +119,9 @@ Raising it first leaves the lock stale and the deploy install fails.
 | `Registry not found at https://...`         | old code or misspelled URL         | ensure latest `main`; default URL is `Abdulkader-Safi` (hyphen)                    |
 | `attempt to write a readonly database`      | `.env` still on `database` drivers | set `SESSION_DRIVER=file` + `CACHE_STORE=file`, then `php8.4 artisan config:cache` |
 | `Vite manifest not found`                   | `public/build/` missing            | it's committed — `git pull`; rebuild+commit locally if stale                       |
+| `unable to unlink old public/build/manifest.json` | `public/build` owned by www-data | `sudo chown -R safi:safi /var/www/LaralCN-UI`, then re-run `deploy.sh`        |
+| `EACCES ... public/build/assets` from vite  | ran `npm run build` on the server  | don't; assets are built locally and committed. The error saved you: vite empties that directory first |
+| `storage/logs/laravel.log ... Permission denied` | ran composer as the deploy user after a www-data chown | expected; `deploy.sh` re-chowns at the end. Run `deploy.sh`, not bare `composer i` |
 | 500 after moving/clone                      | stale cached paths                 | `php8.4 artisan optimize:clear` then re-cache                                      |
 | `Permission denied` writing storage/db      | dirs owned by www-data             | run writes as www-data, or `sudo chown` per above                                  |
 
