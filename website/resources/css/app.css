@@ -130,6 +130,22 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 }
+
+/*
+ * Tailwind v4 defaults border-color to currentColor, so a bare `border` on a
+ * card or an accordion row paints black instead of the token. Point every
+ * element at --border, exactly as shadcn does. Utilities (border-input,
+ * border-transparent, ...) still win, this is only the default.
+ */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--border);
+    }
+}
 /* laralcn-ui:end */
 
 /* Shiki renders <pre class="shiki"> with its own inline background; these are

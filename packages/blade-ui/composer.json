@@ -1,7 +1,7 @@
 {
   "_comment": "LOCAL DEV ONLY. The published package is the repository ROOT composer.json (submitted to Packagist as safi/laralcn-ui). This nested manifest exists solely so the in-repo website/ can consume the package via a Composer path repository, Composer cannot install a path package into a directory nested inside that package's own source. Keep `require` in sync with the root composer.json.",
   "name": "safi/laralcn-ui",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "LaralCN-UI installer (local path-repo manifest).",
   "license": "MIT",
   "require": {

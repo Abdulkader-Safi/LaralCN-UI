@@ -21,11 +21,14 @@
             </code>
         </li>
         <li>
-            Copy the theme variables once from the
+            Copy the theme block once from the
             <a class="underline" href="{{ route('docs.theming') }}">
                 Theming page
             </a>
-            into your stylesheet.
+            into your stylesheet. Copy all of it, including the
+            <code>@@layer base</code> rule at the bottom — Tailwind v4 defaults
+            <code>border-color</code> to <code>currentColor</code>, so without
+            it every card and divider draws a black border.
         </li>
         <li>
             Open any component page, click <strong>Copy</strong>, and paste

@@ -8,6 +8,12 @@
             into
             your Tailwind v4 stylesheet and you are done, no component edits.
         </p>
+        <p class="mt-2 max-w-2xl text-muted-foreground">
+            Paste the whole block, the <code>@@layer base</code> rule at the
+            bottom included. Tailwind v4 defaults <code>border-color</code> to
+            <code>currentColor</code>, so a card or an accordion divider draws a
+            black border until that rule points it at <code>--border</code>.
+        </p>
     </div>
 
     <section>
