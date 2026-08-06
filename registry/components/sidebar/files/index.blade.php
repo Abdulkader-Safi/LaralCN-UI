@@ -14,9 +14,13 @@
 
     // The fixed panel: icon mode shrinks its width; offcanvas keeps full width
     // and slides off-screen (so icon-mode tooltips are never clipped).
-    $panelWidth = $isIcon
-        ? 'w-(--sidebar-width) group-data-[state=collapsed]:w-(--sidebar-width-icon)'
-        : "w-(--sidebar-width) group-data-[state=collapsed]:{$offscreen}";
+    // Every variant class below is written out in full: Tailwind scans source
+    // text, so a class assembled by interpolation never gets compiled.
+    $panelWidth = match (true) {
+        $isIcon => 'w-(--sidebar-width) group-data-[state=collapsed]:w-(--sidebar-width-icon)',
+        $side === 'right' => 'w-(--sidebar-width) group-data-[state=collapsed]:translate-x-full',
+        default => 'w-(--sidebar-width) group-data-[state=collapsed]:-translate-x-full',
+    };
 @endphp
 
 {{-- Desktop sidebar. data-state / data-collapsible are kept in sync by the
