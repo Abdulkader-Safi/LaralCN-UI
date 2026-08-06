@@ -3443,11 +3443,11 @@
         },
         {
             "name": "safi/laralcn-ui",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "dist": {
                 "type": "path",
                 "url": "../packages/blade-ui",
-                "reference": "5fb8ed7215a45af12dd46df878c48e3a726a55cf"
+                "reference": "793907f895978346e33d65d38c011acb917facbd"
             },
             "require": {
                 "illuminate/console": "^11.0 || ^12.0 || ^13.0",
