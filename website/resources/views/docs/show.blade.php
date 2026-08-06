@@ -5,7 +5,7 @@
     $hasDeps = $componentDeps || $jsDeps || $composerDeps;
 @endphp
 
-<x-layouts.app :all="$all" :entry="$entry" :title="$entry['name']">
+<x-layouts.app :all="$all" :entry="$entry" :title="$entry['name']" :md-url="route('docs.show.md', $entry['name'])">
     {{-- Header --}}
     <div class="mb-8">
         <p class="text-sm text-muted-foreground">{{ $entry['category'] }}</p>

@@ -4,7 +4,7 @@
     $composerDeps = $entry['dependencies']['composer'] ?? [];
 @endphp
 
-<x-layouts.app :all="$all" :entry="$entry" :title="$entry['name']">
+<x-layouts.app :all="$all" :entry="$entry" :title="$entry['name']" :md-url="route('blocks.show.md', $entry['name'])">
     {{-- Header --}}
     <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>

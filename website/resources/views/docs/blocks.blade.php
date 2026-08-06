@@ -1,4 +1,4 @@
-<x-layouts.app :all="$all" :blocks="$blocks" title="Blocks">
+<x-layouts.app :all="$all" :blocks="$blocks" title="Blocks" :md-url="route('blocks.index.md')">
     <section class="mb-12">
         <h1 class="text-4xl font-bold tracking-tight">Blocks</h1>
         <p class="mt-3 max-w-2xl text-muted-foreground">

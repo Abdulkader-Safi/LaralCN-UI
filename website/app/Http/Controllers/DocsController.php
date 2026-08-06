@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Support\DocsMarkdown;
 use App\Support\Registry;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 final class DocsController extends Controller
 {
-    public function __construct(private readonly Registry $registry) {}
+    public function __construct(
+        private readonly Registry $registry,
+        private readonly DocsMarkdown $markdown,
+    ) {}
 
     public function home(): View
     {
@@ -153,6 +158,67 @@ final class DocsController extends Controller
     {
         return view("docs.plain-blade", [
             "all" => $this->registry->byCategory(),
+        ]);
+    }
+
+    // The Markdown channel: /llms.txt plus a .md twin of every page above,
+    // so an agent can read the docs without parsing HTML.
+
+    public function llms(): Response
+    {
+        return $this->plain($this->markdown->llms());
+    }
+
+    public function llmsFull(): Response
+    {
+        return $this->plain($this->markdown->full());
+    }
+
+    public function indexMarkdown(): Response
+    {
+        return $this->plain($this->markdown->componentsIndex());
+    }
+
+    public function showMarkdown(string $name): Response
+    {
+        $markdown = $this->markdown->component($name);
+
+        if ($markdown === null) {
+            throw new NotFoundHttpException("Unknown component [{$name}].");
+        }
+
+        return $this->plain($markdown);
+    }
+
+    public function blocksIndexMarkdown(): Response
+    {
+        return $this->plain($this->markdown->blocksIndex());
+    }
+
+    public function blockShowMarkdown(string $slug): Response
+    {
+        $markdown = $this->markdown->block($slug);
+
+        if ($markdown === null) {
+            throw new NotFoundHttpException("Unknown block [{$slug}].");
+        }
+
+        return $this->plain($markdown);
+    }
+
+    public function themingMarkdown(): Response
+    {
+        return $this->plain($this->markdown->themingPage());
+    }
+
+    /**
+     * Served as text/plain: browsers download text/markdown instead of
+     * showing it, and the "view as markdown" link should just render.
+     */
+    private function plain(string $body): Response
+    {
+        return response($body, 200, [
+            "Content-Type" => "text/plain; charset=utf-8",
         ]);
     }
 

@@ -11,6 +11,25 @@ document.addEventListener('click', (event) => {
     setTimeout(() => delete button.dataset.copied, 1500);
 });
 
+// Copy Page: [data-copy-url] fetches the page's Markdown twin and copies that,
+// so the button ships the whole page instead of one snippet.
+document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-copy-url]');
+    if (!button) return;
+
+    try {
+        const response = await fetch(button.dataset.copyUrl);
+        if (!response.ok) throw new Error(response.status);
+        await navigator.clipboard.writeText(await response.text());
+        button.dataset.copied = 'true';
+        setTimeout(() => delete button.dataset.copied, 1500);
+    } catch {
+        // Clipboard or network refused: open the Markdown so the page is
+        // still reachable by hand rather than failing silently.
+        window.open(button.dataset.copyUrl, '_blank', 'noopener');
+    }
+});
+
 // Tab strips: [data-site-tabs] wraps [data-site-tab="key"] buttons and [data-site-panel="key"].
 document.addEventListener('click', (event) => {
     const tab = event.target.closest('[data-site-tab]');

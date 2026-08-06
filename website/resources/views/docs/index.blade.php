@@ -1,4 +1,4 @@
-<x-layouts.app :all="$categories" title="Components">
+<x-layouts.app :all="$categories" title="Components" :md-url="route('docs.index.md')">
     <section class="mb-12">
         <h1 class="text-4xl font-bold tracking-tight">
             LaralCN-UI

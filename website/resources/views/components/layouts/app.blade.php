@@ -169,11 +169,38 @@
                     </x-ui.breadcrumb.list>
                 </x-ui.breadcrumb>
 
-                <button type="button" data-theme-toggle
-                    class="ml-auto rounded-md border border-border px-2 py-1 text-xs">
-                    <span class="dark:hidden">Dark</span>
-                    <span class="hidden dark:inline">Light</span>
-                </button>
+                <div class="ml-auto flex items-center gap-1.5">
+                    {{-- Hand this page to an agent: same content, as Markdown. --}}
+                    @isset($mdUrl)
+                        <button type="button" data-copy-url="{{ $mdUrl }}"
+                            class="group inline-flex items-center gap-1.5 rounded-md border border-border px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                            <svg class="size-3.5" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" aria-hidden="true">
+                                <rect width="14" height="14" x="8" y="8"
+                                    rx="2" ry="2" />
+                                <path
+                                    d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                            </svg>
+                            <span class="group-data-[copied]:hidden">Copy
+                                Page</span>
+                            <span
+                                class="hidden group-data-[copied]:inline">Copied!</span>
+                        </button>
+                        <a href="{{ $mdUrl }}" target="_blank"
+                            rel="noopener noreferrer" title="View as Markdown"
+                            class="rounded-md border border-border px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                            .md
+                        </a>
+                    @endisset
+
+                    <button type="button" data-theme-toggle
+                        class="rounded-md border border-border px-2 py-1 text-xs">
+                        <span class="dark:hidden">Dark</span>
+                        <span class="hidden dark:inline">Light</span>
+                    </button>
+                </div>
             </header>
 
             {{-- Page content --}}
@@ -191,6 +218,14 @@
                         class="font-medium text-foreground underline underline-offset-4 hover:text-foreground/80">
                         Abdulkader Safi
                     </a>
+                    <p class="mt-2 text-xs">
+                        Working with an AI agent? Hand it
+                        <a href="{{ route('llms') }}"
+                            class="underline underline-offset-4 hover:text-foreground">llms.txt</a>
+                        or
+                        <a href="{{ route('llms.full') }}"
+                            class="underline underline-offset-4 hover:text-foreground">llms-full.txt</a>.
+                    </p>
                 </div>
             </footer>
         </x-ui.sidebar.inset>

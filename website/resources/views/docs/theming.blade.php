@@ -1,4 +1,4 @@
-<x-layouts.app :all="$all" title="Theming">
+<x-layouts.app :all="$all" title="Theming" :md-url="route('docs.theming.md')">
     <div class="mb-8">
         <h1 class="text-3xl font-bold tracking-tight">Theming</h1>
         <p class="mt-2 max-w-2xl text-muted-foreground">
