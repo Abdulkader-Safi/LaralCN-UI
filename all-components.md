@@ -99,7 +99,10 @@ Legend: ✅ have it · ⚠️ partial / different flavor · ❌ not yet
 - **`footer-08`** — one row of links, a subscribe form, oversized wordmark.
 
 Every navbar collapses into a slide-in sheet on mobile, and every footer stacks to a
-single column. Browse them on the site's **Blocks** page (`/blocks`).
+single column. All of their content (brand, links, columns, socials, actions, legal
+bar, copyright) is a `@props` value, so a block can be driven straight from a CMS.
+Each block's page on the site lists its props and a worked example. Browse them on
+the site's **Blocks** page (`/blocks`).
 
 ## Missing (high-value candidates to add next)
 

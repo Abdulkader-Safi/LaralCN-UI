@@ -153,4 +153,28 @@
             </div>
         </div>
     </section>
+
+    {{-- Usage + props, read straight out of the block source --}}
+    @if ($usageSource !== null)
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-semibold tracking-tight">Usage</h2>
+            @if ($usageNotes !== null)
+                <p
+                    class="mb-3 whitespace-pre-line text-sm text-muted-foreground">
+                    {{ $usageNotes }}</p>
+            @endif
+            <x-code-block :code="$usageSource" />
+        </section>
+    @endif
+
+    @if ($propsSource !== null)
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-semibold tracking-tight">Props</h2>
+            <p class="mb-3 text-sm text-muted-foreground">
+                Every prop with its default. Pass any of them as attributes,
+                using <code class="text-foreground">:</code> to bind a PHP value.
+            </p>
+            <x-code-block :code="$propsSource" />
+        </section>
+    @endif
 </x-layouts.app>

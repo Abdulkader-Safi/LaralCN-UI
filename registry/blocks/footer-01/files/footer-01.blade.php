@@ -1,119 +1,162 @@
-@php
-    $columnOne = ['Link One', 'Link Two', 'Link Three', 'Link Four', 'Link Five'];
-    $columnTwo = ['Link Six', 'Link Seven', 'Link Eight', 'Link Nine', 'Link Ten'];
-    $legal = ['Privacy Policy', 'Terms of Service', 'Cookies Settings'];
+{{--
+    Every piece of content is a prop, so you can drive this footer from a CMS.
+    A link is either a plain string or ['label' => ..., 'href' => ...].
+    A social is ['label' =>, 'href' =>, 'icon' =>] where icon is a key of the
+    $icons map below ('facebook', 'instagram', 'x', 'linkedin', 'youtube'), or
+    pass 'svg' => '<svg ...>' to use a mark of your own.
 
-    $socials = [
-        [
-            'label' => 'Facebook',
-            'svg' =>
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
-        ],
-        [
-            'label' => 'Instagram',
-            'svg' =>
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>',
-        ],
-        [
-            'label' => 'X',
-            'svg' =>
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>',
-        ],
-        [
-            'label' => 'LinkedIn',
-            'svg' =>
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>',
-        ],
-        [
-            'label' => 'Youtube',
-            'svg' =>
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>',
-        ],
+    <x-ui.blocks.footer-01
+        brand="Acme"
+        brand-href="/"
+        newsletter-text="One email a month, every new release."
+        :form-action="route('newsletter.store')"
+        :columns="[
+            ['title' => 'Product', 'links' => [
+                ['label' => 'Pricing', 'href' => '/pricing'],
+                ['label' => 'Changelog', 'href' => '/changelog'],
+                ['label' => 'Status', 'href' => 'https://status.acme.com'],
+            ]],
+            ['title' => 'Company', 'links' => [
+                ['label' => 'About', 'href' => '/about'],
+                ['label' => 'Careers', 'href' => '/careers'],
+            ]],
+        ]"
+        :socials="[
+            ['label' => 'X', 'href' => 'https://x.com/acme', 'icon' => 'x'],
+            ['label' => 'GitHub', 'href' => 'https://github.com/acme', 'svg' => '<svg viewBox=\'0 0 24 24\'>...</svg>'],
+        ]"
+        :legal="[
+            ['label' => 'Privacy', 'href' => '/privacy'],
+            ['label' => 'Terms', 'href' => '/terms'],
+        ]"
+        copyright="© 2026 Acme Pty Ltd"
+    />
+--}}
+@props([
+    'brand' => 'LaralCN',
+    'brandHref' => '#',
+    'newsletterText' => 'Join our newsletter to stay up to date on features and releases.',
+    'formAction' => null,
+    'emailPlaceholder' => 'Enter your email',
+    'subscribeLabel' => 'Subscribe',
+    'privacyHref' => '#',
+    'columns' => [
+        ['title' => 'Column One', 'links' => ['Link One', 'Link Two', 'Link Three', 'Link Four', 'Link Five']],
+        ['title' => 'Column Two', 'links' => ['Link Six', 'Link Seven', 'Link Eight', 'Link Nine', 'Link Ten']],
+    ],
+    'socialsTitle' => 'Follow Us',
+    'socials' => [
+        ['label' => 'Facebook', 'icon' => 'facebook'],
+        ['label' => 'Instagram', 'icon' => 'instagram'],
+        ['label' => 'X', 'icon' => 'x'],
+        ['label' => 'LinkedIn', 'icon' => 'linkedin'],
+        ['label' => 'Youtube', 'icon' => 'youtube'],
+    ],
+    'legal' => ['Privacy Policy', 'Terms of Service', 'Cookies Settings'],
+    'copyright' => null,
+])
+
+@php
+    $link = static fn($item): array => is_array($item)
+        ? $item + ['href' => '#']
+        : ['label' => $item, 'href' => '#'];
+
+    $icons = [
+        'facebook' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+        'instagram' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>',
+        'x' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>',
+        'linkedin' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>',
+        'youtube' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>',
     ];
 @endphp
 
-<footer class="w-full border-t border-border bg-background">
+<footer {{ $attributes->merge(['class' => 'w-full border-t border-border bg-background']) }}>
     <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
         <div
             class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-8">
             {{-- Newsletter --}}
             <div class="flex flex-col gap-4">
-                <a href="#"
-                    class="flex items-center gap-2 font-semibold text-foreground">
-                    <span
-                        class="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="size-5"
-                            aria-hidden="true">
-                            <path d="M12 2 2 7l10 5 10-5-10-5Z" />
-                            <path d="m2 17 10 5 10-5" />
-                            <path d="m2 12 10 5 10-5" />
-                        </svg>
-                    </span>
-                    <span class="text-lg">LaralCN</span>
+                <a href="{{ $brandHref }}"
+                    class="flex items-center gap-2 self-start font-semibold text-foreground">
+                    {{ $logo ?? '' }}
+                    @empty($logo)
+                        <span
+                            class="flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="size-5" aria-hidden="true">
+                                <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+                                <path d="m2 17 10 5 10-5" />
+                                <path d="m2 12 10 5 10-5" />
+                            </svg>
+                        </span>
+                    @endempty
+                    <span class="text-lg">{{ $brand }}</span>
                 </a>
 
-                <p class="text-sm text-muted-foreground">
-                    Join our newsletter to stay up to date on features and
-                    releases.
-                </p>
+                @if ($newsletterText)
+                    <p class="text-sm text-muted-foreground">
+                        {{ $newsletterText }}</p>
+                @endif
 
                 <form class="flex flex-col gap-2 sm:flex-row"
-                    onsubmit="return false">
+                    @if ($formAction) action="{{ $formAction }}" method="post" @else onsubmit="return false" @endif>
+                    @if ($formAction)
+                        @csrf
+                    @endif
                     <label for="footer-01-email" class="sr-only">Email</label>
-                    <x-ui.input id="footer-01-email" type="email"
-                        placeholder="Enter your email" class="sm:flex-1" />
-                    <x-ui.button variant="outline">Subscribe</x-ui.button>
+                    <x-ui.input id="footer-01-email" type="email" name="email"
+                        placeholder="{{ $emailPlaceholder }}" class="sm:flex-1" />
+                    <x-ui.button type="submit"
+                        variant="outline">{{ $subscribeLabel }}</x-ui.button>
                 </form>
 
                 <p class="text-xs text-muted-foreground">
-                    By subscribing you agree to with our
-                    <a href="#" class="underline underline-offset-4">Privacy
-                        Policy</a>
-                    and provide consent to receive updates from our company.
+                    {{ $disclaimer ?? '' }}
+                    @empty($disclaimer)
+                        By subscribing you agree to with our
+                        <a href="{{ $privacyHref }}"
+                            class="underline underline-offset-4">Privacy Policy</a>
+                        and provide consent to receive updates from our company.
+                    @endempty
                 </p>
             </div>
 
-            {{-- Column One --}}
-            <div class="flex flex-col gap-3">
-                <h3 class="text-sm font-semibold text-foreground">Column One
-                </h3>
-                <ul class="flex flex-col gap-2">
-                    @foreach ($columnOne as $link)
-                        <li>
-                            <a href="#"
-                                class="text-sm text-muted-foreground transition-colors hover:text-foreground">{{ $link }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+            {{-- Link columns --}}
+            @foreach ($columns as $column)
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-semibold text-foreground">
+                        {{ $column['title'] ?? '' }}</h3>
+                    <ul class="flex flex-col gap-2">
+                        @foreach ($column['links'] ?? [] as $item)
+                            @php($entry = $link($item))
+                            <li>
+                                <a href="{{ $entry['href'] }}"
+                                    class="text-sm text-muted-foreground transition-colors hover:text-foreground">{{ $entry['label'] }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
 
-            {{-- Column Two --}}
+            {{-- Socials --}}
             <div class="flex flex-col gap-3">
-                <h3 class="text-sm font-semibold text-foreground">Column Two
-                </h3>
-                <ul class="flex flex-col gap-2">
-                    @foreach ($columnTwo as $link)
-                        <li>
-                            <a href="#"
-                                class="text-sm text-muted-foreground transition-colors hover:text-foreground">{{ $link }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            {{-- Follow Us --}}
-            <div class="flex flex-col gap-3">
-                <h3 class="text-sm font-semibold text-foreground">Follow Us</h3>
+                <h3 class="text-sm font-semibold text-foreground">
+                    {{ $socialsTitle }}</h3>
                 <ul class="flex flex-col gap-2">
                     @foreach ($socials as $social)
                         <li>
-                            <a href="#"
+                            <a href="{{ $social['href'] ?? '#' }}"
                                 class="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground">
-                                {!! $social['svg'] !!}
-                                {{ $social['label'] }}
+                                {!! $social['svg'] ?? ($icons[$social['icon'] ?? ''] ?? '') !!}
+                                {{ $social['label'] ?? '' }}
                             </a>
                         </li>
                     @endforeach
@@ -124,12 +167,14 @@
         <div class="mt-12 border-t border-border pt-6">
             <div
                 class="flex flex-col-reverse gap-4 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-                <p>&copy; {{ date('Y') }} LaralCN. All rights reserved.</p>
+                <p>{{ $copyright ?? '© ' . date('Y') . ' ' . $brand . '. All rights reserved.' }}
+                </p>
                 <ul class="flex flex-col gap-3 md:flex-row md:gap-6">
-                    @foreach ($legal as $link)
+                    @foreach ($legal as $item)
+                        @php($entry = $link($item))
                         <li>
-                            <a href="#"
-                                class="underline underline-offset-4 transition-colors hover:text-foreground">{{ $link }}</a>
+                            <a href="{{ $entry['href'] }}"
+                                class="underline underline-offset-4 transition-colors hover:text-foreground">{{ $entry['label'] }}</a>
                         </li>
                     @endforeach
                 </ul>

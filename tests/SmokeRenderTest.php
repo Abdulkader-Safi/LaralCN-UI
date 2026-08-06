@@ -124,6 +124,48 @@ it("applies the destructive variant", function () {
     expect($html)->toContain("bg-destructive");
 });
 
+it("drives navbar and footer content from props", function () {
+    $html = Blade::render(<<<'BLADE'
+        <x-ui.blocks.footer-01 brand="Acme Co" brand-href="https://acme.test"
+            :columns="[['title' => 'Product', 'links' => [['label' => 'Pricing', 'href' => '/pricing'], 'Changelog']]]"
+            :socials="[['label' => 'GitHub', 'href' => 'https://github.com/acme', 'icon' => 'x']]"
+            :legal="[['label' => 'Imprint', 'href' => '/imprint']]" copyright="© 2026 Acme Co" />
+        BLADE);
+
+    // Everything passed in shows up, ...
+    foreach (
+        [
+            "Acme Co",
+            "https://acme.test",
+            "Product",
+            "Pricing",
+            "/pricing",
+            "Changelog",
+            "GitHub",
+            "https://github.com/acme",
+            "Imprint",
+            "/imprint",
+            "© 2026 Acme Co",
+        ]
+        as $needle
+    ) {
+        expect($html)->toContain($needle);
+    }
+
+    // ... and none of the placeholder defaults survive.
+    foreach (["LaralCN", "Column One", "Link One", "Cookies Settings"] as $stale) {
+        expect($html)->not->toContain($stale);
+    }
+});
+
+it("renders a navbar action as a link when the action has an href", function () {
+    $html = Blade::render(
+        '<x-ui.blocks.navbar-01 :actions="[[\'label\' => \'Book a demo\', \'href\' => \'/demo\']]" />',
+    );
+
+    expect($html)->toContain('<a href="/demo"')->toContain("Book a demo");
+});
+
 it("renders every registered block end-to-end", function (string $name) {
     $html = Blade::render("<x-ui.blocks.{$name} />");
 

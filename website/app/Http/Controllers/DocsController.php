@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Support\BladeDoc;
 use App\Support\DocsMarkdown;
 use App\Support\Registry;
 use Illuminate\Http\Response;
@@ -67,6 +68,7 @@ final class DocsController extends Controller
             "hasDemo" => view()->exists("examples.{$name}"),
             "demoSource" => $this->exampleSource("{$name}.blade.php"),
             "usageSource" => $this->exampleSource("{$name}.usage.blade.php"),
+            "propsSource" => BladeDoc::props($files[0]["code"] ?? ""),
             "all" => $this->registry->byCategory(),
         ]);
     }
@@ -103,6 +105,9 @@ final class DocsController extends Controller
             "source" => $files[0]["code"] ?? "",
             "command" => $this->registry->blockCommand($slug),
             "previewUrl" => route("blocks.preview", $slug),
+            "propsSource" => BladeDoc::props($files[0]["code"] ?? ""),
+            "usageSource" => BladeDoc::usage($files[0]["code"] ?? ""),
+            "usageNotes" => BladeDoc::notes($files[0]["code"] ?? ""),
         ]);
     }
 

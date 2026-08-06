@@ -2,6 +2,7 @@
     'variant' => 'default',
     'size' => 'md',
     'type' => 'button',
+    'href' => null,
 ])
 
 @php
@@ -37,7 +38,15 @@
     );
 @endphp
 
-<button type="{{ $type }}"
-    {{ $attributes->except('class')->merge(['class' => $classes]) }}>
-    {{ $slot }}
-</button>
+{{-- Renders an <a> when href is set, so a CMS can point a call to action somewhere. --}}
+@if ($href)
+    <a href="{{ $href }}"
+        {{ $attributes->except('class')->merge(['class' => $classes]) }}>
+        {{ $slot }}
+    </a>
+@else
+    <button type="{{ $type }}"
+        {{ $attributes->except('class')->merge(['class' => $classes]) }}>
+        {{ $slot }}
+    </button>
+@endif

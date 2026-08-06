@@ -3,4 +3,6 @@
     Show toast
 </x-ui.button>
 
-<x-ui.toast />
+{{-- One region per page. position: bottom-right (default), bottom-left,
+     top-right, top-left or top-center. --}}
+<x-ui.toast position="top-center" />

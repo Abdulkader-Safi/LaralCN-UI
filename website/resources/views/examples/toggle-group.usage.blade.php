@@ -10,3 +10,9 @@
     <x-ui.toggle-group.item value="bold">Bold</x-ui.toggle-group.item>
     <x-ui.toggle-group.item value="italic">Italic</x-ui.toggle-group.item>
 </x-ui.toggle-group>
+
+{{-- size: sm, md (default) or lg, applied to every item --}}
+<x-ui.toggle-group name="zoom" size="sm">
+    <x-ui.toggle-group.item value="50">50%</x-ui.toggle-group.item>
+    <x-ui.toggle-group.item value="100">100%</x-ui.toggle-group.item>
+</x-ui.toggle-group>

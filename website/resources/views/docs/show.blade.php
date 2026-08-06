@@ -133,4 +133,16 @@
             @endif
         </section>
     @endif
+
+    {{-- Props, read straight out of the component source --}}
+    @if ($propsSource !== null)
+        <section class="mb-10">
+            <h2 class="mb-3 text-xl font-semibold tracking-tight">Props</h2>
+            <p class="mb-3 text-sm text-muted-foreground">
+                Every prop with its default. Pass any of them as attributes,
+                using <code class="text-foreground">:</code> to bind a PHP value.
+            </p>
+            <x-code-block :code="$propsSource" />
+        </section>
+    @endif
 </x-layouts.app>
