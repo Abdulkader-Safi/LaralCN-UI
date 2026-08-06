@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5785b400ae9b70031a43e0987a2679c",
+    "content-hash": "21ffc94424fd1b1d677390bcaf8cfa13",
     "packages": [
         {
             "name": "brick/math",
@@ -3443,11 +3443,11 @@
         },
         {
             "name": "safi/laralcn-ui",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "dist": {
                 "type": "path",
                 "url": "../packages/blade-ui",
-                "reference": "0f1dd317836fc051bf7d81306cf26d056e1d17b1"
+                "reference": "5fb8ed7215a45af12dd46df878c48e3a726a55cf"
             },
             "require": {
                 "illuminate/console": "^11.0 || ^12.0 || ^13.0",
